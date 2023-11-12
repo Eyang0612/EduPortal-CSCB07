@@ -19,6 +19,10 @@
         </activity>
         <activity android:name=".SignUpPage">
         </activity>
+        <activity android:name=".QualificationPage">
+        </activity>
+        <activity android:name=".ComplaintsPage">
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
