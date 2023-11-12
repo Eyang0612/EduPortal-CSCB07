@@ -40,14 +40,6 @@ public class LoginPage extends AppCompatActivity {
                 onSignUpClick();
             }
         });
-
-        TextView BackTextView = findViewById(R.id.textViewBack);
-        BackTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackClick();
-            }
-        });
     }
 
     private void onLoginClick() {
@@ -70,12 +62,6 @@ public class LoginPage extends AppCompatActivity {
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, SignUpPage.class);
         startActivity(signUpIntent);
-    }
-
-    private void onBackClick() {
-        // Handle the click event to navigate to the sign-up page
-        Intent BackIntent = new Intent(this, MainActivity.class);
-        startActivity(BackIntent);
     }
     private boolean isValid(String password) {
         // Add your password validation logic here
