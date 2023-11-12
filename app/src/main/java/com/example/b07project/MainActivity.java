@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //setContentView(R.layout.fragment_login_page);
-        //FirebaseApp.initializeApp(this);
+        FirebaseApp.initializeApp(this);
         TextView textViewHeadline = findViewById(R.id.textViewTitle);
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
