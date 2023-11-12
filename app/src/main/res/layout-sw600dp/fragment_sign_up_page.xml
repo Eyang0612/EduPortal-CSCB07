@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/signup"
-            android:textSize="24sp"
-            tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/textViewSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="signup"
+        android:textSize="24sp"
+        tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
