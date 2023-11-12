@@ -57,6 +57,16 @@ public class LoginPage extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
+=======
+        TextView BackTextView = findViewById(R.id.textViewBack);
+        BackTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackClick();
+            }
+        });
+>>>>>>> f9c74c8b99295f860a79b5469c548e32f65c2c04
     }
 
     private void onLoginClick() {
@@ -99,5 +109,11 @@ public class LoginPage extends AppCompatActivity {
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, SignUpPage.class);
         startActivity(signUpIntent);
+    }
+
+    private void onBackClick() {
+        // Handle the click event to navigate to the sign-up page
+        Intent BackIntent = new Intent(this, MainActivity.class);
+        startActivity(BackIntent);
     }
 }
