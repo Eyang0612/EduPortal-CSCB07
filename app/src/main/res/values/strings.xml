@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">B07Project</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="POSt_qualification">POSt Qualification</string>
+    <string name="Question">Question here</string>
+    <string name="AnswerA">Answer A</string>
+    <string name="AnswerB">Answer B</string>
 </resources>

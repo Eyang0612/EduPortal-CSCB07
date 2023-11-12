@@ -7,8 +7,55 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/POSt_qualification"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="361dp"
+        android:layout_height="538dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="@string/Question"
+        android:textSize="20dp"
+        android:textStyle ="bold"
+        android:layout_above = "@+id/title"
+        android:layout_below = "@+id/ans_A"
+    />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/choices"
+        android:layout_centerInParent ="true"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ans_A"
+        android:layout_width="376dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/question"
+        android:layout_below = "@+id/ans_B"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="300dp"
+        android:text="@string/AnswerA" />
+
+    <Button
+        android:id="@+id/ans_B"
+        android:layout_width="376dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ans_A"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="350dp"
+        android:text="@string/AnswerB" />
 
 </FrameLayout>
