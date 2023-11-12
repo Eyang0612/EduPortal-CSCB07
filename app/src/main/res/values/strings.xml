@@ -5,4 +5,10 @@
     <string name="Question">Question here</string>
     <string name="AnswerA">Answer A</string>
     <string name="AnswerB">Answer B</string>
+    <string name="hello_blank_fragment" />
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="signup">signup</string>
+    <string name="homepage">homepage</string>
 </resources>
