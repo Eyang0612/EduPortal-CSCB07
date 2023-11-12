@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.B07Project"
         tools:targetApi="31">
+        <activity android:name=".HomePage" />
+        <activity android:name=".SignUpPage" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
