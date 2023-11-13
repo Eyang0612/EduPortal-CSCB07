@@ -53,9 +53,12 @@ public class SignUpPage extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRole.setAdapter(adapter);
 
+        /*
         spinnerRole.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // posiiton means the choice of spinner, 0 is "choose your role"
+
                 if(position != 0){
                     String selectedRole = parentView.getItemAtPosition(position).toString();
                 }
@@ -66,6 +69,8 @@ public class SignUpPage extends AppCompatActivity {
                 // Do nothing here
             }
         });
+
+         */
 
 
 
@@ -85,25 +90,22 @@ public class SignUpPage extends AppCompatActivity {
                 db = FirebaseDatabase.getInstance();
                 ref = db.getReference("users");
 
-
-
-                // check is the information is valid for sign up
-                if (isValidPassword(password)) {
-                    // Password is valid, proceed with signup
-                    boolean isAdmin = (selectedRole.equals("Admin"));
-                    if(isAdmin) {
-
-                    }else{
-                        Student student = new Student(name, email, password, false);
-                        saveToDataBase(student);
-                        onBacktoLoginClick();
+                if(spinnerRole.getSelectedItemPosition() != 0){
+                    if (isValidPassword(password)) {
+                        // Password is valid, proceed with signup
+                        boolean isAdmin = (selectedRole.equals("Admin"));
+                        if(isAdmin) {
+                        }else{
+                            Student student = new Student(name, email, password, false);
+                            saveToDataBase(student);
+                            onBacktoLoginClick();
+                        }
+                    } else {
+                        // Display an error message or handle invalid password
+                        passwordEditText.setError("Invalid password");
                     }
-
-
-
-                } else {
-                    // Display an error message or handle invalid password
-                    passwordEditText.setError("Invalid password");
+                }else{
+                   showMessage("Fails: choose a valid role");
                 }
             }
         });
@@ -145,9 +147,9 @@ public class SignUpPage extends AppCompatActivity {
     private void saveToDataBase(Student student) {
         // code for save the account to database
         ref.child(student.getEmail()).setValue(student);
-        showSuccessMessage();
+        showMessage("Registration successful!");
     }
-    private void showSuccessMessage() {
-        Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
+    private void showMessage(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
