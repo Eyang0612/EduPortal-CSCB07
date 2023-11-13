@@ -30,5 +30,11 @@
     <string name="signup">signup</string>
     <string name="homepage">homepage</string>
 
+    <string-array name="roles_array">
+        <item>Choose role</item>
+        <item>Student</item>
+        <item>Admin</item>
+    </string-array>
+
 
 </resources>
