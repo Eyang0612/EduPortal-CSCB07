@@ -55,7 +55,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/ans_A"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="dp"
         android:text="@string/AnswerB"
 
         />
