@@ -5,16 +5,36 @@
     <string name="Question">Question here</string>
     <string name="AnswerA">Answer A</string>
     <string name="AnswerB">Answer B</string>
-    <string name="hello_blank_fragment" />
+
+
+    <string name="AnswerC">Answer C</string>
+    <string name="AnswerD">Answer D</string>
+    <string name="AnswerE">Answer E</string>
+    <string name="hello_blank_fragment">Answer B</string>
+    <string name="Submit">Submit</string>
+    <string name="CourseA">Course A</string>
+    <string name="CourseB">Course B</string>
+    <string name="CourseC">Course C</string>
+    <string name="CourseD">Course D</string>
+    <string name="CourseE">Course E</string>
+
+    <string name="CourseAHint">Enter Course A GPA</string>
+    <string name="CourseBHint">Enter Course B GPA</string>
+    <string name="CourseCHint">Enter Course C GPA</string>
+    <string name="CourseDHint">Enter Course D GPA</string>
+    <string name="CourseEHint">Enter Course E GPA</string>
+
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="signup">signup</string>
     <string name="homepage">homepage</string>
+
     <string-array name="roles_array">
         <item>Choose role</item>
         <item>Student</item>
         <item>Admin</item>
     </string-array>
+
 
 </resources>
