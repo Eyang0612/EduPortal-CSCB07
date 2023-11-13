@@ -16,6 +16,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import User.Student;
 
 
 public class SignUpPage extends AppCompatActivity {
@@ -23,7 +27,12 @@ public class SignUpPage extends AppCompatActivity {
     private EditText nameEditText, emailEditText, passwordEditText, confirmPasswordEditText;
     private TextView passwordRequirementsTextView, haveAccountTextView, loginTextView;
     private Button signUpButton;
-    Spinner spinnerRole;
+    private Spinner spinnerRole;
+
+    FirebaseDatabase db;
+    DatabaseReference ref;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +81,26 @@ public class SignUpPage extends AppCompatActivity {
                 String selectedRole = spinnerRole.getSelectedItem().toString();
                 String password = passwordEditText.getText().toString();
 
+                //get database refernce
+                db = FirebaseDatabase.getInstance();
+                ref = db.getReference("users");
+
+
+
                 // check is the information is valid for sign up
                 if (isValidPassword(password)) {
                     // Password is valid, proceed with signup
-                    saveToDataBase();
-                    onBacktoLoginClick();
+                    boolean isAdmin = (selectedRole.equals("Admin"));
+                    if(isAdmin) {
+
+                    }else{
+                        Student student = new Student(name, email, password, false);
+                        saveToDataBase(student);
+                        onBacktoLoginClick();
+                    }
+
+
+
                 } else {
                     // Display an error message or handle invalid password
                     passwordEditText.setError("Invalid password");
@@ -118,8 +142,9 @@ public class SignUpPage extends AppCompatActivity {
         startActivity(LoginIntent);
     }
 
-    private void saveToDataBase() {
+    private void saveToDataBase(Student student) {
         // code for save the account to database
+        ref.child(student.getEmail()).setValue(student);
         showSuccessMessage();
     }
     private void showSuccessMessage() {
