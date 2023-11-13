@@ -7,19 +7,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class SignUpPage extends AppCompatActivity {
 
-    private EditText firstNameEditText, lastNameEditText, emailEditText, passwordEditText, confirmPasswordEditText;
+    private EditText nameEditText, emailEditText, passwordEditText, confirmPasswordEditText;
     private TextView passwordRequirementsTextView, haveAccountTextView, loginTextView;
     private Button signUpButton;
+    Spinner spinnerRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +31,32 @@ public class SignUpPage extends AppCompatActivity {
         setContentView(R.layout.fragment_sign_up_page);
 
         // Initialize UI elements
-        firstNameEditText = findViewById(R.id.editTextFirstName);
-        lastNameEditText = findViewById(R.id.editTextLastName);
+        nameEditText = findViewById(R.id.editTextName);
         emailEditText = findViewById(R.id.editTextEmailSignUp);
         passwordEditText = findViewById(R.id.editTextPasswordSignUp);
         confirmPasswordEditText = findViewById(R.id.editTextConfirmPasswordSignUp);
 
+
+
+        // Set onClickListener for the role choose spinner
+        spinnerRole = findViewById(R.id.spinnerRole);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.roles_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRole.setAdapter(adapter);
+
+        spinnerRole.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(position != 0){
+                    String selectedRole = parentView.getItemAtPosition(position).toString();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Do nothing here
+            }
+        });
 
 
 
@@ -41,11 +65,14 @@ public class SignUpPage extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Add your signup logic here
-                // You can retrieve user input using getText().toString() and perform validation
-
-                // For example, you can check if the password meets the requirements
+                // get information
+                String name = nameEditText.getText().toString();
+                String email = emailEditText.getText().toString();
+                String confirmPass = confirmPasswordEditText.getText().toString();
+                String selectedRole = spinnerRole.getSelectedItem().toString();
                 String password = passwordEditText.getText().toString();
+
+                // check is the information is valid for sign up
                 if (isValidPassword(password)) {
                     // Password is valid, proceed with signup
                     saveToDataBase();
