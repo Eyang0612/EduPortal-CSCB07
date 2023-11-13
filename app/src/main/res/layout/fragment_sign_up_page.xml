@@ -17,36 +17,36 @@
             android:text="Sign up"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.25" />
 
+        <!-- Add this in your ConstraintLayout where you want the role selection -->
+
         <EditText
-            android:id="@+id/editTextFirstName"
+            android:id="@+id/editTextName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:hint="Your Name"
             android:textSize="16sp"
-            android:hint="First Name"
-            app:layout_constraintEnd_toStartOf="@+id/editTextLastName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/spinnerRole"
+            app:layout_constraintEnd_toEndOf="@id/spinnerRole"
+            app:layout_constraintHorizontal_bias="0.161"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewSignUp"
             app:layout_constraintWidth_percent="0.25" />
 
-        <EditText
-            android:id="@+id/editTextLastName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginEnd="16dp"
-            android:textSize="16sp"
-            android:hint="Last Name"
+        <Spinner
+            android:id="@+id/spinnerRole"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="196dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editTextFirstName"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSignUp"
-            app:layout_constraintWidth_percent="0.25" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewSignUp" />
 
         <EditText
             android:id="@+id/editTextEmailSignUp"
@@ -54,26 +54,26 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:textSize="16sp"
             android:hint="Email"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextFirstName"
+            app:layout_constraintTop_toBottomOf="@+id/editTextName"
             app:layout_constraintWidth_percent="0.7" />
 
         <EditText
             android:id="@+id/editTextPasswordSignUp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:textSize="16sp"
             android:hint="Password"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextEmailSignUp"
-            app:layout_constraintWidth_percent="0.7"/>
+            app:layout_constraintWidth_percent="0.7" />
 
 
         <TextView
@@ -93,15 +93,15 @@
             android:id="@+id/editTextConfirmPasswordSignUp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:textSize="16sp"
             android:hint="Confirm your password"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextPasswordSignUp"
-            app:layout_constraintWidth_percent="0.7"/>
+            app:layout_constraintWidth_percent="0.7" />
 
         <Button
             android:id="@+id/buttonSignUp"
@@ -109,10 +109,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Sign Up"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPasswordSignUp"
             app:layout_constraintBottom_toTopOf="@+id/textViewHaveAccount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPasswordSignUp"
             app:layout_constraintWidth_percent="0.4"
             tools:ignore="NotSibling" />
 
@@ -139,8 +139,8 @@
                 android:layout_marginStart="4dp"
                 android:clickable="true"
                 android:text="Login"
-                android:textStyle="bold"
-                android:textColor="?attr/colorAccent" />
+                android:textColor="?attr/colorAccent"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
