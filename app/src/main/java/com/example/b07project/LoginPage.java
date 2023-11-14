@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.annotation.NonNull;
 
+import com.example.b07project.studentPages.StudentHomePage;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -92,7 +93,7 @@ public class LoginPage extends AppCompatActivity {
                     String passwordFromDB = snapshot.child(email).child("password").getValue(String.class);
                     if (passwordFromDB.equals(password)){
                         editTextEmail.setError(null);
-                        Intent homeIntent = new Intent(LoginPage.this, HomePage.class);
+                        Intent homeIntent = new Intent(LoginPage.this, StudentHomePage.class);
                         startActivity(homeIntent);
                     }else{
                         editTextPassword.setError("Invalid Password!");

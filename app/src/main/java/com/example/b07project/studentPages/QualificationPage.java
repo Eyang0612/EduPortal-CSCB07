@@ -1,4 +1,4 @@
-package com.example.b07project;
+package com.example.b07project.studentPages;
 
 import android.os.Bundle;
 
@@ -11,12 +11,14 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.example.b07project.R;
 
-public class ComplaintsPage extends AppCompatActivity {
+
+public class QualificationPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_complaints_page);
+        setContentView(R.layout.fragment_qualification_page);
     }
 }

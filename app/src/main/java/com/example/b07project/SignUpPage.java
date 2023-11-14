@@ -24,7 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import User.Student;
+import com.example.b07project.User.Student;
 
 
 
@@ -92,67 +92,57 @@ public class SignUpPage extends AppCompatActivity {
 
         */
 
-
-
-
-
-
         // Set onClickListener for the SignUp button
         signUpButton = findViewById(R.id.buttonSignUp);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // get information
                 String name = nameEditText.getText().toString();
                 String email = emailEditText.getText().toString();
                 String confirmPass = confirmPasswordEditText.getText().toString();
                 String selectedRole = spinnerRole.getSelectedItem().toString();
                 String password = passwordEditText.getText().toString();
 
-
-                //get database refernce
                 db = FirebaseDatabase.getInstance();
                 ref = db.getReference("users");
 
-
-                if(spinnerRole.getSelectedItemPosition() != 0) {
-                    if (checkNoneEmptyField(name, email)) {
-                        if (isValidEmail(email)) {
-                            if (confirmPass.equals(password)) {
-                                if (isValidPassword(password)) {
-                                    // Password is valid, proceed with signup
-                                    boolean isAdmin = (selectedRole.equals("Admin"));
-                                    if (isAdmin) {
-                                    } else {
-                                        Student student = new Student(name, email, password
-                                                , isAdmin);
-                                        saveToDataBase(student);
-                                        onBacktoLoginClick();
-                                    }
-                                } else {
-                                    // Display an error message or handle invalid password
-                                    passwordEditText.setError("Invalid password");
-                                }
-                            } else {
-
-
-                                showMessage("Fails: password does not match");
-                            }
-
-
-                        } else {
-                            showMessage("Fails: please enter valid email");
-                        }
-
-
-                    } else {
-                        showMessage("Fails: do not leave empty fields");
+                if (validateInputs(name, email, confirmPass, selectedRole, password)) {
+                    boolean isAdmin = (selectedRole.equals("Admin"));
+                    if (!isAdmin) {
+                        Student student = new Student(name, email, password, isAdmin);
+                        saveToDataBase(student);
+                        onBacktoLoginClick();
                     }
-                }else{
+                }
+            }
+
+            private boolean validateInputs(String name, String email, String confirmPass, String selectedRole, String password) {
+                if (spinnerRole.getSelectedItemPosition() == 0) {
                     showMessage("Fails: choose a valid role");
+                    return false;
                 }
 
+                if (!checkNoneEmptyField(name, email)) {
+                    showMessage("Fails: do not leave empty fields");
+                    return false;
+                }
 
+                if (!isValidEmail(email)) {
+                    showMessage("Fails: please enter valid email");
+                    return false;
+                }
+
+                if (!confirmPass.equals(password)) {
+                    showMessage("Fails: password does not match");
+                    return false;
+                }
+
+                if (!isValidPassword(password)) {
+                    passwordEditText.setError("Invalid password");
+                    return false;
+                }
+
+                return true;
             }
         });
 
