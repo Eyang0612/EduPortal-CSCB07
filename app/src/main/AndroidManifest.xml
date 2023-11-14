@@ -13,13 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.B07Project"
         tools:targetApi="31">
-        <activity android:name=".HomePage">
+        <activity android:name=".studentPages.StudentHomePage">
         </activity>
         <activity android:name=".SignUpPage">
         </activity>
-        <activity android:name=".QualificationPage">
+        <activity android:name=".studentPages.QualificationPage">
         </activity>
-        <activity android:name=".ComplaintsPage">
+        <activity android:name=".studentPages.ComplaintsPage">
         </activity>
         <activity
             android:name=".LoginPage"

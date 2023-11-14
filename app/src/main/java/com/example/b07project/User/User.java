@@ -1,4 +1,4 @@
-package User;
+package com.example.b07project.User;
 
 public abstract class User {
     private String name;

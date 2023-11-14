@@ -1,4 +1,4 @@
-package com.example.b07project;
+package com.example.b07project.studentPages;
 
 import android.os.Bundle;
 
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.example.b07project.R;
 
 
 public class ComplaintsPage extends AppCompatActivity {
