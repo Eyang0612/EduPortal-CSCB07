@@ -1,8 +1,11 @@
 package com.example.b07project;
 
+
 import android.os.Bundle;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,18 +23,26 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 import User.Student;
 
 
+
+
 public class SignUpPage extends AppCompatActivity {
+
 
     private EditText nameEditText, emailEditText, passwordEditText, confirmPasswordEditText;
     private TextView passwordRequirementsTextView, haveAccountTextView, loginTextView;
     private Button signUpButton;
     private Spinner spinnerRole;
 
+
     FirebaseDatabase db;
     DatabaseReference ref;
+
+
+
 
 
 
@@ -38,6 +50,7 @@ public class SignUpPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_sign_up_page);
+
 
         // Initialize UI elements
         nameEditText = findViewById(R.id.editTextName);
@@ -47,30 +60,40 @@ public class SignUpPage extends AppCompatActivity {
 
 
 
+
+
+
         // Set onClickListener for the role choose spinner
         spinnerRole = findViewById(R.id.spinnerRole);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.roles_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRole.setAdapter(adapter);
 
-        /*
-        spinnerRole.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // posiiton means the choice of spinner, 0 is "choose your role"
 
-                if(position != 0){
-                    String selectedRole = parentView.getItemAtPosition(position).toString();
-                }
-            }
+       /*
+       spinnerRole.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+           @Override
+           public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+               // posiiton means the choice of spinner, 0 is "choose your role"
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // Do nothing here
-            }
-        });
 
-         */
+               if(position != 0){
+                   String selectedRole = parentView.getItemAtPosition(position).toString();
+               }
+           }
+
+
+           @Override
+           public void onNothingSelected(AdapterView<?> parentView) {
+               // Do nothing here
+           }
+       });
+
+
+        */
+
+
+
 
 
 
@@ -86,29 +109,53 @@ public class SignUpPage extends AppCompatActivity {
                 String selectedRole = spinnerRole.getSelectedItem().toString();
                 String password = passwordEditText.getText().toString();
 
+
                 //get database refernce
                 db = FirebaseDatabase.getInstance();
                 ref = db.getReference("users");
 
-                if(spinnerRole.getSelectedItemPosition() != 0){
-                    if (isValidPassword(password)) {
-                        // Password is valid, proceed with signup
-                        boolean isAdmin = (selectedRole.equals("Admin"));
-                        if(isAdmin) {
-                        }else{
-                            Student student = new Student(name, email, password, false);
-                            saveToDataBase(student);
-                            onBacktoLoginClick();
+
+                if(spinnerRole.getSelectedItemPosition() != 0) {
+                    if (checkNoneEmptyField(name, email)) {
+                        if (isValidEmail(email)) {
+                            if (confirmPass.equals(password)) {
+                                if (isValidPassword(password)) {
+                                    // Password is valid, proceed with signup
+                                    boolean isAdmin = (selectedRole.equals("Admin"));
+                                    if (isAdmin) {
+                                    } else {
+                                        Student student = new Student(name, email, password
+                                                , isAdmin);
+                                        saveToDataBase(student);
+                                        onBacktoLoginClick();
+                                    }
+                                } else {
+                                    // Display an error message or handle invalid password
+                                    passwordEditText.setError("Invalid password");
+                                }
+                            } else {
+
+
+                                showMessage("Fails: password does not match");
+                            }
+
+
+                        } else {
+                            showMessage("Fails: please enter valid email");
                         }
+
+
                     } else {
-                        // Display an error message or handle invalid password
-                        passwordEditText.setError("Invalid password");
+                        showMessage("Fails: do not leave empty fields");
                     }
                 }else{
-                   showMessage("Fails: choose a valid role");
+                    showMessage("Fails: choose a valid role");
                 }
+
+
             }
         });
+
 
         // Set onClickListener for the Login TextView
         loginTextView = findViewById(R.id.textViewLoginFromSignUp);
@@ -122,6 +169,7 @@ public class SignUpPage extends AppCompatActivity {
         });
     }
 
+
     // password validation function
     private boolean isValidPassword(String password) {
         // Add your password validation logic here
@@ -129,20 +177,61 @@ public class SignUpPage extends AppCompatActivity {
         return password.length() >= 8 && containsNumber(password) && containsUppercase(password);
     }
 
+
     // Example helper functions for password validation
     private boolean containsNumber(String str) {
         return str.matches(".*\\d.*");
     }
+    private boolean checkNoneEmptyField(String name, String email){
+        return (name.length() >0 && email.length() >0);
+    }
+
 
     private boolean containsUppercase(String str) {
         return !str.equals(str.toLowerCase());
     }
+
+
+
+
+    public boolean isValidEmail(String email){
+        // Check for null or empty string
+        if (email == null || email.isEmpty()) {
+            return false;
+        }
+
+
+        // Check for "@" character
+        int atIndex = email.indexOf('@');
+        if (atIndex == -1) {
+            return false;
+        }
+
+
+        // Check for at least one character before "@"
+        if (atIndex == 0) {
+            return false;
+        }
+
+
+        // Check for at least one character after "@"
+        if (atIndex == email.length() - 1) {
+            return false;
+        }
+
+
+        // Check for "." character after "@"
+        int dotIndex = email.indexOf('.', atIndex);
+        return !(dotIndex == -1 || dotIndex == atIndex + 1 || dotIndex == email.length() - 1);
+    }
+
 
     private void onBacktoLoginClick() {
         // Handle the click event to navigate to the sign-up page
         Intent LoginIntent = new Intent(this, LoginPage.class);
         startActivity(LoginIntent);
     }
+
 
     private void saveToDataBase(Student student) {
         // code for save the account to database
