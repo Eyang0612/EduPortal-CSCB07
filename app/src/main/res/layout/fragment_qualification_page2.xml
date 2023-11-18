@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".studentPages.QualificationPage">
+    tools:context=".QualificationPage">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -183,11 +183,11 @@
         android:id="@+id/submit"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ans_B"
+        android:layout_above="@+id/course5"
         android:layout_gravity="bottom"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="100dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/Submit" />
 
 </FrameLayout>

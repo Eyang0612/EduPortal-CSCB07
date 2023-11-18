@@ -1,18 +1,37 @@
-package com.example.b07project.studentPages.QuestionAnswer;
+package QuestionAnswer;
 
 
 
 public class EvaluateAnswer {
     private Integer question1;
-    private Boolean question2;
+    private Integer question2;
     private Double[] question3;
 
 
-    public EvaluateAnswer(Integer question1, Boolean question2, Double [] question3){
+    public EvaluateAnswer(){
+        this.question1= 0;
+        this.question2 = -1;
+        this.question3 = new Double[]{0.0};
+    }
+
+    public EvaluateAnswer(Integer question1, Integer question2, Double [] question3){
         this.question1 = question1;
         this.question2 = question2;
         this.question3 = question3;
     }
+
+    public Integer getQuestion1(){
+        return question1;
+    }
+
+    public Integer getQuestion2(){
+        return question2;
+    }
+
+    public Double[] getQuestion3(){
+        return question3;
+    }
+
     public String[] Qualify() {
         //Apply for Minor
         switch (question1) {
@@ -41,7 +60,7 @@ public class EvaluateAnswer {
     public String[] MinorQua(){
         String[] result = {"Pass", ""};
 
-        if (!question2 == true) {
+        if (!(question2 == 1)) {
             result[0] = "Fail";
             result[1] += "Unsatisfied requirement: Have at least 4.0 credits" + "\n";
         }
@@ -80,7 +99,7 @@ public class EvaluateAnswer {
             result[1]+= "Unsatisfied requirement: Complete all A-level courses (CSC/MATA67, CSCA48, MATA22, MATA37, CSCA08)." + "\n";
         }
 
-        if (question2 != true){
+        if (question2 != 1){
             result[0] ="Fail";
             result[1]+= "Unsatisfied requirement: Have at least 4.0 credits" + "\n";
         }
@@ -128,7 +147,7 @@ public class EvaluateAnswer {
             result[1]+= "Unsatisfied requirement: Complete all A-level courses (CSC/MATA67, CSCA48, MATA22, MATA37, CSCA08)." + "\n";
         }
 
-        if (question2 != true){
+        if (question2 != 1){
             result[0] ="Fail";
             result[1]+= "Unsatisfied requirement: Have at least 4.0 credits" + "\n";
         }
