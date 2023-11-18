@@ -1,4 +1,4 @@
-package com.example.b07project.studentPages.QuestionAnswer;
+package QuestionAnswer;
 
 public class QA {
     public static String Questions[]= {
