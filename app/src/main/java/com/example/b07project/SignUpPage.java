@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -121,13 +122,7 @@ public class SignUpPage extends AppCompatActivity {
                 if (validateInputs(name, email, confirmPass, selectedRole, password)) {
                     boolean isAdmin = (selectedRole.equals("Admin"));
                     if (!isAdmin) {
-                        String userId = ref.push().getKey();
-                        Student student = new Student(name, email, password, userId,"Student" );
-                        saveToDataBase(student);
-
-                        saveToAuth(email, password);
-
-                        onBacktoLoginClick();
+                        saveToAuth(name, email, password, selectedRole);
                     }
                 }
             }
@@ -183,14 +178,19 @@ public class SignUpPage extends AppCompatActivity {
     }
 
     // Add username and password to Firebase Authentication
-    public void saveToAuth(String email, String password){
+    public void saveToAuth(String name, String email, String password, String role){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(SignUpPage.this, "Authentication Success!",
-                                    Toast.LENGTH_SHORT).show();
+
+                            FirebaseUser user= mAuth.getCurrentUser();
+                            String userId = user.getUid();
+                            Student student = new Student(name, email, password, userId, role );
+                            saveToDataBase(student);
+                            onBacktoLoginClick();
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(SignUpPage.this, "Authentication Failed!",
