@@ -9,7 +9,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 
@@ -25,7 +45,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginPage extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
-
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,25 +74,16 @@ public class LoginPage extends AppCompatActivity {
         });
     }
 
-    private void onLoginClick() {
-        // Handle the login logic here
-        String email = editTextEmail.getText().toString();
-        String password = editTextPassword.getText().toString();
-        // Add your authentication logic here
-        // For example, you can check the credentials against a database
-        isValid(email, password);
-        //else {
-        //    // Display an error message or handle invalid password
-        //    showToast("Error: Wrong email or password, please try again.");
-        //}
-    }
 
     private void onSignUpClick() {
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, SignUpPage.class);
         startActivity(signUpIntent);
     }
-    private void isValid(String email, String password) {
+    private void onLoginClick() {
+        mAuth = FirebaseAuth.getInstance();
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
         // Add your password validation logic here
         // check if email and correspond password is in database
         if (TextUtils.isEmpty(email)){
@@ -83,39 +94,32 @@ public class LoginPage extends AppCompatActivity {
             Toast.makeText(LoginPage.this, "Password Cannot Be Empty!", Toast.LENGTH_SHORT).show();
             return;
         }
-        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("studentUsers");
-        Query checkUserDB = ref.orderByChild("email").equalTo(email);
-        checkUserDB.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    editTextEmail.setError(null);
-                    String passwordFromDB = snapshot.child(email).child("password").getValue(String.class);
-                    if (passwordFromDB.equals(password)){
-                        editTextEmail.setError(null);
-                        Intent homeIntent = new Intent(LoginPage.this, StudentHomePage.class);
-                        startActivity(homeIntent);
-                    }else{
-                        editTextPassword.setError("Invalid Password!");
-                        editTextPassword.requestFocus();
-                        Toast.makeText(LoginPage.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
-                        return;
+
+        if (TextUtils.isEmpty(email)){
+            Toast.makeText(LoginPage.this, "Enter Email!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(password)){
+            Toast.makeText(LoginPage.this, "Enter Password!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // If authentication is successful, you can navigate to another activity
+                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                            Intent homeIntent = new Intent(getApplicationContext(), StudentHomePage.class);
+                            startActivity(homeIntent);
+                            finish();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(getApplicationContext(), "Incorrect Password Entered or Username Does Not Exist!", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }else{
-                    editTextEmail.setError("Username Does Not Exist!");
-                    editTextPassword.requestFocus();
-                    Toast.makeText(LoginPage.this, "Username Does Not Exist!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        Toast.makeText(LoginPage.this, "Test", Toast.LENGTH_SHORT).show();
-        return;
+                });
     }
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
