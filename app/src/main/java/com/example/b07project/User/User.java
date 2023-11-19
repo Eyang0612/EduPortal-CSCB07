@@ -4,13 +4,15 @@ public abstract class User {
     private String name;
     private String email;
     private String password;
-    private boolean isAdmin;
+    private String userId;
+    private String role;
 
-    protected User(String name,String email, String password, boolean isAdmin){
+    protected User(String name,String email, String password, String userId, String role){
         this.name = name;
         this.email = email;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.userId = userId;
+        this.role = role;
     }
     public String getName(){
         return name;
@@ -21,8 +23,11 @@ public abstract class User {
     public String getPassword(){
         return password;
     }
-    public boolean checkAdmin(){
-        return isAdmin;
+    public String getUserId(){
+        return userId;
+    }
+    public String getRole(){
+        return role;
     }
 
 }
