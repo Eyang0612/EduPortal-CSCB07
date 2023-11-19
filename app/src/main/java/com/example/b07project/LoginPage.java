@@ -48,7 +48,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginPage extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,7 +135,7 @@ public class LoginPage extends AppCompatActivity {
                     String userName = dataSnapshot.child("name").getValue(String.class);
                     String userEmail = dataSnapshot.child("email").getValue(String.class);
                     Log.d("LoginPage", "User data retrieved successfully. Name: " + userName + ", Email: " + userEmail);
-                    redirectToHomepage(userEmail, userName);
+                    redirectToHomepage(userEmail, userName, uid);
                 }
             }
 
@@ -146,11 +146,12 @@ public class LoginPage extends AppCompatActivity {
         });
     }
 
-    private void redirectToHomepage(String email, String userName) {
+    private void redirectToHomepage(String email, String userName,String uid) {
         // Intent to start the homepage activity
-        Intent intent = new Intent(this, test.class); // use test class for test
+        Intent intent = new Intent(this, StudentHomePage.class); // use test class for test
         intent.putExtra("email", email);
         intent.putExtra("userName", userName);
+        intent.putExtra("userId", uid);
         startActivity(intent);
         finish(); // finish the current activity (login)
     }
