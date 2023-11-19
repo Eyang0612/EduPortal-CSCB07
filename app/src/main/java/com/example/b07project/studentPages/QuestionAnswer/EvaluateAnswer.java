@@ -1,8 +1,9 @@
-package QuestionAnswer;
+package com.example.b07project.studentPages.QuestionAnswer;
+import java.io.Serializable;
 
 
 
-public class EvaluateAnswer {
+public class EvaluateAnswer implements Serializable {
     private Integer question1;
     private Integer question2;
     private Double[] question3;
@@ -11,7 +12,7 @@ public class EvaluateAnswer {
     public EvaluateAnswer(){
         this.question1= 0;
         this.question2 = -1;
-        this.question3 = new Double[]{0.0};
+        this.question3 = new Double[5];
     }
 
     public EvaluateAnswer(Integer question1, Integer question2, Double [] question3){
@@ -31,6 +32,19 @@ public class EvaluateAnswer {
     public Double[] getQuestion3(){
         return question3;
     }
+
+    public void setQuestion1(Integer question1){
+        this.question1=question1;
+    }
+    public void setQuestion2(Integer question2){
+        this.question2=question2;
+    }
+    public void setQuestion3_index(Double grade, int index){
+        this.question3[index]=grade;
+    }
+
+
+
 
     public String[] Qualify() {
         //Apply for Minor
