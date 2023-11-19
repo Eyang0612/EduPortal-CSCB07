@@ -4,6 +4,7 @@ package com.example.b07project;
 import android.os.Bundle;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -21,6 +22,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,6 +50,8 @@ public class SignUpPage extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference ref;
 
+    FirebaseAuth mAuth;
+
 
 
 
@@ -62,7 +69,8 @@ public class SignUpPage extends AppCompatActivity {
         passwordEditText = findViewById(R.id.editTextPasswordSignUp);
         confirmPasswordEditText = findViewById(R.id.editTextConfirmPasswordSignUp);
 
-
+        // Initialize Firebase Authenticator
+        mAuth = FirebaseAuth.getInstance();
 
 
 
@@ -116,6 +124,9 @@ public class SignUpPage extends AppCompatActivity {
                         String userId = ref.push().getKey();
                         Student student = new Student(name, email, password, userId,"Student" );
                         saveToDataBase(student);
+
+                        saveToAuth(email, password);
+
                         onBacktoLoginClick();
                     }
                 }
@@ -149,7 +160,7 @@ public class SignUpPage extends AppCompatActivity {
                     return false;
                 }
                 checkIfEmailExists(email);
-                if(!isFound){
+                if(isFound){
                     showMessage("Invalid: email already exist");
                     return false;
                 }
@@ -171,7 +182,23 @@ public class SignUpPage extends AppCompatActivity {
         });
     }
 
-
+    // Add username and password to Firebase Authentication
+    public void saveToAuth(String email, String password){
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SignUpPage.this, "Authentication Success!",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(SignUpPage.this, "Authentication Failed!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
 
 
     // password validation function
