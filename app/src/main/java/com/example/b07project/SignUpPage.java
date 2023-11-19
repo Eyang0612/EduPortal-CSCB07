@@ -20,13 +20,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import com.google.firebase.database.Query;
 
 import com.example.b07project.User.Student;
-
-
+import com.google.firebase.database.ValueEventListener;
 
 
 public class SignUpPage extends AppCompatActivity {
@@ -36,6 +38,8 @@ public class SignUpPage extends AppCompatActivity {
     private TextView passwordRequirementsTextView, haveAccountTextView, loginTextView;
     private Button signUpButton;
     private Spinner spinnerRole;
+
+    private boolean isFound;
 
 
     FirebaseDatabase db;
@@ -109,12 +113,15 @@ public class SignUpPage extends AppCompatActivity {
                 if (validateInputs(name, email, confirmPass, selectedRole, password)) {
                     boolean isAdmin = (selectedRole.equals("Admin"));
                     if (!isAdmin) {
-                        Student student = new Student(name, email, password, isAdmin);
+                        String userId = ref.push().getKey();
+                        Student student = new Student(name, email, password, userId,"Student" );
                         saveToDataBase(student);
                         onBacktoLoginClick();
                     }
                 }
             }
+
+
 
             private boolean validateInputs(String name, String email, String confirmPass, String selectedRole, String password) {
                 if (spinnerRole.getSelectedItemPosition() == 0) {
@@ -141,6 +148,11 @@ public class SignUpPage extends AppCompatActivity {
                     passwordEditText.setError("Invalid password");
                     return false;
                 }
+                checkIfEmailExists(email);
+                if(!isFound){
+                    showMessage("Invalid: email already exist");
+                    return false;
+                }
 
                 return true;
             }
@@ -158,6 +170,8 @@ public class SignUpPage extends AppCompatActivity {
             }
         });
     }
+
+
 
 
     // password validation function
@@ -210,9 +224,39 @@ public class SignUpPage extends AppCompatActivity {
         }
 
 
+
+
         // Check for "." character after "@"
         int dotIndex = email.indexOf('.', atIndex);
         return !(dotIndex == -1 || dotIndex == atIndex + 1 || dotIndex == email.length() - 1);
+
+
+
+
+    }
+
+    public void checkIfEmailExists(String emailToCheck) {
+        Query emailQuery = ref.orderByChild("email").equalTo(emailToCheck);
+
+        emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    isFound = true;
+                    // Email exists in the database
+                    // Handle the logic here (e.g., display a message, perform an action)
+                } else {
+                    isFound = false;
+                    // Email does not exist in the database
+                    // Handle the logic here (e.g., display a message, perform an action)
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle errors
+            }
+        });
     }
 
 
@@ -225,7 +269,8 @@ public class SignUpPage extends AppCompatActivity {
 
     private void saveToDataBase(Student student) {
         // code for save the account to database
-        ref.child(student.getEmail()).setValue(student);
+        String userId = student.getUserId();
+        ref.child(userId).setValue(student);
         showMessage("Registration successful!");
     }
     private void showMessage(String msg) {
