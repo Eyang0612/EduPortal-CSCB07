@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QualificationPage">
+    tools:context=".studentPages.QualificationPage2">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -22,8 +22,8 @@
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:text="@string/Question"
+        android:layout_marginTop="150dp"
+        android:text="@string/Question2"
         android:textSize="20dp"
         android:textStyle ="bold"
         android:layout_above = "@+id/title"
@@ -46,8 +46,8 @@
         android:layout_above="@+id/question"
         android:layout_below="@+id/ans_B"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="300dp"
-        android:text="@string/AnswerA" />
+        android:layout_marginTop="250dp"
+        android:text="@string/AnswerA2" />
 
         <Button
             android:id="@+id/ans_B"
@@ -55,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/ans_A"
             android:layout_gravity="center_horizontal"
-            android:text="@string/AnswerB"
+            android:layout_marginTop="5dp"
+            android:text="@string/AnswerB2"
 
             />
     </LinearLayout>

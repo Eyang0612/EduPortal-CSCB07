@@ -10,21 +10,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.b07project.Complaint.Complaint;
 import com.example.b07project.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ComplaintsPage extends AppCompatActivity {
 
-    private EditText editTextTitle;
-    private EditText editTextDescription;
-    private Button buttonSubmit;
-
-    private Button buttonBack;
+    private EditText editTextTitle, editTextDescription;
+    private Button buttonSubmit, buttonBack;
+    private FirebaseDatabase db;
+    private DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,7 @@ public class ComplaintsPage extends AppCompatActivity {
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showSubmittedAlertDialog();
+                sendComplaintToDB();
             }
         });
 
@@ -68,6 +72,21 @@ public class ComplaintsPage extends AppCompatActivity {
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    private void sendComplaintToDB(){
+        db = FirebaseDatabase.getInstance();
+        ref = db.getReference("complaints");
+
+        String complaintID = ref.push().getKey();
+        String userId = getIntent().getStringExtra("userId");
+        String title = editTextTitle.getText().toString();
+        String description = editTextDescription.getText().toString();
+        Complaint complaint = new Complaint(complaintID, userId, title, description);
+
+        ref.child(complaintID).setValue(complaint);
+
+        showSubmittedAlertDialog();
     }
 
 }
