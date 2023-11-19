@@ -3,6 +3,7 @@ package com.example.b07project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.b07project.studentPages.test;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -34,6 +36,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import androidx.annotation.NonNull;
 
 import com.example.b07project.studentPages.StudentHomePage;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -111,9 +114,10 @@ public class LoginPage extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // If authentication is successful, you can navigate to another activity
                             Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                            Intent homeIntent = new Intent(getApplicationContext(), StudentHomePage.class);
-                            startActivity(homeIntent);
-                            finish();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            fetchAndDisplayUserData(user.getUid());
+                            //Intent homeIntent = new Intent(getApplicationContext(), StudentHomePage.class);
+                            //startActivity(homeIntent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(getApplicationContext(), "Incorrect Password Entered or Username Does Not Exist!", Toast.LENGTH_SHORT).show();
@@ -121,6 +125,37 @@ public class LoginPage extends AppCompatActivity {
                     }
                 });
     }
+    private void fetchAndDisplayUserData(String uid) {
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String userName = dataSnapshot.child("name").getValue(String.class);
+                    String userEmail = dataSnapshot.child("email").getValue(String.class);
+                    Log.d("LoginPage", "User data retrieved successfully. Name: " + userName + ", Email: " + userEmail);
+                    redirectToHomepage(userEmail, userName);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+    }
+
+    private void redirectToHomepage(String email, String userName) {
+        // Intent to start the homepage activity
+        Intent intent = new Intent(this, test.class); // use test class for test
+        intent.putExtra("email", email);
+        intent.putExtra("userName", userName);
+        startActivity(intent);
+        finish(); // finish the current activity (login)
+    }
+
+
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
