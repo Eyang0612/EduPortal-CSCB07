@@ -45,8 +45,6 @@ public class QualificationPage1 extends AppCompatActivity implements View.OnClic
         ansC.setOnClickListener(this);
         ansD.setOnClickListener(this);
         submit.setOnClickListener(this);
-
-        loadQuestion1();
     }
 
     @Override
@@ -58,36 +56,28 @@ public class QualificationPage1 extends AppCompatActivity implements View.OnClic
         ansD.setBackgroundColor(Color.GRAY);
         Button clickedChoice = (Button) (v);
 
-        if(v.getId()==R.id.submit) {
+        if(clickedChoice.getId()==R.id.submit) {
             if (Ans.getQuestion1() == 0) {
                 return;
             }
             loadQuestion2();
         }
         else{
-            if (v.getId()==R.id.ans_A){
+            if (clickedChoice.getId()==R.id.ans_A){
                 Ans.setQuestion1(1);
             }
-            else if (v.getId()==R.id.ans_B){
+            else if (clickedChoice.getId()==R.id.ans_B){
                 Ans.setQuestion1(2);
             }
-            else if (v.getId()==R.id.ans_C){
+            else if (clickedChoice.getId()==R.id.ans_C){
                 Ans.setQuestion1(3);
             }
-            else if (v.getId()==R.id.ans_D){
+            else if (clickedChoice.getId()==R.id.ans_D){
                 Ans.setQuestion1(4);
             }
         }
 
 
-    }
-
-    void loadQuestion1(){
-        questionTextView.setText(QA.Questions[0]);
-        ansA.setText(QA.Choices[0][0]);
-        ansB.setText(QA.Choices[0][1]);
-        ansC.setText(QA.Choices[0][2]);
-        ansD.setText(QA.Choices[0][3]);
     }
 
     void loadQuestion2(){

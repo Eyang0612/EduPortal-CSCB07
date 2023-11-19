@@ -37,7 +37,6 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
         ansB.setOnClickListener(this);
         submit.setOnClickListener(this);
 
-        loadQuestion2();
 
     }
 
@@ -48,27 +47,21 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
         ansB.setBackgroundColor(Color.GRAY);
         Button clickedChoice = (Button) (v);
 
-        if(v.getId()==R.id.submit) {
+        if(clickedChoice.getId()==R.id.submit) {
             if (Ans.getQuestion2() == -1) {
                 return;
             }
             loadQuestion3();
         }
         else{
-            if (v.getId()==R.id.ans_A){
+            if (clickedChoice.getId()==R.id.ans_A){
                 Ans.setQuestion2(1);
             }
-            else if (v.getId()==R.id.ans_B){
+            else if (clickedChoice.getId()==R.id.ans_B){
                 Ans.setQuestion2(0);
             }
         }
 
-    }
-
-    void loadQuestion2(){
-        questionTextView.setText(QA.Questions[1]);
-        ansA.setText(QA.Choices[1][0]);
-        ansB.setText(QA.Choices[1][1]);
     }
 
     void loadQuestion3(){

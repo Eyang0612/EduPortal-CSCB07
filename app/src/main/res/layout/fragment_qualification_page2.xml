@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QualificationPage">
+    tools:context=".studentPages.QualificationPage3">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -22,8 +22,8 @@
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:text="@string/Question"
+        android:layout_marginTop="150dp"
+        android:text="@string/Question3"
         android:textSize="20dp"
         android:textStyle ="bold"
         android:layout_above = "@+id/title"
@@ -44,10 +44,10 @@
             android:layout_above="@+id/question"
             android:layout_below="@+id/text2"
             android:layout_gravity="right"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="200dp"
             android:layout_marginRight="40dp"
             android:ems="10"
-            android:hint="@string/CourseAHint"
+            android:hint="@string/CourseHint"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
             android:text="" />
@@ -61,7 +61,7 @@
             android:layout_gravity="right"
             android:layout_marginRight="40dp"
             android:ems="10"
-            android:hint="@string/CourseBHint"
+            android:hint="@string/CourseHint"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
             android:text="" />
@@ -75,7 +75,7 @@
             android:layout_gravity="right"
             android:layout_marginRight="40dp"
             android:ems="10"
-            android:hint="@string/CourseCHint"
+            android:hint="@string/CourseHint"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
             android:text="" />
@@ -89,7 +89,7 @@
             android:layout_gravity="right"
             android:layout_marginRight="40dp"
             android:ems="10"
-            android:hint="@string/CourseDHint"
+            android:hint="@string/CourseHint"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
             android:text="" />
@@ -103,7 +103,20 @@
             android:layout_gravity="right"
             android:layout_marginRight="40dp"
             android:ems="10"
-            android:hint="@string/CourseEHint"
+            android:hint="@string/CourseHint"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:text="" />
+
+        <EditText
+            android:id="@+id/text_6"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/submit"
+            android:layout_gravity="right"
+            android:layout_marginRight="40dp"
+            android:ems="10"
+            android:hint="@string/CourseHint"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
             android:text="" />
@@ -126,7 +139,7 @@
             android:layout_below="@+id/course2"
             android:layout_gravity="left"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="260dp"
+            android:layout_marginTop="210dp"
             android:text="@string/CourseA"
             android:textSize="20dp" />
 
@@ -175,6 +188,17 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:text="@string/CourseE"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/course6"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/course5"
+            android:layout_gravity="left"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/CourseF"
             android:textSize="20dp" />
 
     </LinearLayout>
