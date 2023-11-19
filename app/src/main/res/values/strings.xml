@@ -2,14 +2,20 @@
     <string name="app_name">B07Project</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="POSt_qualification">POSt Qualification</string>
-    <string name="Question">Question here</string>
-    <string name="AnswerA">Answer A</string>
-    <string name="AnswerB">Answer B</string>
+    <string name="Question1">What program are you applying?</string>
+    <string name="AnswerA"> Computer Science Minor</string>
+    <string name="AnswerB">Computer Science Major or Specialist. \nI am in the Computer Science admission category.</string>
+    <string name="AnswerC">Computer Science Major or Specialist. \nI am in the Statistic or Mathematics admission category.</string>
+    <string name="AnswerD">Computer Science Major or Specialist. \nI am outside of CMS.</string>
 
 
-    <string name="AnswerC">Answer C</string>
-    <string name="AnswerD">Answer D</string>
-    <string name="AnswerE">Answer E</string>
+    <string name="Question2">Do you have at least 4.0 credits?</string>
+    <string name="AnswerA2">Yes</string>
+    <string name="AnswerB2">No</string>
+
+    <string name="Question3"> Question here.</string>
+
+
     <string name="hello_blank_fragment">Answer B</string>
     <string name="Submit">Submit</string>
     <string name="CourseA">Course A</string>
@@ -17,12 +23,12 @@
     <string name="CourseC">Course C</string>
     <string name="CourseD">Course D</string>
     <string name="CourseE">Course E</string>
+    <string name="CourseF">Course F</string>
 
-    <string name="CourseAHint">Enter Course A GPA</string>
-    <string name="CourseBHint">Enter Course B GPA</string>
-    <string name="CourseCHint">Enter Course C GPA</string>
-    <string name="CourseDHint">Enter Course D GPA</string>
-    <string name="CourseEHint">Enter Course E GPA</string>
+    <string name="CourseHint">Enter GPA Here</string>
+    <string name="Result">Result</string>
+    <string name="Message">Message</string>
+
 
     <string name="login">Login</string>
     <string name="email">Email</string>

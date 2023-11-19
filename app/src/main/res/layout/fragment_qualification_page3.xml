@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QualificationPage">
+    tools:context=".studentPages.QualificationPage1">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -22,8 +22,8 @@
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:text="@string/Question"
+        android:layout_marginTop="150dp"
+        android:text="@string/Question1"
         android:textSize="20sp"
         android:textStyle ="bold"
         android:layout_above = "@+id/title"
@@ -41,39 +41,42 @@
 
     <Button
         android:id="@+id/ans_A"
-        android:layout_width="350dp"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/question"
         android:layout_below="@+id/ans_B"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="200dp"
         android:text="@string/AnswerA" />
 
     <Button
         android:id="@+id/ans_B"
-        android:layout_width="350dp"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ans_A"
         android:layout_below="@+id/ans_C"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/AnswerB"/>
 
     <Button
         android:id="@+id/ans_C"
-        android:layout_width="350dp"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ans_B"
         android:layout_below="@+id/ans_D"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
 
         android:text="@string/AnswerC"/>
 
     <Button
         android:id="@+id/ans_D"
-        android:layout_width="350dp"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ans_C"
         android:layout_below="@+id/ans_E"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
 
         android:text="@string/AnswerD" />
@@ -86,11 +89,11 @@
         android:id="@+id/submit"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ans_B"
+        android:layout_above="@+id/ans_D"
         android:layout_gravity="bottom"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="100dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/Submit" />
 
 </FrameLayout>
