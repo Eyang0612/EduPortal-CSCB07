@@ -10,38 +10,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.b07project.studentPages.test;
+import com.example.b07project.adminPages.adminHomePage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import androidx.annotation.NonNull;
-
-import com.example.b07project.studentPages.StudentHomePage;
+import com.example.b07project.studentPages.studentHomePage;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
@@ -134,8 +118,9 @@ public class LoginPage extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     String userName = dataSnapshot.child("name").getValue(String.class);
                     String userEmail = dataSnapshot.child("email").getValue(String.class);
+                    String userRole = dataSnapshot.child("role").getValue(String.class);
                     Log.d("LoginPage", "User data retrieved successfully. Name: " + userName + ", Email: " + userEmail);
-                    redirectToHomepage(userEmail, userName, uid);
+                    redirectToHomepage(userEmail, userName, userRole, uid);
                 }
             }
 
@@ -146,11 +131,17 @@ public class LoginPage extends AppCompatActivity {
         });
     }
 
-    private void redirectToHomepage(String email, String userName,String uid) {
+    private void redirectToHomepage(String userEmail, String userName,String userRole, String uid) {
         // Intent to start the homepage activity
-        Intent intent = new Intent(this, StudentHomePage.class); // use test class for test
-        intent.putExtra("email", email);
+        Intent intent;
+        if(userRole == "Student"){
+            intent = new Intent(this, studentHomePage.class);
+        }else{
+            intent = new Intent(this, adminHomePage.class);
+        }
+        intent.putExtra("email", userEmail);
         intent.putExtra("userName", userName);
+        intent.putExtra("userRole", userRole);
         intent.putExtra("userId", uid);
         startActivity(intent);
         finish(); // finish the current activity (login)

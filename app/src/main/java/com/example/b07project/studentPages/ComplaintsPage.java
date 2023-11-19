@@ -7,20 +7,15 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.example.b07project.Complaint.Complaint;
+import com.example.b07project.studentPages.Complaint.Complaint;
 import com.example.b07project.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class ComplaintsPage extends AppCompatActivity {
@@ -50,7 +45,7 @@ public class ComplaintsPage extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ComplaintsPage.this, StudentHomePage.class);
+                Intent intent = new Intent(ComplaintsPage.this, studentHomePage.class);
                 startActivity(intent);
             }
         });
@@ -64,7 +59,7 @@ public class ComplaintsPage extends AppCompatActivity {
                 .setMessage("Thank you for your feedback!")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent intent = new Intent(ComplaintsPage.this, StudentHomePage.class);
+                        Intent intent = new Intent(ComplaintsPage.this, studentHomePage.class);
                         startActivity(intent);
                         finish();
                     }
