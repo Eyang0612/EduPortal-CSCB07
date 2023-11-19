@@ -11,10 +11,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-import com.example.b07project.QualificationPage2;
+import com.example.b07project.studentPages.QualificationPage2;
 import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
 
-import QuestionAnswer.QA;
+
+import com.example.b07project.R;
+
+import com.example.b07project.studentPages.QuestionAnswer.QA;
 
 
 public class QualificationPage1 extends AppCompatActivity implements View.OnClickListener{
