@@ -48,10 +48,10 @@ public class SignUpPage extends AppCompatActivity {
     private boolean isFound;
 
 
-    FirebaseDatabase db;
-    DatabaseReference ref;
+    private FirebaseDatabase db;
+    private DatabaseReference ref;
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
 
 
 
@@ -291,6 +291,7 @@ public class SignUpPage extends AppCompatActivity {
         // Handle the click event to navigate to the sign-up page
         Intent LoginIntent = new Intent(this, LoginPage.class);
         startActivity(LoginIntent);
+        finish();//finish current activity; (Sign in).
     }
 
 
