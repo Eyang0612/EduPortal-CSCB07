@@ -13,10 +13,7 @@ import com.example.b07project.R;
 
 public class StudentHomePage extends AppCompatActivity {
 
-    private Button buttonLogout;
-    private Button buttonComplaints;
-    private Button buttonPOST;
-
+    private Button buttonLogout, buttonComplaints, buttonPOST;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
