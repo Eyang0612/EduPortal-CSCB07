@@ -22,9 +22,9 @@ public class StudentHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_home_page);
 
-        buttonLogout = findViewById(R.id.POSTNavButton);
+        buttonLogout = findViewById(R.id.logoutNavButton);
         buttonComplaints = findViewById(R.id.complaintsPageNavButton);
-        buttonPOST = findViewById(R.id.complaintsPageNavButton);
+        buttonPOST = findViewById(R.id.POSTNavButton);
 
         buttonComplaints.setOnClickListener(new View.OnClickListener() {
             @Override
