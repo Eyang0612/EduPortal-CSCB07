@@ -1,4 +1,4 @@
-package com.example.b07project;
+package com.example.b07project.studentPages;
 
 import android.content.Intent;
 import android.graphics.Color;

@@ -1,4 +1,4 @@
-package com.example.b07project;
+package com.example.b07project.studentPages;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import com.example.b07project.QualificationPage2;
 import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
 
 import QuestionAnswer.QA;
