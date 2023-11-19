@@ -13,8 +13,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
-
-
+import com.example.b07project.studentPages.QuestionAnswer.QA;
+import com.example.b07project.R;
 
 public class QualificationPage2 extends AppCompatActivity implements View.OnClickListener {
     TextView questionTextView;
@@ -66,13 +66,13 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
     }
 
     void loadQuestion2(){
-        questionTextView.setText(QuestionAnswer.QA.Questions[1]);
-        ansA.setText(QuestionAnswer.QA.Choices[1][0]);
-        ansB.setText(QuestionAnswer.QA.Choices[1][1]);
+        questionTextView.setText(QA.Questions[1]);
+        ansA.setText(QA.Choices[1][0]);
+        ansB.setText(QA.Choices[1][1]);
     }
 
     void loadQuestion3(){
-        Intent intent = new Intent(this, com.example.b07project.QualificationPage3.class);
+        Intent intent = new Intent(this, QualificationPage3.class);
         intent.putExtra("evaluateAnswer", Ans);
         startActivity(intent);
     }

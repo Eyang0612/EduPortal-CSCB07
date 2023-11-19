@@ -11,8 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.b07project.R;
 import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
+import com.example.b07project.studentPages.QuestionAnswer.QA;
 
 
 public class QualificationPage3 extends AppCompatActivity implements View.OnClickListener {
@@ -75,7 +76,7 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
     }
 
     void loadQuestion2(){
-        questionTextView.setText(QuestionAnswer.QA.Questions[2]);
+        questionTextView.setText(QA.Questions[2]);
 
     }
 
