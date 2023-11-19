@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.b07project.User.Admin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -34,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import com.example.b07project.User.Student;
+import com.example.b07project.User.Admin;
 import com.google.firebase.database.ValueEventListener;
 
 
@@ -120,10 +122,9 @@ public class SignUpPage extends AppCompatActivity {
                 ref = db.getReference("users");
 
                 if (validateInputs(name, email, confirmPass, selectedRole, password)) {
-                    boolean isAdmin = (selectedRole.equals("Admin"));
-                    if (!isAdmin) {
+
                         saveToAuth(name, email, password, selectedRole);
-                    }
+
                 }
             }
 
@@ -187,8 +188,14 @@ public class SignUpPage extends AppCompatActivity {
 
                             FirebaseUser user= mAuth.getCurrentUser();
                             String userId = user.getUid();
-                            Student student = new Student(name, email, password, userId, role );
-                            saveToDataBase(student);
+                            if(role.equals("Student")) {
+                                Student student = new Student(name, email, password, userId, role);
+                                saveToDataBase(student);
+                            }else{
+                                Admin admin = new Admin(name, email, password, userId, role);
+                                saveToDataBase(admin);
+                            }
+
                             onBacktoLoginClick();
 
                         } else {
@@ -299,6 +306,13 @@ public class SignUpPage extends AppCompatActivity {
         // code for save the account to database
         String userId = student.getUserId();
         ref.child(userId).setValue(student);
+        showMessage("Registration successful!");
+    }
+
+    private void saveToDataBase(Admin admin) {
+        // code for save the account to database
+        String userId = admin.getUserId();
+        ref.child(userId).setValue(admin);
         showMessage("Registration successful!");
     }
     private void showMessage(String msg) {
