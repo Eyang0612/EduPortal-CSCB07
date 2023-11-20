@@ -14,15 +14,16 @@
         android:theme="@style/Theme.B07Project"
         tools:targetApi="31">
         <activity
-            android:name=".EventSetupPageActivity"
+            android:name=".adminPages.adminHomePage"
             android:exported="false" />
-        <activity android:name=".studentPages.StudentHomePage"></activity>
+        <activity android:name=".studentPages.studentHomePage"></activity>
         <activity android:name=".SignUpPage"></activity>
         <activity android:name=".studentPages.QualificationPage1"></activity>
         <activity android:name=".studentPages.QualificationPage2"></activity>
         <activity android:name=".studentPages.QualificationPage3"></activity>
         <activity android:name=".studentPages.ComplaintsPage"></activity>
-        <activity android:name=".studentPages.test"></activity>
+        <activity android:name=".studentPages.student_page_test"></activity>
+
         <activity
             android:name=".LoginPage"
             android:exported="true">
