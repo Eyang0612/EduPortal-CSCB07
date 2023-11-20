@@ -1,4 +1,4 @@
-package com.example.b07project;
+package com.example.b07project.adminPages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.example.b07project.R;
 
 import java.util.Calendar;
 

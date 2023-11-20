@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EventSetupPageActivity">
+    android:layout_marginTop="50dp"
+    tools:context=".adminPages.EventSetupPageActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
         android:text="Event Form"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,80 +21,94 @@
 
     <EditText
         android:id="@+id/etTitle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Event Title"
         android:inputType="text"
+        app:layout_constraintWidth_percent="0.7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/etLocation"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Location"
         android:inputType="text"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etTitle" />
 
     <EditText
         android:id="@+id/in_date"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintEnd_toEndOf="@+id/etLocation"
+        app:layout_constraintStart_toStartOf="@+id/etLocation"
         app:layout_constraintTop_toBottomOf="@+id/etLocation" />
 
     <Button
         android:id="@+id/btn_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:text="SELECT DATE"
-        app:layout_constraintTop_toBottomOf="@+id/etLocation"
+        app:layout_constraintEnd_toEndOf="@+id/etLocation"
         app:layout_constraintLeft_toLeftOf="@+id/in_date"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etLocation" />
 
     <EditText
         android:id="@+id/in_time"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintEnd_toEndOf="@+id/etLocation"
+        app:layout_constraintStart_toStartOf="@+id/etLocation"
         app:layout_constraintTop_toBottomOf="@+id/in_date" />
 
     <Button
         android:id="@+id/btn_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:text="SELECT TIME"
-        app:layout_constraintTop_toBottomOf="@+id/btn_date"
+        app:layout_constraintEnd_toEndOf="@+id/etLocation"
         app:layout_constraintLeft_toLeftOf="@+id/in_time"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/in_date" />
 
     <EditText
         android:id="@+id/etLimit"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Participant Limit"
         android:inputType="text"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_time" />
+        app:layout_constraintTop_toBottomOf="@+id/in_time" />
 
     <EditText
         android:id="@+id/etDescription"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Description"
         android:inputType="text"
+        app:layout_constraintWidth_percent="0.7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etLimit" />
