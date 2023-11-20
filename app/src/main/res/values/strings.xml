@@ -18,6 +18,7 @@
 
     <string name="hello_blank_fragment">Answer B</string>
     <string name="Submit">Submit</string>
+    <string name="Previous">Previous</string>
     <string name="CourseA">Course A</string>
     <string name="CourseB">Course B</string>
     <string name="CourseC">Course C</string>
