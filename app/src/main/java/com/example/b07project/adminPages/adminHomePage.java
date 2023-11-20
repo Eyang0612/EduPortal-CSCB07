@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.b07project.R;
+import com.example.b07project.adminPages.EventSetUp.EventSetupPageActivity;
 import com.example.b07project.studentPages.QualificationPage2;
 import com.example.b07project.studentPages.QualificationPage3;
 
