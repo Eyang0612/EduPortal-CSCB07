@@ -20,19 +20,26 @@ import java.util.Calendar;
 public class EventSetupPageActivity extends AppCompatActivity implements
         View.OnClickListener {
 
-    Button btnDatePicker, btnTimePicker;
-    EditText txtDate, txtTime;
+    Button btnDatePicker, btnTimePicker, btnSubmit;
+    EditText txtDate, txtTime, edtTitle, edtLocation, edtLimit, edtDescription;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_setup_page);
-
+        //finding buttons
         btnDatePicker=(Button)findViewById(R.id.btn_date);
         btnTimePicker=(Button)findViewById(R.id.btn_time);
+        btnSubmit=(Button)findViewById(R.id.btnSubmit);
+
+        //finding texts to add to db
         txtDate=(EditText)findViewById(R.id.in_date);
         txtTime=(EditText)findViewById(R.id.in_time);
+        edtTitle=(EditText)findViewById(R.id.etTitle);
+        edtLocation=(EditText)findViewById(R.id.etLocation);
+        edtLimit=(EditText)findViewById(R.id.etLimit);
+        edtDescription=(EditText)findViewById(R.id.etDescription);
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);

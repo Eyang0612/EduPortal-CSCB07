@@ -17,7 +17,7 @@ import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
 
 public class QualificationPage2 extends AppCompatActivity implements View.OnClickListener {
     TextView questionTextView;
-    Button submit;
+    Button submit, previous;
     Button ansA, ansB;
 
     EvaluateAnswer Ans;
@@ -26,15 +26,27 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.fragment_qualification_page);
         Intent intent = getIntent();
         Ans = intent.getSerializableExtra("evaluateAnswer",EvaluateAnswer.class);
+        if (Ans == null) {
+            Ans = new EvaluateAnswer();
+        }
 
         questionTextView = findViewById(R.id.question);
         ansA = findViewById(R.id.ans_A);
         ansB = findViewById(R.id.ans_B);
         submit = findViewById(R.id.submit);
+        previous = findViewById(R.id.previous);
 
         ansA.setOnClickListener(this);
         ansB.setOnClickListener(this);
         submit.setOnClickListener(this);
+        previous.setOnClickListener(this);
+
+        if (Ans.getQuestion2()==1){
+            ansA.setBackgroundColor(Color.GRAY);
+        }
+        else if (Ans.getQuestion2()==0){
+            ansB.setBackgroundColor(Color.GRAY);
+        }
 
 
     }
@@ -60,6 +72,11 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
                 ansB.setBackgroundColor(Color.GRAY);
                 ansA.setBackgroundColor(Color.parseColor("#6750A4"));
                 Ans.setQuestion2(0);
+            }
+            else if (clickedChoice.getId()==R.id.previous){
+                Intent intent = new Intent(QualificationPage2.this, QualificationPage1.class);
+                intent.putExtra("evaluateAnswer", Ans);
+                startActivity(intent);
             }
         }
 

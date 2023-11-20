@@ -16,6 +16,16 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp" />
 
+    <Button
+        android:id="@+id/previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:text="@string/Previous"
+        android:layout_marginBottom="20dp"/>
+
     <TextView
         android:id="@+id/question"
         android:layout_width="350dp"
@@ -31,23 +41,22 @@
     />
 
     <LinearLayout
+        android:id="@+id/choices"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/choices"
-        android:layout_centerInParent ="true"
+        android:layout_centerInParent="true"
         android:orientation="vertical">
 
 
-
-    <Button
-        android:id="@+id/ans_A"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/question"
-        android:layout_below="@+id/ans_B"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="250dp"
-        android:text="@string/AnswerA2" />
+        <Button
+            android:id="@+id/ans_A"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/question"
+            android:layout_below="@+id/ans_B"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="250dp"
+            android:text="@string/AnswerA2" />
 
         <Button
             android:id="@+id/ans_B"
@@ -65,11 +74,11 @@
         android:id="@+id/submit"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ans_B"
+        android:layout_above="@+id/course5"
         android:layout_gravity="bottom"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="100dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/Submit" />
 
 </FrameLayout>
