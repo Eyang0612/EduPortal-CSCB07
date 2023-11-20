@@ -1,4 +1,4 @@
-package com.example.b07project.adminPages;
+package com.example.b07project.adminPages.EventSetUp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
