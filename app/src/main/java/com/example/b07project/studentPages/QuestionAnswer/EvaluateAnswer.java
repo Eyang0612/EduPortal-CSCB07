@@ -33,12 +33,18 @@ public class EvaluateAnswer implements Serializable {
     public Integer getQuestion2(){
         return question2;
     }
+    public Double[] getQuestion3(){
+        return question3;
+    }
 
     public void setQuestion1(Integer question1){
         this.question1=question1;
     }
     public void setQuestion2(Integer question2){
         this.question2=question2;
+    }
+    public void setQuestion3(Double[] grades){
+        this.question3 = grades;
     }
     public void setQuestion3_index(Double grade, int index){
         this.question3[index]=grade;

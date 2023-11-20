@@ -214,4 +214,14 @@
         android:layout_marginBottom="100dp"
         android:text="@string/Submit" />
 
+    <Button
+        android:id="@+id/previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:text="@string/Previous"
+        android:layout_marginBottom="20dp"/>
+
 </FrameLayout>

@@ -18,7 +18,7 @@ import com.example.b07project.studentPages.QuestionAnswer.QA;
 
 public class QualificationPage3 extends AppCompatActivity implements View.OnClickListener {
     TextView questionTextView, course1, course2, course3, course4, course5, course6;
-    Button submit;
+    Button submit, previous;
     EditText grade1, grade2, grade3, grade4, grade5, grade6;
     EvaluateAnswer Ans;
 
@@ -28,6 +28,17 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
         Intent intent = getIntent();
         Ans = intent.getSerializableExtra("evaluateAnswer", EvaluateAnswer.class);
 
+        if(Ans.getQuestion3()!=null){
+            Double[] grade_list = Ans.getQuestion3();
+            grade1.setText(Double.toString(grade_list[0]));
+            grade2.setText(Double.toString(grade_list[1]));
+            grade3.setText(Double.toString(grade_list[2]));
+            grade4.setText(Double.toString(grade_list[3]));
+            grade5.setText(Double.toString(grade_list[4]));
+            grade6.setText(Double.toString(grade_list[5]));
+        }
+        else{Ans.setQuestion3(new Double[6]);}
+
         questionTextView = findViewById(R.id.question);
         course1 = findViewById(R.id.course1);
         course2 = findViewById(R.id.course2);
@@ -35,6 +46,7 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
         course4 = findViewById(R.id.course4);
         course5 = findViewById(R.id.course5);
         course6 = findViewById(R.id.course6);
+        previous = findViewById(R.id.previous);
 
         grade1 = findViewById((R.id.text_1));
         grade2 = findViewById(R.id.text_2);
@@ -44,9 +56,11 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
         grade6 =findViewById(R.id.text_6);
 
 
+
         submit = findViewById(R.id.submit);
 
         submit.setOnClickListener(this);
+        previous.setOnClickListener(this);
 
         loadQuestion2();
 
@@ -56,32 +70,38 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
 
         Button clickedChoice = (Button) (v);
+        String[] grade_list = new String[6];
+
+        grade_list[0] = grade1.getText().toString();
+        grade_list[1] = grade2.getText().toString();
+        grade_list[2] = grade3.getText().toString();
+        grade_list[3] = grade4.getText().toString();
+        grade_list[4] = grade5.getText().toString();
+        grade_list[5] = grade6.getText().toString();
+
+        try {
+            for (int i = 0; i < 6; i++) {
+                if (TextUtils.isEmpty(grade_list[i])) {
+                    Ans.setQuestion3_index(0.0, i);
+                } else {
+                    double actualgrade = Double.parseDouble(grade_list[i]);
+                    Ans.setQuestion3_index(actualgrade, i);
+                }
+            }
+        } catch (NumberFormatException e) {
+            String errorMessage = "Invalid Number Format";
+            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+        }
 
         if(clickedChoice.getId()==R.id.submit) {
-
-            String[] grade_list = new String[6];
-
-            grade_list[0] = grade1.getText().toString();
-            grade_list[1] = grade2.getText().toString();
-            grade_list[2] = grade3.getText().toString();
-            grade_list[3] = grade4.getText().toString();
-            grade_list[4] = grade5.getText().toString();
-            grade_list[5] = grade6.getText().toString();
-            try {
-                for (int i = 0; i < 6; i++) {
-                    if (TextUtils.isEmpty(grade_list[i])) {
-                        Ans.setQuestion3_index(0.0, i);
-                    } else {
-                        double actualgrade = Double.parseDouble(grade_list[i]);
-                        Ans.setQuestion3_index(actualgrade, i);
-                    }
-                }
-                LoadNewPage();
-            } catch (NumberFormatException e) {
-                String errorMessage = "Invalid Number Format";
-                Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
-            }
+            LoadNewPage();
         }
+        else if (clickedChoice.getId()==R.id.previous){
+            Intent intent = new Intent(QualificationPage3.this, QualificationPage2.class);
+            intent.putExtra("evaluateAnswer", Ans);
+            startActivity(intent);
+        }
+
     }
 
     void loadQuestion2(){
