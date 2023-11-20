@@ -26,6 +26,6 @@ public class adminHomePage extends AppCompatActivity {
 
         userEmailTextView.setText("User Email: " + userEmail);
         userNameTextView.setText("User Name: " + userName);
-        userRoleTextView.setText("User Role:"+ userRoleTextView);
+        userRoleTextView.setText("User Role:"+ userRole);
     }
 }
