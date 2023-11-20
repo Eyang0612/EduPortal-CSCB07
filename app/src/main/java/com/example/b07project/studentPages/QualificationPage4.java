@@ -21,7 +21,7 @@ public class QualificationPage4 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_qualification_page4);
         Intent intent = getIntent();
-        Ans = intent.getParcelableExtra("evaluateAnswer");
+        Ans = intent.getSerializableExtra("evaluateAnswer", EvaluateAnswer.class);
 
         Result = findViewById(R.id.result);
         Message = findViewById(R.id.message);
