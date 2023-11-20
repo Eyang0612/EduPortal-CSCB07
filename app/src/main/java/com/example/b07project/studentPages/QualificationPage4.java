@@ -37,7 +37,7 @@ public class QualificationPage4 extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(QualificationPage4.this, StudentHomePage.class);
+        Intent intent = new Intent(QualificationPage4.this, studentHomePage.class);
         startActivity(intent);
 
     }
