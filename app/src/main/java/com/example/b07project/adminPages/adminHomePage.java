@@ -21,8 +21,8 @@ public class adminHomePage extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home_page);
 
-        Name = findViewById(R.id.userEmailTextView);
-        Email = findViewById(R.id.userNameTextView);
+        Name = findViewById(R.id.userNameTextView);
+        Email = findViewById(R.id.userEmailTextView);
         Role= findViewById(R.id.userRoleTextView);
         ComplaintButton = findViewById(R.id.CheckComplaint);
         EventButton = findViewById(R.id.AddEvent);
@@ -34,7 +34,7 @@ public class adminHomePage extends AppCompatActivity implements View.OnClickList
 
 
         Name.setText(getIntent().getStringExtra("userName"));
-        Email.setText(getIntent().getStringExtra("userName"));
+        Email.setText(getIntent().getStringExtra("email"));
         Role.setText(getIntent().getStringExtra("userRole"));
     }
 
@@ -43,6 +43,7 @@ public class adminHomePage extends AppCompatActivity implements View.OnClickList
         Button clickedChoice = (Button) (v);
         if(clickedChoice.getId()==R.id.AddEvent) {
             Intent intent = new Intent(adminHomePage.this, EventSetupPageActivity.class);
+            intent.putExtra("userName", getIntent().getStringExtra("userName"));
             startActivity(intent);
         }
         else if(clickedChoice.getId()==R.id.CheckComplaint) {
@@ -51,6 +52,7 @@ public class adminHomePage extends AppCompatActivity implements View.OnClickList
         }
         else if(clickedChoice.getId()==R.id.AddAnnoucement) {
             Intent intent = new Intent(adminHomePage.this, postAnnouncementsPage.class);
+
             startActivity(intent);
         }
     }
