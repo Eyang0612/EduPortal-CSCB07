@@ -26,7 +26,7 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_qualification_page);
         Intent intent = getIntent();
-        Ans = intent.getParcelableExtra("evaluateAnswer");
+        Ans = intent.getSerializableExtra("evaluateAnswer", EvaluateAnswer.class);
 
         questionTextView = findViewById(R.id.question);
         ansA = findViewById(R.id.ans_A);
