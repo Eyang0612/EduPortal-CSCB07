@@ -12,9 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
-import com.example.b07project.studentPages.QuestionAnswer.QA;
 import com.example.b07project.R;
+import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
 
 public class QualificationPage2 extends AppCompatActivity implements View.OnClickListener {
     TextView questionTextView;
@@ -26,7 +25,7 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_qualification_page);
         Intent intent = getIntent();
-        Ans = intent.getSerializableExtra("evaluateAnswer", EvaluateAnswer.class);
+        Ans = intent.getSerializableExtra("evaluateAnswer",EvaluateAnswer.class);
 
         questionTextView = findViewById(R.id.question);
         ansA = findViewById(R.id.ans_A);
@@ -43,8 +42,6 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
 
-        ansA.setBackgroundColor(Color.GRAY);
-        ansB.setBackgroundColor(Color.GRAY);
         Button clickedChoice = (Button) (v);
 
         if(clickedChoice.getId()==R.id.submit) {
@@ -55,9 +52,13 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
         }
         else{
             if (clickedChoice.getId()==R.id.ans_A){
+                ansA.setBackgroundColor(Color.GRAY);
+                ansB.setBackgroundColor(Color.parseColor("#6750A4"));
                 Ans.setQuestion2(1);
             }
             else if (clickedChoice.getId()==R.id.ans_B){
+                ansB.setBackgroundColor(Color.GRAY);
+                ansA.setBackgroundColor(Color.parseColor("#6750A4"));
                 Ans.setQuestion2(0);
             }
         }
@@ -65,7 +66,7 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
     }
 
     void loadQuestion3(){
-        Intent intent = new Intent(this, QualificationPage3.class);
+        Intent intent = new Intent(QualificationPage2.this, QualificationPage3.class);
         intent.putExtra("evaluateAnswer", Ans);
         startActivity(intent);
     }

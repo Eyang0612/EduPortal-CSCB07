@@ -28,6 +28,7 @@
     <string name="CourseHint">Enter GPA Here</string>
     <string name="Result">Result</string>
     <string name="Message">Message</string>
+    <string name="back">Home Page</string>
 
 
     <string name="login">Login</string>

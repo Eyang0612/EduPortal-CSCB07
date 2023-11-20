@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".studentPages.QualificationPage3">
         </activity>
+        <activity android:name=".studentPages.QualificationPage4">
+        </activity>
         <activity android:name=".studentPages.ComplaintsPage">
         </activity>
         <activity android:name=".studentPages.student_page_test">
