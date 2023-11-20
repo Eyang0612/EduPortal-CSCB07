@@ -28,7 +28,6 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
         Intent intent = getIntent();
         Ans = intent.getSerializableExtra("evaluateAnswer", EvaluateAnswer.class);
 
-
         questionTextView = findViewById(R.id.question);
         course1 = findViewById(R.id.course1);
         course2 = findViewById(R.id.course2);
@@ -77,7 +76,6 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
                         Ans.setQuestion3_index(actualgrade, i);
                     }
                 }
-
                 LoadNewPage();
             } catch (NumberFormatException e) {
                 String errorMessage = "Invalid Number Format";
@@ -112,7 +110,7 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
     }
 
     void LoadNewPage(){
-        Intent intent = new Intent(this, QualificationPage4.class);
+        Intent intent = new Intent(QualificationPage3.this, QualificationPage4.class);
         intent.putExtra("evaluateAnswer", Ans);
         startActivity(intent);
     }

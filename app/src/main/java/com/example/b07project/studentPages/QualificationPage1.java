@@ -10,14 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
-import com.example.b07project.studentPages.QualificationPage2;
 import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
 
 
 import com.example.b07project.R;
 
-import com.example.b07project.studentPages.QuestionAnswer.QA;
 
 
 public class QualificationPage1 extends AppCompatActivity implements View.OnClickListener{
@@ -50,10 +47,7 @@ public class QualificationPage1 extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
 
-        ansA.setBackgroundColor(Color.GRAY);
-        ansB.setBackgroundColor(Color.GRAY);
-        ansC.setBackgroundColor(Color.GRAY);
-        ansD.setBackgroundColor(Color.GRAY);
+
         Button clickedChoice = (Button) (v);
 
         if(clickedChoice.getId()==R.id.submit) {
@@ -64,15 +58,31 @@ public class QualificationPage1 extends AppCompatActivity implements View.OnClic
         }
         else{
             if (clickedChoice.getId()==R.id.ans_A){
+                ansA.setBackgroundColor(Color.GRAY);
+                ansB.setBackgroundColor(Color.parseColor("#6750A4"));
+                ansC.setBackgroundColor(Color.parseColor("#6750A4"));
+                ansD.setBackgroundColor(Color.parseColor("#6750A4"));
                 Ans.setQuestion1(1);
             }
             else if (clickedChoice.getId()==R.id.ans_B){
+                ansB.setBackgroundColor(Color.GRAY);
+                ansA.setBackgroundColor(Color.parseColor("#6750A4"));
+                ansC.setBackgroundColor(Color.parseColor("#6750A4"));
+                ansD.setBackgroundColor(Color.parseColor("#6750A4"));
                 Ans.setQuestion1(2);
             }
             else if (clickedChoice.getId()==R.id.ans_C){
+                ansC.setBackgroundColor(Color.GRAY);
+                ansB.setBackgroundColor(Color.parseColor("#6750A4"));
+                ansA.setBackgroundColor(Color.parseColor("#6750A4"));
+                ansD.setBackgroundColor(Color.parseColor("#6750A4"));
                 Ans.setQuestion1(3);
             }
             else if (clickedChoice.getId()==R.id.ans_D){
+                ansD.setBackgroundColor(Color.GRAY);
+                ansB.setBackgroundColor(Color.parseColor("#6750A4"));
+                ansA.setBackgroundColor(Color.parseColor("#6750A4"));
+                ansC.setBackgroundColor(Color.parseColor("#6750A4"));
                 Ans.setQuestion1(4);
             }
         }
@@ -81,7 +91,7 @@ public class QualificationPage1 extends AppCompatActivity implements View.OnClic
     }
 
     void loadQuestion2(){
-        Intent intent = new Intent(this, QualificationPage2.class);
+        Intent intent = new Intent(QualificationPage1.this, QualificationPage2.class);
         intent.putExtra("evaluateAnswer", Ans);
         startActivity(intent);
     }
