@@ -134,7 +134,7 @@ public class LoginPage extends AppCompatActivity {
     private void redirectToHomepage(String userEmail, String userName,String userRole, String uid) {
         // Intent to start the homepage activity
         Intent intent;
-        if(userRole == "Student"){
+        if(userRole.equals("Student")){
             intent = new Intent(this, studentHomePage.class);
         }else{
             intent = new Intent(this, adminHomePage.class);
