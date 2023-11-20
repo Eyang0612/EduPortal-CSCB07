@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.annotation.NonNull;
 
+import com.example.b07project.adminPages.EventSetupPageActivity;
 import com.example.b07project.adminPages.adminHomePage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -64,7 +65,7 @@ public class LoginPage extends AppCompatActivity {
 
     private void onSignUpClick() {
         // Handle the click event to navigate to the sign-up page
-        Intent signUpIntent = new Intent(this, SignUpPage.class);
+        Intent signUpIntent = new Intent(this, EventSetupPageActivity.class);
         startActivity(signUpIntent);
     }
     private void onLoginClick() {
