@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <!-- Instruction Text -->
+        <TextView
+            android:id="@+id/textViewAnnouncementInstruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Announcement Post to all students."
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Title Text -->
+        <TextView
+            android:id="@+id/textViewAnnouncementTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Title Input -->
+        <EditText
+            android:id="@+id/editTextAnnouncementTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/texbox_edittext_background"
+            android:padding="8dp"
+            android:maxLines="1"
+            android:scrollHorizontally="true"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <!-- Description Text -->
+        <TextView
+            android:id="@+id/textViewAnnouncementDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp"
+            />
+
+        <!-- Description Input -->
+        <EditText
+            android:id="@+id/editTextAnnouncementDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/texbox_edittext_background"
+            android:gravity="top"
+            android:padding="8dp"
+            android:inputType="textMultiLine"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Back Button -->
+            <Button
+                android:id="@+id/buttonAnnouncementBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:text="Back" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <!-- Post Button -->
+            <Button
+                android:id="@+id/buttonAnnouncementPost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:text="Post" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

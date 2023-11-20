@@ -37,7 +37,7 @@
             android:id="@+id/editTextComplaintTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/complaints_edittext_background"
+            android:background="@drawable/texbox_edittext_background"
             android:padding="8dp"
             android:maxLines="1"
             android:scrollHorizontally="true"/>
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/complaints_edittext_background"
+            android:background="@drawable/texbox_edittext_background"
             android:gravity="top"
             android:padding="8dp"
             android:inputType="textMultiLine"/>
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Submit Button -->
+        <!-- Back Button -->
         <Button
             android:id="@+id/buttonComplaintBack"
             android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
-
+        <!-- Submit Button -->
         <Button
             android:id="@+id/buttonComplaintSubmit"
             android:layout_width="wrap_content"
