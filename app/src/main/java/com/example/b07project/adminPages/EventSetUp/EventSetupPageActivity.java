@@ -114,9 +114,14 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         // Initialize Firebase Database
         databaseReference = FirebaseDatabase.getInstance().getReference("events");
 
-        // Check if any field is empty
+        // Check if any field is empty or not valid
         if (title.isEmpty() || location.isEmpty() || date.isEmpty() || time.isEmpty() || limit.isEmpty() || description.isEmpty()) {
             Toast.makeText(EventSetupPageActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Check if limit is valid integer using regex method
+        if (!limit.matches("-?\\d+")){
+            Toast.makeText(EventSetupPageActivity.this, "Number of participants must be an integer!", Toast.LENGTH_SHORT).show();
             return;
         }
 
