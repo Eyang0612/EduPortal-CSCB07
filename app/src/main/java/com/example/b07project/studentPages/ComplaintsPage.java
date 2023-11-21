@@ -76,9 +76,10 @@ public class ComplaintsPage extends AppCompatActivity {
 
         String complaintID = ref.push().getKey();
         String userId = getIntent().getStringExtra("userId");
+        String userName = getIntent().getStringExtra("userName");
         String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
-        Complaint complaint = new Complaint(complaintID, userId, title, description);
+        Complaint complaint = new Complaint(complaintID, userId, userName, title, description);
 
         ref.child(complaintID).setValue(complaint);
 

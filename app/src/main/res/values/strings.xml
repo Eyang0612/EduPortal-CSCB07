@@ -37,6 +37,7 @@
     <string name="password">Password</string>
     <string name="signup">signup</string>
     <string name="homepage">homepage</string>
+    <string name="AdminComplaintBack">homepage</string>
 
     <string-array name="roles_array">
         <item>Choose role</item>

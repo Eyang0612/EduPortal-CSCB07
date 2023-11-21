@@ -28,7 +28,9 @@ public class studentHomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(studentHomePage.this, ComplaintsPage.class);
                 String userId = getIntent().getStringExtra("userId");
+                String userName = getIntent().getStringExtra("userName");
                 intent.putExtra("userId", userId);
+                intent.putExtra("userName", userName);
                 startActivity(intent);
             }
         });

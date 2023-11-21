@@ -18,6 +18,10 @@
             android:exported="false" />
         <activity android:name=".studentPages.studentHomePage">
         </activity>
+        <activity android:name=".adminPages.adminComplaintPage">
+        </activity>
+        <activity android:name=".adminPages.postAnnouncementsPage">
+        </activity>
         <activity android:name=".SignUpPage">
         </activity>
         <activity android:name=".studentPages.QualificationPage1">
