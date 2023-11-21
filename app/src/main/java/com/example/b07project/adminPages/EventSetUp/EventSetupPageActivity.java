@@ -146,7 +146,7 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         databaseReference.child(eventId).setValue(event);
 
         // Create the "Participants" branch for the event (an empty node)
-        databaseReference.child(eventId).child("Participants").setValue(null);
+        databaseReference.child(eventId).child("Participants").setValue("Null");
 
         // Show a success message
         Toast.makeText(EventSetupPageActivity.this, "Event added successfully", Toast.LENGTH_SHORT).show();
