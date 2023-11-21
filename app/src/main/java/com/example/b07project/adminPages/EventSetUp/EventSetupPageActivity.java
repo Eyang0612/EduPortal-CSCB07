@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,9 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.b07project.LoginPage;
 import com.example.b07project.R;
+import com.example.b07project.adminPages.adminHomePage;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,7 +25,7 @@ import java.util.List;
 
 public class EventSetupPageActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnDatePicker, btnTimePicker, btnSubmit;
+    Button btnDatePicker, btnTimePicker, btnSubmit, btnBack;
     EditText txtDate, txtTime, edtTitle, edtLocation, edtLimit, edtDescription;
     private int mYear, mMonth, mDay, mHour, mMinute;
     private DatabaseReference databaseReference;
@@ -36,6 +39,7 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         btnDatePicker = findViewById(R.id.btn_date);
         btnTimePicker = findViewById(R.id.btn_time);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnBack = findViewById(R.id.btnBack);
 
         // Finding texts to add to db
         txtDate = findViewById(R.id.in_date);
@@ -48,6 +52,8 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
         btnSubmit.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
+
     }
 
     @Override
@@ -58,6 +64,8 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
             showTimePicker();
         } else if (v == btnSubmit) {
             uploadEventData();
+        } else if (v== btnBack) {
+            onBacktoHomePage();
         }
     }
 
@@ -120,8 +128,8 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
             return;
         }
         // Check if limit is valid integer using regex method
-        if (!limit.matches("-?\\d+")){
-            Toast.makeText(EventSetupPageActivity.this, "Number of participants must be an integer!", Toast.LENGTH_SHORT).show();
+        if (!limit.matches("\\d+")) {
+            Toast.makeText(EventSetupPageActivity.this, "Number of participants must be a positive integer!", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -132,7 +140,7 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         String adminName = getAdminName(); // Assuming you have a method to get admin's name
 
         // Create an Event object with the input data
-        Event event = new Event(eventId, adminName, title, location, date, time, limit, description);
+        Event event = new Event(eventId,title,location, date, time, limit, adminName, description);
 
         // Upload the event to Firebase
         databaseReference.child(eventId).setValue(event);
@@ -156,5 +164,12 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
     private String getAdminName() {
         String userName = getIntent().getStringExtra("userName");
         return userName;
+    }
+
+    private void onBacktoHomePage() {
+        // Handle the click event to navigate to the sign-up page
+        Intent homePage = new Intent(this, adminHomePage.class);
+        startActivity(homePage);
+        finish();//finish current activity; (Sign in).
     }
 }
