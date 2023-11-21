@@ -49,43 +49,47 @@
         android:id="@+id/in_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintWidth_percent="0.7"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="@+id/etLocation"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etLocation"
-        app:layout_constraintTop_toBottomOf="@+id/etLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/etLocation"
+        app:layout_constraintWidth_percent="0.35" />
 
     <Button
         android:id="@+id/btn_date"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:text="SELECT DATE"
+        android:text="Select Date"
         app:layout_constraintEnd_toEndOf="@+id/etLocation"
         app:layout_constraintLeft_toLeftOf="@+id/in_date"
-        app:layout_constraintTop_toBottomOf="@+id/etLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/etLocation"
+        app:layout_constraintWidth_percent="0.3" />
 
     <EditText
         android:id="@+id/in_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintWidth_percent="0.7"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="@+id/etLocation"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etLocation"
-        app:layout_constraintTop_toBottomOf="@+id/in_date" />
+        app:layout_constraintTop_toBottomOf="@+id/in_date"
+        app:layout_constraintWidth_percent="0.35" />
 
     <Button
         android:id="@+id/btn_time"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:text="SELECT TIME"
+        android:text="Select Time"
         app:layout_constraintEnd_toEndOf="@+id/etLocation"
         app:layout_constraintLeft_toLeftOf="@+id/in_time"
-        app:layout_constraintTop_toBottomOf="@+id/in_date" />
+        app:layout_constraintTop_toBottomOf="@+id/in_date"
+        app:layout_constraintWidth_percent="0.3" />
 
     <EditText
         android:id="@+id/etLimit"
