@@ -65,7 +65,7 @@ public class LoginPage extends AppCompatActivity {
 
     private void onSignUpClick() {
         // Handle the click event to navigate to the sign-up page
-        Intent signUpIntent = new Intent(this, EventSetupPageActivity.class);
+        Intent signUpIntent = new Intent(this, SignUpPage.class);
         startActivity(signUpIntent);
     }
     private void onLoginClick() {
