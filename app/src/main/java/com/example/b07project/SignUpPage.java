@@ -274,7 +274,7 @@ public class SignUpPage extends AppCompatActivity {
 
         emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     isFound = true;
                     // Email exists in the database
@@ -287,7 +287,7 @@ public class SignUpPage extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle errors
             }
         });

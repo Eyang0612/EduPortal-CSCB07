@@ -10,10 +10,13 @@ import android.widget.TextView;
 
 import com.example.b07project.R;
 import com.example.b07project.adminPages.EventSetUp.EventSetupPageActivity;
+import com.example.b07project.adminPages.adminComplaintPage;
 import com.example.b07project.studentPages.QualificationPage2;
 import com.example.b07project.studentPages.QualificationPage3;
+import com.example.b07project.LoginPage;
+import com.example.b07project.studentPages.studentHomePage;
 
-public class adminHomePage extends AppCompatActivity implements View.OnClickListener {
+public class adminHomePage extends AppCompatActivity{
     private TextView Name, Email, Role;
     private Button ComplaintButton, EventButton, AnnounceButton;
 
@@ -24,22 +27,46 @@ public class adminHomePage extends AppCompatActivity implements View.OnClickList
 
         Name = findViewById(R.id.userNameTextView);
         Email = findViewById(R.id.userEmailTextView);
-        Role= findViewById(R.id.userRoleTextView);
+        Role = findViewById(R.id.userRoleTextView);
         ComplaintButton = findViewById(R.id.CheckComplaint);
         EventButton = findViewById(R.id.AddEvent);
-        AnnounceButton= findViewById(R.id.AddAnnoucement);
+        AnnounceButton = findViewById(R.id.AddAnnoucement);
 
-        ComplaintButton.setOnClickListener(this);
+        /*ComplaintButton.setOnClickListener(this);
         EventButton.setOnClickListener(this);
-        AnnounceButton.setOnClickListener(this);
+        AnnounceButton.setOnClickListener(this);*/
 
 
         Name.setText(getIntent().getStringExtra("userName"));
         Email.setText(getIntent().getStringExtra("email"));
         Role.setText(getIntent().getStringExtra("userRole"));
+        EventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(adminHomePage.this, EventSetupPageActivity.class);
+                intent.putExtra("userName", getIntent().getStringExtra("userName"));
+                startActivity(intent);
+            }
+        });
+        ComplaintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(adminHomePage.this, adminComplaintPage.class);
+                startActivity(intent);
+            }
+        });
+        AnnounceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(adminHomePage.this, postAnnouncementsPage.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    @Override
+
+
+/*    @Override
     public void onClick(View v) {
         Button clickedChoice = (Button) (v);
         if(clickedChoice.getId()==R.id.AddEvent) {
@@ -53,8 +80,7 @@ public class adminHomePage extends AppCompatActivity implements View.OnClickList
         }
         else if(clickedChoice.getId()==R.id.AddAnnoucement) {
             Intent intent = new Intent(adminHomePage.this, postAnnouncementsPage.class);
-
             startActivity(intent);
         }
-    }
+    }*/
 }
