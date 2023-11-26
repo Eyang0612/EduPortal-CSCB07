@@ -69,7 +69,7 @@ public class ComplaintsPage extends AppCompatActivity {
         alertDialog.show();
     }
 
-    //craete and send complaint to firebase
+    //create and send complaint to firebase
     private void sendComplaintToDB(){
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("complaints");

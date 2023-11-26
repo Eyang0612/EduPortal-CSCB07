@@ -3,7 +3,7 @@ package com.example.b07project.studentPages.Complaint;
 public class Complaint {
     private String complaintID, userId, userName, title, description;
 
-    public Complaint(String complaintID, String userName, String userId, String title, String description){
+    public Complaint(String complaintID, String userId, String userName, String title, String description){
         this.complaintID = complaintID;
         this.userName = userName;
         this.userId = userId;
