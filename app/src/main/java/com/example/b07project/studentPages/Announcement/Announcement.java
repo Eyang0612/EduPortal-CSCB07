@@ -1,20 +1,24 @@
 package com.example.b07project.studentPages.Announcement;
 
 public class Announcement {
-    private String announcementID, userId, title, description;
+    private String announcementId, userId, title, description, userName;
 
-    public Announcement(String announcementID, String userId, String title, String description){
-        this.announcementID = announcementID;
+    public Announcement(String announcementId, String userId, String userName, String title, String description){
+        this.announcementId = announcementId;
         this.userId = userId;
+        this.userName = userName;
         this.title = title;
         this.description = description;
     }
 
     public String getAnnouncementID(){
-        return announcementID;
+        return announcementId;
     }
     public String getUserId(){
         return userId;
+    }
+    public String getUserName(){
+        return userName;
     }
     public String getTitle(){
         return title;

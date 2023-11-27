@@ -53,13 +53,13 @@ public class postAnnouncementsPage extends AppCompatActivity {
     }
 
     //show posted notification and leads back to home page
-    private void showSubmittedAlertDialog() {
+    private void showPostedAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Posted!")
                 .setMessage("Announcement is available to students!")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent intent = new Intent(postAnnouncementsPage.this, studentHomePage.class);
+                        Intent intent = new Intent(postAnnouncementsPage.this, adminHomePage.class);
                         startActivity(intent);
                         finish();
                     }
@@ -76,13 +76,14 @@ public class postAnnouncementsPage extends AppCompatActivity {
 
         String announcementID = ref.push().getKey();
         String userId = getIntent().getStringExtra("userId");
+        String userName = getIntent().getStringExtra("userName");
         String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
-        Announcement announcement = new Announcement(announcementID, userId, title, description);
+        Announcement announcement = new Announcement(announcementID, userId, userName, title, description);
 
         ref.child(announcementID).setValue(announcement);
 
-        showSubmittedAlertDialog();
+        showPostedAlertDialog();
     }
 
 }
