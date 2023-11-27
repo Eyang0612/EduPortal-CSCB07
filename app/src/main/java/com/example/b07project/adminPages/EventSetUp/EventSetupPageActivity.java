@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class EventSetupPageActivity extends AppCompatActivity implements View.OnClickListener {
@@ -83,7 +84,19 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
 
-                        txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                        if (year > mYear ||
+                                (year == mYear && monthOfYear > mMonth) ||
+                                (year == mYear && monthOfYear == mMonth && dayOfMonth >= mDay)) {
+
+                            // Update the TextView with the selected date
+                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                            // If the date is valid, you can also show a TimePickerDialog or perform other actions.
+                            // For simplicity, the TimePickerDialog is not included in this example.
+                        } else {
+                            // Show an error message or handle the invalid date as needed
+                            Toast.makeText(EventSetupPageActivity.this, "Please select a future date for the event!.", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 }, mYear, mMonth, mDay);
@@ -103,8 +116,13 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
+                        if(minute <10){
+                            txtTime.setText(hourOfDay + ":0" + minute);
+                        }else{
+                            txtTime.setText(hourOfDay + ":" + minute);
+                        }
 
-                        txtTime.setText(hourOfDay + ":" + minute);
+
                     }
                 }, mHour, mMinute, false);
         timePickerDialog.show();
