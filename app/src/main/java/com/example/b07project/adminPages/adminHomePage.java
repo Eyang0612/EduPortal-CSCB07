@@ -59,8 +59,6 @@ public class adminHomePage extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(adminHomePage.this, postAnnouncementsPage.class);
-                intent.putExtra("userId", getIntent().getStringExtra("userId"));
-                intent.putExtra("userName", getIntent().getStringExtra("userName"));
                 startActivity(intent);
             }
         });

@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".adminPages.adminComplaintPage">
         </activity>
+        <activity android:name=".adminPages.adminComplaintContentPage2">
+        </activity>
         <activity android:name=".adminPages.postAnnouncementsPage">
         </activity>
         <activity android:name=".SignUpPage">

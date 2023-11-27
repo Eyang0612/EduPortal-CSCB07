@@ -14,9 +14,11 @@ import com.example.b07project.studentPages.Complaint.Complaint;
 import java.util.ArrayList;
 
 public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.MyViewHolder> {
+    private final RecyclerViewInterface Recycler_Interface;
     Context context;
     ArrayList<Complaint> complaints;
-    public ComplaintAdapter(Context context, ArrayList<Complaint> complaints){
+    public ComplaintAdapter(RecyclerViewInterface Recycler_Interface, Context context, ArrayList<Complaint> complaints){
+        this.Recycler_Interface = Recycler_Interface;
         this.context = context;
         this.complaints = complaints;
     }
@@ -27,7 +29,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.MyVi
         LayoutInflater inflator = LayoutInflater.from(context);
         View view = inflator.inflate(R.layout.admin_complaint_box, parent, false);
 
-        return new ComplaintAdapter.MyViewHolder(view);
+        return new ComplaintAdapter.MyViewHolder(view, Recycler_Interface);
     }
 
     @Override
@@ -50,12 +52,25 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.MyVi
 
         TextView complaintId, complaintTitle, complaintUserName;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, RecyclerViewInterface Recycler_Interface) {
             super(itemView);
 
-            complaintId = itemView.findViewById(R.id.textView2);
-            complaintTitle = itemView.findViewById(R.id.textView3);
-            complaintUserName = itemView.findViewById(R.id.textView4);
+            complaintId = itemView.findViewById(R.id.complaintId);
+            complaintTitle = itemView.findViewById(R.id.complaintTitle);
+            complaintUserName = itemView.findViewById(R.id.name);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Recycler_Interface != null){
+                        int position = getAdapterPosition();
+
+                        if (position != RecyclerView.NO_POSITION){
+                            Recycler_Interface.ClickItem(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

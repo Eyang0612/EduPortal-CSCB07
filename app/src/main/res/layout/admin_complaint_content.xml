@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <!-- Title Text -->
+
+
+        <!-- Title Input -->
+
+        <TextView
+            android:id="@+id/TextComplaintTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/texbox_edittext_background"
+            android:text="title here"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:scrollHorizontally="true" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+
+
+        <TextView
+            android:id="@+id/textviewComplaintUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp"/>
+
+
+
+        <!-- Title Input -->
+
+        <TextView
+            android:id="@+id/ComplaintUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/texbox_edittext_background"
+            android:text="hi"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:scrollHorizontally="true" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:id="@+id/textviewComplaintUserID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User ID"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp"/>
+
+
+
+        <!-- Title Input -->
+
+        <TextView
+            android:id="@+id/ComplaintUserID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/texbox_edittext_background"
+            android:text="hi"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:scrollHorizontally="true" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+
+        <!-- Description Text -->
+        <TextView
+            android:id="@+id/textViewComplaintDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp"
+            />
+
+        <!-- Description Input -->
+
+        <TextView
+            android:id="@+id/ComplaintDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description here"
+            android:layout_weight="1"
+            android:background="@drawable/texbox_edittext_background"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:padding="8dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Back Button -->
+            <Button
+                android:id="@+id/buttonComplaintBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:text="Back" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
