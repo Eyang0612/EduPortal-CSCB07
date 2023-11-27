@@ -1,14 +1,15 @@
 package com.example.b07project.studentPages.Announcement;
 
 public class Announcement {
-    private String announcementId, userId, title, description, userName;
+    private String announcementId, userId, title, description, userName, postTime;
 
-    public Announcement(String announcementId, String userId, String userName, String title, String description){
+    public Announcement(String announcementId, String userId, String userName, String title, String description, String postTime){
         this.announcementId = announcementId;
         this.userId = userId;
         this.userName = userName;
         this.title = title;
         this.description = description;
+        this.postTime = postTime;
     }
 
     public String getAnnouncementID(){
@@ -23,7 +24,6 @@ public class Announcement {
     public String getTitle(){
         return title;
     }
-    public String getDescription(){
-        return description;
-    }
+    public String getPostTime() { return postTime; }
+    public String getDescription(){ return description; }
 }
