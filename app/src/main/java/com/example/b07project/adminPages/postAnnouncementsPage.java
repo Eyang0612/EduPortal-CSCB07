@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -80,12 +83,19 @@ public class postAnnouncementsPage extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("announcements");
 
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = dateFormat.format(currentDate);
+
         String announcementID = ref.push().getKey();
         String userId = getIntent().getStringExtra("userId");
         String userName = getIntent().getStringExtra("userName");
         String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
-        Announcement announcement = new Announcement(announcementID, userId, userName, title, description);
+        String postTime = formattedDate;
+
+        Announcement announcement = new Announcement(announcementID, userId, userName, title, description, postTime);
 
         ref.child(announcementID).setValue(announcement);
 
