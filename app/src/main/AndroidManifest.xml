@@ -14,33 +14,23 @@
         android:theme="@style/Theme.B07Project"
         tools:targetApi="31">
         <activity
+            android:name=".studentPages.EventCheck.MainEventsActivity"
+            android:exported="false" />
+        <activity
             android:name=".adminPages.adminHomePage"
             android:exported="false" />
-        <activity android:name=".studentPages.studentHomePage">
-        </activity>
-        <activity android:name=".adminPages.adminComplaintPage">
-        </activity>
-        <activity android:name=".adminPages.adminComplaintContentPage2">
-        </activity>
-        <activity android:name=".adminPages.postAnnouncementsPage">
-        </activity>
-        <activity android:name=".SignUpPage">
-        </activity>
-        <activity android:name=".studentPages.QualificationPage1">
-        </activity>
-        <activity android:name=".studentPages.QualificationPage2">
-        </activity>
-        <activity android:name=".studentPages.QualificationPage3">
-        </activity>
-        <activity android:name=".studentPages.QualificationPage4">
-        </activity>
-        <activity android:name=".studentPages.ComplaintsPage">
-        </activity>
-        <activity android:name=".studentPages.student_page_test">
-        </activity>
-        <activity android:name=".adminPages.EventSetUp.EventSetupPageActivity">
-        </activity>
-
+        <activity android:name=".studentPages.studentHomePage"></activity>
+        <activity android:name=".adminPages.adminComplaintPage"></activity>
+        <activity android:name=".adminPages.adminComplaintContentPage2"></activity>
+        <activity android:name=".adminPages.postAnnouncementsPage"></activity>
+        <activity android:name=".SignUpPage"></activity>
+        <activity android:name=".studentPages.QualificationPage1"></activity>
+        <activity android:name=".studentPages.QualificationPage2"></activity>
+        <activity android:name=".studentPages.QualificationPage3"></activity>
+        <activity android:name=".studentPages.QualificationPage4"></activity>
+        <activity android:name=".studentPages.ComplaintsPage"></activity>
+        <activity android:name=".studentPages.student_page_test"></activity>
+        <activity android:name=".adminPages.EventSetUp.EventSetupPageActivity"></activity>
         <activity
             android:name=".LoginPage"
             android:exported="true">
