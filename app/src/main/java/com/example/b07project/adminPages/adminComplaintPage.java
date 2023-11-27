@@ -16,15 +16,15 @@ import com.example.b07project.R;
 import java.util.ArrayList;
 
 import com.example.b07project.adminPages.ComplaintAdapter.ComplaintAdapter;
+import com.example.b07project.adminPages.ComplaintAdapter.RecyclerViewInterface;
 import com.example.b07project.studentPages.Complaint.Complaint;
-import com.example.b07project.studentPages.studentHomePage;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class adminComplaintPage extends AppCompatActivity{
+public class adminComplaintPage extends AppCompatActivity implements RecyclerViewInterface {
     Button buttonBack;
 
     ArrayList<Complaint> complaints= new ArrayList<>();
@@ -69,7 +69,7 @@ public class adminComplaintPage extends AppCompatActivity{
                 // userIds now contains all the user IDs from the "users" node
                 // You can store, process, or use these IDs as needed
                 RecyclerView recyclerView = findViewById(R.id.complaintRecycle);
-                ComplaintAdapter adapter = new ComplaintAdapter(adminComplaintPage.this, complaints);
+                ComplaintAdapter adapter = new ComplaintAdapter(adminComplaintPage.this, adminComplaintPage.this, complaints);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(adminComplaintPage.this));
             }
@@ -85,4 +85,14 @@ public class adminComplaintPage extends AppCompatActivity{
     }
 
 
+    @Override
+    public void ClickItem(int position) {
+        Intent intent = new Intent(adminComplaintPage.this, adminComplaintContentPage2.class);
+        intent.putExtra("Title", complaints.get(position).getTitle());
+        intent.putExtra("Username",complaints.get(position).getUserName());
+        intent.putExtra("UserID",complaints.get(position).getUserId());
+        intent.putExtra("Description",complaints.get(position).getDescription());
+        startActivity(intent);
+
+    }
 }
