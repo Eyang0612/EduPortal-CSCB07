@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,7 +39,12 @@ public class postAnnouncementsPage extends AppCompatActivity {
         buttonPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendAnnouncementToDB();
+                if (editTextTitle.getText().toString().trim().isEmpty() || editTextDescription.getText().toString().trim().isEmpty()){
+                    Toast toast = Toast.makeText(postAnnouncementsPage.this, "Title or Description cannot be empty!", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    sendAnnouncementToDB();
+                }
             }
         });
 
