@@ -1,4 +1,4 @@
-package com.example.b07project.studentPages.EventReservation;
+package com.example.b07project.studentPages.EventCheck;
 
 public class Reservation {
     private String eventId;
@@ -7,7 +7,6 @@ public class Reservation {
     public Reservation() {
     }
 
-    // 参数化构造函数
     public Reservation(String eventId, String studentId) {
         this.eventId = eventId;
         this.studentId = studentId;
