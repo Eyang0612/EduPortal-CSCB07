@@ -40,6 +40,7 @@
             android:background="@drawable/texbox_edittext_background"
             android:padding="8dp"
             android:maxLines="1"
+            android:inputType="text|textNoSuggestions"
             android:scrollHorizontally="true"/>
 
         <Space
