@@ -4,27 +4,46 @@ public class Event {
     private String eventId;
     private String title;
     private String location;
-    private String date;
+    private String eventDate;
     private String time;
     private String limit;
 
     private String adminName;
     private String description;
 
+    private String postDate;
+
     // Default constructor (needed for Firebase)
     public Event() {
     }
 
     // Parameterized constructor
-    public Event(String eventId, String title, String location, String date, String time, String limit, String adminName, String description) {
+    public Event(String eventId, String title, String location, String eventDate, String time, String limit, String adminName, String description, String postDate) {
         this.eventId = eventId;
         this.title = title;
         this.location = location;
-        this.date = date;
+        this.eventDate = eventDate;
         this.time = time;
         this.limit = limit;
         this.adminName = adminName;
         this.description = description;
+        this.postDate = postDate;
+    }
+
+    public String getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public String getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(String postDate) {
+        this.postDate = postDate;
     }
 
     public String getEventId() {
@@ -49,14 +68,6 @@ public class Event {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public String getTime() {

@@ -19,9 +19,13 @@ import com.example.b07project.adminPages.adminHomePage;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class EventSetupPageActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -114,7 +118,7 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         // Get values from UI components
         String title = edtTitle.getText().toString();
         String location = edtLocation.getText().toString();
-        String date = txtDate.getText().toString();
+        String eventDate = txtDate.getText().toString();
         String time = txtTime.getText().toString();
         String limit = edtLimit.getText().toString();
         String description = edtDescription.getText().toString();
@@ -123,7 +127,7 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         databaseReference = FirebaseDatabase.getInstance().getReference("events");
 
         // Check if any field is empty or not valid
-        if (title.isEmpty() || location.isEmpty() || date.isEmpty() || time.isEmpty() || limit.isEmpty() || description.isEmpty()) {
+        if (title.isEmpty() || location.isEmpty() || eventDate.isEmpty() || time.isEmpty() || limit.isEmpty() || description.isEmpty()) {
             Toast.makeText(EventSetupPageActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -139,8 +143,10 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         // Get the admin's name (replace with the actual method to obtain admin's name)
         String adminName = getAdminName(); // Assuming you have a method to get admin's name
 
+        String postDate = getFormattedPostDate();
+
         // Create an Event object with the input data
-        Event event = new Event(eventId,title,location, date, time, limit, adminName, description);
+        Event event = new Event(eventId,title,location, eventDate, time, limit, adminName, description, postDate);
 
         // Upload the event to Firebase
         databaseReference.child(eventId).setValue(event);
@@ -171,5 +177,12 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         Intent homePage = new Intent(this, adminHomePage.class);
         startActivity(homePage);
         finish();//finish current activity; (Sign in).
+    }
+
+    private String getFormattedPostDate() {
+        // Get the current date and format it as "dd-MM-yyyy"
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("America/Toronto"));
+        return simpleDateFormat.format(new Date());
     }
 }
