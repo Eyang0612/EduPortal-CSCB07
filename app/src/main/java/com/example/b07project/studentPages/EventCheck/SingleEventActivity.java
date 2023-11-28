@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.b07project.LoginPage;
 import com.example.b07project.R;
 
-import android.os.ResultReceiver;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -43,7 +41,7 @@ public class SingleEventActivity extends AppCompatActivity {
         eventsRef = FirebaseDatabase.getInstance().getReference().child("events");
 
         // Load and display event details
-        loadEventDetails(res.getEventId());
+        loadEventDetails(res.getEvent().getEventId());
 
         // Handle Reserve button click
         Button reserveButton = findViewById(R.id.reserveButton);
