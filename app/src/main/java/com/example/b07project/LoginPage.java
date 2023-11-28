@@ -1,6 +1,8 @@
 package com.example.b07project;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -140,10 +142,14 @@ public class LoginPage extends AppCompatActivity {
         }else{
             intent = new Intent(this, adminHomePage.class);
         }
-        intent.putExtra("email", userEmail);
-        intent.putExtra("userName", userName);
-        intent.putExtra("userRole", userRole);
-        intent.putExtra("userId", uid);
+        SharedPreferences p = getSharedPreferences("myprefs",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = p.edit();
+        editor.putString("email", userEmail);
+        editor.putString("userName", userName);
+        editor.putString("userRole", userRole);
+        editor.putString("userId", uid);
+        editor.apply();
         startActivity(intent);
         finish(); // finish the current activity (login)
     }

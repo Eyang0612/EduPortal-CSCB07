@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -185,7 +187,9 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
 
     // Replace this with the actual method to obtain admin's name from your authentication system
     private String getAdminName() {
-        String userName = getIntent().getStringExtra("userName");
+        SharedPreferences p = getSharedPreferences("myprefs",
+                Context.MODE_PRIVATE);
+        String userName = p.getString("userName", "default_value");
         return userName;
     }
 

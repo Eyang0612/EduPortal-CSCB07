@@ -1,6 +1,8 @@
 package com.example.b07project.studentPages;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,10 +29,6 @@ public class studentHomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(studentHomePage.this, ComplaintsPage.class);
-                String userId = getIntent().getStringExtra("userId");
-                String userName = getIntent().getStringExtra("userName");
-                intent.putExtra("userId", userId);
-                intent.putExtra("userName", userName);
                 startActivity(intent);
             }
         });
@@ -47,6 +45,15 @@ public class studentHomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(studentHomePage.this, LoginPage.class);
+                SharedPreferences p = getSharedPreferences("myprefs",
+                        Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = p.edit();
+
+                // Clear all data
+                editor.clear();
+
+                // Apply changes
+                editor.apply();
                 startActivity(intent);
             }
         });

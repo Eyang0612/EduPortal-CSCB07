@@ -2,7 +2,9 @@ package com.example.b07project.adminPages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,16 +37,15 @@ public class adminHomePage extends AppCompatActivity{
         /*ComplaintButton.setOnClickListener(this);
         EventButton.setOnClickListener(this);
         AnnounceButton.setOnClickListener(this);*/
-
-
-        Name.setText(getIntent().getStringExtra("userName"));
-        Email.setText(getIntent().getStringExtra("email"));
-        Role.setText(getIntent().getStringExtra("userRole"));
+        SharedPreferences p = getSharedPreferences("myprefs",
+                Context.MODE_PRIVATE);
+        Name.setText(p.getString("userName", "default_value"));
+        Email.setText(p.getString("email", "default_value"));
+        Role.setText(p.getString("userRole", "default_value"));
         EventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(adminHomePage.this, EventSetupPageActivity.class);
-                intent.putExtra("userName", getIntent().getStringExtra("userName"));
                 startActivity(intent);
             }
         });
@@ -59,8 +60,6 @@ public class adminHomePage extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(adminHomePage.this, postAnnouncementsPage.class);
-                intent.putExtra("userId", getIntent().getStringExtra("userId"));
-                intent.putExtra("userName", getIntent().getStringExtra("userName"));
                 startActivity(intent);
             }
         });

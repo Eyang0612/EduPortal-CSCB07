@@ -1,7 +1,9 @@
 package com.example.b07project.studentPages;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -82,8 +84,10 @@ public class ComplaintsPage extends AppCompatActivity {
         ref = db.getReference("complaints");
 
         String complaintID = ref.push().getKey();
-        String userId = getIntent().getStringExtra("userId");
-        String userName = getIntent().getStringExtra("userName");
+        SharedPreferences p = getSharedPreferences("myprefs",
+                Context.MODE_PRIVATE);
+        String userId = p.getString("userId", "default_value");
+        String userName = p.getString("userName", "default_value");
         String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
         Complaint complaint = new Complaint(complaintID, userId, userName, title, description);
