@@ -16,11 +16,9 @@ import com.example.b07project.studentPages.Announcement.Announcement;
 import java.util.ArrayList;
 
 public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.MyViewHolder>{
-    private final AnnouncementRecycleInterface Recycler_Interface;
     Context context;
     ArrayList<Announcement> announcements;
-    public AnnouncementAdapter(AnnouncementRecycleInterface Recycler_Interface, Context context, ArrayList<Announcement> announcements){
-        this.Recycler_Interface = Recycler_Interface;
+    public AnnouncementAdapter(Context context, ArrayList<Announcement> announcements){
         this.context = context;
         this.announcements = announcements;
     }
@@ -30,7 +28,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         LayoutInflater inflator = LayoutInflater.from(context);
         View view = inflator.inflate(R.layout.student_homepage_announcement_box, parent, false);
 
-        return new AnnouncementAdapter.MyViewHolder(view, Recycler_Interface);
+        return new AnnouncementAdapter.MyViewHolder(view);
     }
 
     @Override
@@ -53,7 +51,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
         TextView announcementPostTime, announcementTitle, announcementDescription;
 
-        public MyViewHolder(@NonNull View itemView, AnnouncementRecycleInterface Recycler_Interface) {
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             announcementPostTime = itemView.findViewById(R.id.announcementPostTime);
