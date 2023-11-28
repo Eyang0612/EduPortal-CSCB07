@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/EventName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate the event"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_below="@+id/Rating"/>
+
+    <RatingBar
+        android:id="@+id/Rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_above="@+id/EventName"
+        android:layout_below="@+id/Comments"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/Comments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comments"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginBottom="8dp"
+        android:layout_above="@+id/Rating"
+        android:layout_below="@+id/EditTextComments"
+        />
+
+    <!-- Description Input -->
+    <EditText
+        android:id="@+id/EditTextComments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Put your comments here..."
+        android:layout_weight="1"
+        android:background="@drawable/texbox_edittext_background"
+        android:gravity="top"
+        android:padding="8dp"
+        android:inputType="textMultiLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Back Button -->
+        <Button
+            android:id="@+id/buttonRatingBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="5dp"
+            android:text="Back" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/buttonRatingSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:text="Submit" />
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
