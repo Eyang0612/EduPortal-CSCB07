@@ -1,6 +1,8 @@
 package com.example.b07project.studentPages.EventCheck;
 
-public class Reservation {
+import java.io.Serializable;
+
+public class Reservation implements Serializable {
     private String eventId;
     private String studentId;
 
