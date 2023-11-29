@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import androidx.core.content.ContextCompat;
 
 import android.view.View;
 import android.widget.Toast;
@@ -50,6 +51,13 @@ public class SingleEventActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Implement your logic when the Reserve button is clicked
                 // For example, you can add the user to the event or navigate to another page
+                String eventUid = res.getEvent().getEventId(); // Assuming you have access to the event UID
+                String studentUid = res.getStudent().getUserId(); // Replace with the actual student UID
+
+                reserveSeatInEvent(eventUid, studentUid);
+                createReservedNodeInStudent(eventUid,studentUid);
+                updateButtonState(true);
+
 
             }
         });
@@ -126,4 +134,30 @@ public class SingleEventActivity extends AppCompatActivity {
         startActivity(mainActivityIntent);
         finish();//finish current activity; (Sign in).
     }
+
+    private void reserveSeatInEvent(String eventUid, String studentUid) {
+        // Add the student UID to the Participants node of the event
+        DatabaseReference participantsRef = eventsRef.child(eventUid).child("Participants");
+        participantsRef.child(studentUid).setValue(true);
+    }
+
+    private void createReservedNodeInStudent( String eventUid, String studentUid) {
+        // Create a new node called "reservedNode" in the student's node and save the event UID in it
+        DatabaseReference studentRef = FirebaseDatabase.getInstance().getReference().child("students").child(studentUid);
+        DatabaseReference reservedNodeRef = studentRef.child("reservedEvent");
+
+        reservedNodeRef.child(eventUid).setValue(true);
+    }
+
+    private void updateButtonState(boolean reserved) {
+        Button reserveButton = findViewById(R.id.reserveButton);
+
+        if (reserved) {
+            reserveButton.setEnabled(false);
+            reserveButton.setBackgroundColor(ContextCompat.getColor(this, R.color.gray));
+            reserveButton.setText("Reserved");
+        }
+    }
+
+
 }
