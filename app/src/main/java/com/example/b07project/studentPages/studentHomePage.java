@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -20,8 +21,9 @@ import com.example.b07project.R;
 import com.example.b07project.adminPages.EventSetUp.Event;
 import com.example.b07project.studentPages.Announcement.Announcement;
 import com.example.b07project.studentPages.AnnouncementRecycler.AnnouncementAdapter;
+import com.example.b07project.studentPages.EventCheck.EventAdapter;
 import com.example.b07project.studentPages.EventCheck.MainEventsActivity;
-import com.example.b07project.studentPages.EventRecycler.EventAdapter;
+import com.example.b07project.studentPages.EventCheck.SingleEventActivity;
 import com.example.b07project.studentPages.EventRecycler.EventRecyclerInterface;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +36,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class studentHomePage extends AppCompatActivity implements EventRecyclerInterface {
+public class studentHomePage extends AppCompatActivity implements com.example.b07project.studentPages.EventCheck.EventAdapter.EventClickListener {
 
     private Button buttonLogout, buttonComplaints, buttonPOST;
     ToggleButton toggleButton;
@@ -146,64 +148,56 @@ public class studentHomePage extends AppCompatActivity implements EventRecyclerI
     }
 
     private void setEvents(){
-        //set Events to the recycler view
-        ArrayList<Event> events= new ArrayList<>();
-        db = FirebaseDatabase.getInstance();
-        ref = db.getReference("events");
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        Toast.makeText(this, "pass", Toast.LENGTH_SHORT).show();
+        RecyclerView recyclerView;
+        DatabaseReference database;
+        EventAdapter myAdapter;
+        ArrayList<Event> list;
 
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    String eventId = userSnapshot.child("eventId").getValue(String.class);
-                    String title = userSnapshot.child("title").getValue(String.class);
-                    String location = userSnapshot.child("location").getValue(String.class);
-                    String eventDate = userSnapshot.child("eventDate").getValue(String.class);
-                    String time = userSnapshot.child("time").getValue(String.class);;
-                    String limit = userSnapshot.child("limit").getValue(String.class);;
-                    String adminName = userSnapshot.child("adminName").getValue(String.class);
-                    String description = userSnapshot.child("description").getValue(String.class);
-                    String postDate = userSnapshot.child("postDate").getValue(String.class);
-                    events.add(new Event(eventId, title, location, eventDate, time, limit, adminName, description, postDate));
+        recyclerView = findViewById(R.id.studentHomePageRecycle);
+        database = FirebaseDatabase.getInstance().getReference("events");
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        list = new ArrayList<>();
+        myAdapter = new EventAdapter(this,list, this);
+        recyclerView.setAdapter(myAdapter);
+        //backButton=findViewById(R.id.backButton);
+
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+
+                    Event eList = dataSnapshot.getValue(Event.class);
+                    list.add(eList);
+
 
                 }
+                myAdapter.notifyDataSetChanged();
 
-                //sorting events by latest date to earliest
-                Collections.sort(events, new DateComparator<>("dd-MM-yyyy"));
-                Collections.reverse(events);
-
-                // userIds now contains all the user IDs from the "users" node
-                // You can store, process, or use these IDs as needed
-                RecyclerView recyclerView = findViewById(R.id.studentHomePageRecycle);
-                EventAdapter adapter = new EventAdapter(studentHomePage.this ,studentHomePage.this,  events);
-                recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(studentHomePage.this));
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle errors
-                Intent intent = new Intent(studentHomePage.this, LoginPage.class);
-                startActivity(intent);
-            }
+            public void onCancelled(@NonNull DatabaseError error) {
 
+            }
         });
+
+        Collections.sort(list, new DateComparator<>("dd-MM-yyyy"));
+        Collections.reverse(list);
+
 
     }
 
+
+
     @Override
-    public void ClickItem(int position) {
-        Intent intent = new Intent(studentHomePage.this, MainEventsActivity.class);
-        intent.putExtra("eventId", events.get(position).getEventId());
-        intent.putExtra("title",events.get(position).getTitle());
-        intent.putExtra("location",events.get(position).getLocation());
-        intent.putExtra("eventDate",events.get(position).getEventDate());
-        intent.putExtra("time",events.get(position).getTime());
-        intent.putExtra("limit",events.get(position).getLimit());
-        intent.putExtra("adminName",events.get(position).getAdminName());
-        intent.putExtra("description",events.get(position).getDescription());
-        intent.putExtra("postDate",events.get(position).getPostDate());
-        startActivity(intent);
+    public void onEventClick(Event e) {
+        //Intent intent = new Intent(studentHomePage.this, SingleEventActivity.class);
+        Toast.makeText(this, "Event Name: " + e.getTitle(), Toast.LENGTH_SHORT).show();
+        //startActivity(intent);
     }
 
 }
