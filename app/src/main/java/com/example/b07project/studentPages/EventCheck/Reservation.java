@@ -1,30 +1,35 @@
 package com.example.b07project.studentPages.EventCheck;
 
-public class Reservation {
-    private String eventId;
-    private String studentId;
+import com.example.b07project.User.Student;
+import com.example.b07project.adminPages.EventSetUp.Event;
+
+import java.io.Serializable;
+
+public class Reservation implements Serializable {
+    private Event event;
+    private Student student;
 
     public Reservation() {
     }
 
-    public Reservation(String eventId, String studentId) {
-        this.eventId = eventId;
-        this.studentId = studentId;
+    public Reservation(Event event, Student student) {
+        this.event = event;
+        this.student = student;
     }
 
-    public String getEventId() {
-        return eventId;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
-    public String getStudentId() {
-        return studentId;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }
