@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class studentHomePage extends AppCompatActivity {
@@ -77,12 +78,13 @@ public class studentHomePage extends AppCompatActivity {
     }
 
     private void setAnnouncements(){
+        //set Announcements to the recycler view
+
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("announcements");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
 
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     String announcementId = userSnapshot.child("announcementID").getValue(String.class);
@@ -90,10 +92,13 @@ public class studentHomePage extends AppCompatActivity {
                     String title = userSnapshot.child("title").getValue(String.class);
                     String userId = userSnapshot.child("userId").getValue(String.class);
                     String userName = userSnapshot.child("userName").getValue(String.class);
-                    String postTime = userSnapshot.child("postTime").getValue(String.class);
-                    announcements.add(new Announcement(announcementId, userId, userName, title, description, postTime));
+                    String postDate = userSnapshot.child("postDate").getValue(String.class);
+                    announcements.add(new Announcement(announcementId, userId, userName, title, description, postDate));
 
                 }
+
+                //sorting announcements by latest date to earliest
+                Collections.sort(announcements, new DateComparator<>("dd-MM-yyyy"));
 
                 // userIds now contains all the user IDs from the "users" node
                 // You can store, process, or use these IDs as needed
@@ -109,6 +114,7 @@ public class studentHomePage extends AppCompatActivity {
                 Intent intent = new Intent(studentHomePage.this, LoginPage.class);
                 startActivity(intent);
             }
+
         });
 
     }
