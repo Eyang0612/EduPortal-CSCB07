@@ -16,15 +16,17 @@ import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
 
 
 public class QualificationPage4 extends AppCompatActivity implements View.OnClickListener {
-    TextView Result, Message;
-    EvaluateAnswer Ans;
-    Button Home;
+    private TextView Result, Message;
+    private EvaluateAnswer Ans;
+    private Button Home;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_qualification_page4);
         Intent intent = getIntent();
         Ans = intent.getSerializableExtra("evaluateAnswer", EvaluateAnswer.class);
+
+
 
         Result = findViewById(R.id.result);
         Message = findViewById(R.id.message);

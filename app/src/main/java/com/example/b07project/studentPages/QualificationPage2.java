@@ -16,9 +16,9 @@ import com.example.b07project.R;
 import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
 
 public class QualificationPage2 extends AppCompatActivity implements View.OnClickListener {
-    TextView questionTextView;
-    Button submit, previous;
-    Button ansA, ansB;
+    private TextView questionTextView;
+    private Button submit, previous, back;
+    private Button ansA, ansB;
 
     EvaluateAnswer Ans;
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +36,14 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
         submit = findViewById(R.id.submit);
         previous = findViewById(R.id.previous);
 
+
         ansA.setOnClickListener(this);
         ansB.setOnClickListener(this);
         submit.setOnClickListener(this);
         previous.setOnClickListener(this);
+
+        back = findViewById(R.id.back);
+        back.setOnClickListener(this);
 
         if (Ans.getQuestion2()==1){
             ansA.setBackgroundColor(Color.GRAY);
@@ -62,7 +66,11 @@ public class QualificationPage2 extends AppCompatActivity implements View.OnClic
             }
             loadQuestion3();
         }
-        else{
+        else if (clickedChoice.getId()==R.id.back) {
+            Intent intent = new Intent(QualificationPage2.this, studentHomePage.class);
+            startActivity(intent);
+
+        } else{
             if (clickedChoice.getId()==R.id.ans_A){
                 ansA.setBackgroundColor(Color.GRAY);
                 ansB.setBackgroundColor(Color.parseColor("#6750A4"));
