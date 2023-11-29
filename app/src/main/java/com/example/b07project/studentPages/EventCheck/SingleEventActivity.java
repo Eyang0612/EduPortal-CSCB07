@@ -80,7 +80,11 @@ public class SingleEventActivity extends AppCompatActivity {
                     String eventTime = dataSnapshot.child("time").getValue(String.class);
                     String location = dataSnapshot.child("location").getValue(String.class);
                     String description = dataSnapshot.child("description").getValue(String.class);
-                    long totalLimit = dataSnapshot.child("limit").getValue(Long.class);
+                    String limitString = dataSnapshot.child("limit").getValue(String.class);
+                    long totalLimit = 0;
+                    if (limitString != null) {
+                            totalLimit = Long.parseLong(limitString);
+                    }
                     long participantsCount = dataSnapshot.child("Participants").getChildrenCount();
 
                     // Calculate remaining seats
