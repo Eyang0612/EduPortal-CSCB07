@@ -33,7 +33,7 @@ public class DateComparator<T extends Notifications> implements Comparator<T> {
     private Date getDate(T object, SimpleDateFormat dateFormat) throws ParseException {
         // Gets PostTime from objects and converts it into a Date object
 
-        String postTimeString = object.getPostDate();
+        String postTimeString = object.getNotificationDate();
         return dateFormat.parse(postTimeString);
     }
 }

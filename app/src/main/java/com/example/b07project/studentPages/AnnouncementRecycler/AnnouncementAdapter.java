@@ -37,8 +37,6 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         holder.announcementPostTime.setText(announcements.get(position).getPostDate());
         holder.announcementTitle.setText(announcements.get(position).getTitle());
         holder.announcementDescription.setText(announcements.get(position).getDescription());
-
-
     }
 
     @Override

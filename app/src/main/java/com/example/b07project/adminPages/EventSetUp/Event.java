@@ -103,5 +103,7 @@ public class Event extends Notifications {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getNotificationDate() { return eventDate; }
 }
 
