@@ -1,8 +1,8 @@
 package com.example.b07project.adminPages.EventSetUp;
 
-import com.example.b07project.studentPages.Notifications;
+import java.io.Serializable;
 
-public class Event extends Notifications {
+public class Event implements Serializable {
     private String eventId;
     private String title;
     private String location;
@@ -103,7 +103,5 @@ public class Event extends Notifications {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getNotificationDate() { return eventDate; }
 }
 

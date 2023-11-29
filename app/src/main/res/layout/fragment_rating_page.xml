@@ -29,7 +29,7 @@
         android:id="@+id/Comments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Comments"
+        android:text="Feedback"
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_marginBottom="8dp"
