@@ -123,6 +123,8 @@ public class studentHomePage extends AppCompatActivity implements EventRecyclerI
 
                 //sorting announcements by latest date to earliest
                 Collections.sort(announcements, new DateComparator<>("dd-MM-yyyy"));
+                Collections.reverse(announcements);
+
 
                 // userIds now contains all the user IDs from the "users" node
                 // You can store, process, or use these IDs as needed
@@ -168,6 +170,7 @@ public class studentHomePage extends AppCompatActivity implements EventRecyclerI
 
                 //sorting events by latest date to earliest
                 Collections.sort(events, new DateComparator<>("dd-MM-yyyy"));
+                Collections.reverse(events);
 
                 // userIds now contains all the user IDs from the "users" node
                 // You can store, process, or use these IDs as needed

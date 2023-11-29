@@ -28,4 +28,5 @@ public class Announcement extends Notifications {
     }
     public String getPostDate() { return postTime; }
     public String getDescription(){ return description; }
+    public String getNotificationDate() { return postTime; }
 }
