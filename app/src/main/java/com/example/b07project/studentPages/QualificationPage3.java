@@ -85,7 +85,13 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
                     Ans.setQuestion3_index(0.0, i);
                 } else {
                     double actualgrade = Double.parseDouble(grade_list[i]);
-                    Ans.setQuestion3_index(actualgrade, i);
+                    if(actualgrade>4.0 || actualgrade<0.0){
+                        Toast toast = Toast.makeText(QualificationPage3.this, "GPA must be less than 4.0 and greater than 0.0!", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                    else {
+                        Ans.setQuestion3_index(actualgrade, i);
+                    }
                 }
             }
         } catch (NumberFormatException e) {
