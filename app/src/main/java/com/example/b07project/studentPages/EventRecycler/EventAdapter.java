@@ -57,10 +57,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         public MyViewHolder(@NonNull View itemView, EventRecyclerInterface Recycler_Interface) {
             super(itemView);
 
-            eventTime = itemView.findViewById(R.id.eventTime);
-            eventDate = itemView.findViewById(R.id.eventDate);
-            eventTitle = itemView.findViewById(R.id.eventTitle);
-            eventLocation = itemView.findViewById(R.id.eventLocation);
+            //change this part
+            //eventTime = itemView.findViewById(R.id.eventTime);
+            //eventDate = itemView.findViewById(R.id.eventDate);
+            //eventTitle = itemView.findViewById(R.id.eventTitle);
+            //eventLocation = itemView.findViewById(R.id.eventLocation);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

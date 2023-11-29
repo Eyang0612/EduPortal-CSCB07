@@ -70,8 +70,18 @@
             android:layout_weight="1"
             android:text="Annoucement" />
 
+        <Button
+            android:id="@+id/testButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_weight="1"
+            android:text="test event page" />
+
+
 
 
     </LinearLayout>
+
 
 </FrameLayout>
