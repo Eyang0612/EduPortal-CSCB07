@@ -17,10 +17,10 @@ import com.example.b07project.studentPages.QuestionAnswer.QA;
 
 
 public class QualificationPage3 extends AppCompatActivity implements View.OnClickListener {
-    TextView questionTextView, course1, course2, course3, course4, course5, course6;
-    Button submit, previous;
-    EditText grade1, grade2, grade3, grade4, grade5, grade6;
-    EvaluateAnswer Ans;
+    private TextView questionTextView, course1, course2, course3, course4, course5, course6;
+    private Button submit, previous, back;
+    private EditText grade1, grade2, grade3, grade4, grade5, grade6;
+    private EvaluateAnswer Ans;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +55,9 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
         grade5 = findViewById(R.id.text_5);
         grade6 =findViewById(R.id.text_6);
 
+        back = findViewById(R.id.back);
+        back.setOnClickListener(this);
+
 
 
         submit = findViewById(R.id.submit);
@@ -68,46 +71,62 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-
         Button clickedChoice = (Button) (v);
-        String[] grade_list = new String[6];
 
-        grade_list[0] = grade1.getText().toString();
-        grade_list[1] = grade2.getText().toString();
-        grade_list[2] = grade3.getText().toString();
-        grade_list[3] = grade4.getText().toString();
-        grade_list[4] = grade5.getText().toString();
-        grade_list[5] = grade6.getText().toString();
+        if (clickedChoice.getId() == R.id.submit) {
+            String[] grade_list = new String[6];
 
-        try {
-            for (int i = 0; i < 6; i++) {
-                if (TextUtils.isEmpty(grade_list[i])) {
-                    Ans.setQuestion3_index(0.0, i);
-                } else {
-                    double actualgrade = Double.parseDouble(grade_list[i]);
-                    if(actualgrade>4.0 || actualgrade<0.0){
-                        Toast toast = Toast.makeText(QualificationPage3.this, "GPA must be less than 4.0 and greater than 0.0!", Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                    else {
-                        Ans.setQuestion3_index(actualgrade, i);
+            try {
+                for (int i = 0; i < 6; i++) {
+                    grade_list[i] = getGradeText(i);
+
+                    if (TextUtils.isEmpty(grade_list[i])) {
+                        Ans.setQuestion3_index(0.0, i);
+                    } else {
+                        double actualGrade = Double.parseDouble(grade_list[i]);
+                        if (actualGrade < 4.0) {
+                            Toast toast = Toast.makeText(QualificationPage3.this, "Course grade must be less than 4.0!", Toast.LENGTH_SHORT);
+                            toast.show();
+                            return; // Stop further processing if grade is invalid
+                        } else {
+                            Ans.setQuestion3_index(actualGrade, i);
+                        }
                     }
                 }
-            }
-        } catch (NumberFormatException e) {
-            String errorMessage = "Invalid Number Format";
-            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
-        }
 
-        if(clickedChoice.getId()==R.id.submit) {
-            LoadNewPage();
-        }
-        else if (clickedChoice.getId()==R.id.previous){
+                // If all grades are valid, proceed to the next page
+                LoadNewPage();
+            } catch (NumberFormatException e) {
+                String errorMessage = "Invalid Number Format";
+                Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        } else if (clickedChoice.getId() == R.id.back) {
+            Intent intent = new Intent(QualificationPage3.this, studentHomePage.class);
+            startActivity(intent);
+        } else if (clickedChoice.getId() == R.id.previous) {
             Intent intent = new Intent(QualificationPage3.this, QualificationPage2.class);
             intent.putExtra("evaluateAnswer", Ans);
             startActivity(intent);
         }
+    }
 
+    private String getGradeText(int index) {
+        switch (index) {
+            case 0:
+                return grade1.getText().toString();
+            case 1:
+                return grade2.getText().toString();
+            case 2:
+                return grade3.getText().toString();
+            case 3:
+                return grade4.getText().toString();
+            case 4:
+                return grade5.getText().toString();
+            case 5:
+                return grade6.getText().toString();
+            default:
+                return "";
+        }
     }
 
     void loadQuestion2(){
