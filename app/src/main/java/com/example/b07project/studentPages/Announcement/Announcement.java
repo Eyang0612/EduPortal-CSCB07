@@ -1,6 +1,8 @@
 package com.example.b07project.studentPages.Announcement;
 
-public class Announcement {
+import com.example.b07project.studentPages.Notifications;
+
+public class Announcement extends Notifications {
     private String announcementId, userId, title, description, userName, postTime;
 
     public Announcement(String announcementId, String userId, String userName, String title, String description, String postTime){
@@ -24,6 +26,6 @@ public class Announcement {
     public String getTitle(){
         return title;
     }
-    public String getPostTime() { return postTime; }
+    public String getPostDate() { return postTime; }
     public String getDescription(){ return description; }
 }

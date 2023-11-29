@@ -1,6 +1,8 @@
 package com.example.b07project.adminPages.EventSetUp;
 
-public class Event {
+import com.example.b07project.studentPages.Notifications;
+
+public class Event extends Notifications {
     private String eventId;
     private String title;
     private String location;

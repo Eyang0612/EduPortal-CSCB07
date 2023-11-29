@@ -34,7 +34,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
     @Override
     public void onBindViewHolder(@NonNull AnnouncementAdapter.MyViewHolder holder, int position) {
         //assign values to the views, based on the position of our layout
-        holder.announcementPostTime.setText(announcements.get(position).getPostTime());
+        holder.announcementPostTime.setText(announcements.get(position).getPostDate());
         holder.announcementTitle.setText(announcements.get(position).getTitle());
         holder.announcementDescription.setText(announcements.get(position).getDescription());
 
