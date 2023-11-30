@@ -73,6 +73,8 @@ public class MainEventsActivity extends AppCompatActivity implements EventAdapte
     @Override
     public void onEventClick(Event event) {
         //put other redirect actions here
+        //Intent SingleEventintent = new Intent(MainEventsActivity.this, SingleEventActivity.class);
+        //SingleEventintent.putExtra(new Reservation())
         Toast.makeText(this, "Event Name: " + event.getTitle(), Toast.LENGTH_SHORT).show();
     }
 

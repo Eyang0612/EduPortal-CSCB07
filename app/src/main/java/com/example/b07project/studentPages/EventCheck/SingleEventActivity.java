@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.b07project.R;
+import com.example.b07project.studentPages.studentHomePage;
 
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,8 +25,8 @@ import android.widget.Toast;
 public class SingleEventActivity extends AppCompatActivity {
 
     private DatabaseReference eventsRef;
-    private Reservation res;
-
+    private String eventUid;
+    private String studentUid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +34,17 @@ public class SingleEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_single_event);
 
         // Retrieve the event UID from the intent
-        //String eventUid = getIntent().getStringExtra("eventUid");
-        //String studentUid = getIntent().getStringExtra("studentUid");
-        res = getIntent().getSerializableExtra("Reservation", Reservation.class);
+        eventUid = getIntent().getStringExtra("eventID");
+        studentUid = getIntent().getStringExtra("studentID");
+        //res = getIntent().getSerializableExtra("Reservation", Reservation.class);
 
 
         // Initialize Firebase Database reference
         eventsRef = FirebaseDatabase.getInstance().getReference().child("events");
 
         // Load and display event details
-        loadEventDetails(res.getEvent().getEventId());
-
+        loadEventDetails(eventUid);
+        checkReservationStatus();
         // Handle Reserve button click
         Button reserveButton = findViewById(R.id.reserveButton);
         reserveButton.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +52,6 @@ public class SingleEventActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Implement your logic when the Reserve button is clicked
                 // For example, you can add the user to the event or navigate to another page
-                String eventUid = res.getEvent().getEventId(); // Assuming you have access to the event UID
-                String studentUid = res.getStudent().getUserId(); // Replace with the actual student UID
 
                 reserveSeatInEvent(eventUid, studentUid);
                 createReservedNodeInStudent(eventUid,studentUid);
@@ -82,7 +81,7 @@ public class SingleEventActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     // Parse event details
                     String title = dataSnapshot.child("title").getValue(String.class);
-                    String publisher = dataSnapshot.child("publisher").getValue(String.class);
+                    String publisher = dataSnapshot.child("adminName").getValue(String.class);
                     String publishDate = dataSnapshot.child("postDate").getValue(String.class);
                     String eventDate = dataSnapshot.child("eventDate").getValue(String.class);
                     String eventTime = dataSnapshot.child("time").getValue(String.class);
@@ -100,6 +99,8 @@ public class SingleEventActivity extends AppCompatActivity {
 
                     // Display event details in your UI
                     displayEventDetails(title, publisher, publishDate,eventDate, eventTime, location, description, remainingSeats);
+
+                    updateButtonState(remainingSeats);
                 }
             }
 
@@ -129,10 +130,11 @@ public class SingleEventActivity extends AppCompatActivity {
 
     private void onBacktoMainEvents() {
         // Handle the click event to navigate to the sign-up page
-        Intent mainActivityIntent = new Intent(this, MainEventsActivity.class);
-        mainActivityIntent.putExtra("Reservation", res);
-        startActivity(mainActivityIntent);
-        finish();//finish current activity; (Sign in).
+        Intent studentHomePageIntent = new Intent(this, studentHomePage.class);
+        studentHomePageIntent.putExtra("eventID", eventUid);
+        studentHomePageIntent.putExtra("studentID", studentUid);
+        startActivity(studentHomePageIntent);
+        finish();
     }
 
     private void reserveSeatInEvent(String eventUid, String studentUid) {
@@ -157,6 +159,32 @@ public class SingleEventActivity extends AppCompatActivity {
             reserveButton.setBackgroundColor(ContextCompat.getColor(this, R.color.gray));
             reserveButton.setText("Reserved");
         }
+    }
+
+    private void updateButtonState(long remainingSeats) {
+        Button reserveButton = findViewById(R.id.reserveButton);
+
+        if (remainingSeats == 0) {
+            reserveButton.setEnabled(false);
+            reserveButton.setBackgroundColor(ContextCompat.getColor(this, R.color.gray));
+            reserveButton.setText("Fully Booked");
+        }
+    }
+
+    private void checkReservationStatus() {
+        DatabaseReference participantsRef = eventsRef.child(eventUid).child("Participants");
+        participantsRef.child(studentUid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                boolean reserved = dataSnapshot.exists();
+                updateButtonState(reserved);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(SingleEventActivity.this, "Firebase Error", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
