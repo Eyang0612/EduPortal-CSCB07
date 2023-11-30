@@ -18,11 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.b07project.LoginPage;
 import com.example.b07project.R;
+import com.example.b07project.User.Student;
 import com.example.b07project.adminPages.EventSetUp.Event;
 import com.example.b07project.studentPages.Announcement.Announcement;
 import com.example.b07project.studentPages.AnnouncementRecycler.AnnouncementAdapter;
 import com.example.b07project.studentPages.EventCheck.EventAdapter;
 import com.example.b07project.studentPages.EventCheck.MainEventsActivity;
+import com.example.b07project.studentPages.EventCheck.Reservation;
 import com.example.b07project.studentPages.EventCheck.SingleEventActivity;
 import com.example.b07project.studentPages.EventRecycler.EventRecyclerInterface;
 import com.google.android.material.button.MaterialButtonToggleGroup;
@@ -195,9 +197,13 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
 
     @Override
     public void onEventClick(Event e) {
-        //Intent intent = new Intent(studentHomePage.this, SingleEventActivity.class);
-        Toast.makeText(this, "Event Name: " + e.getTitle(), Toast.LENGTH_SHORT).show();
-        //startActivity(intent);
+        Intent intent = new Intent(studentHomePage.this, SingleEventActivity.class);
+        SharedPreferences p = getSharedPreferences("myprefs", Context.MODE_PRIVATE);
+        intent.putExtra("eventID", e.getEventId());
+        intent.putExtra("studentID", p.getString("userId", "No suitable studentID"));
+        //Toast.makeText(this, "Event Name: " + e.getTitle(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Student Name: " + p.getString("userID", "No suitable studentID"), Toast.LENGTH_SHORT).show();
+        startActivity(intent);
     }
 
 }
