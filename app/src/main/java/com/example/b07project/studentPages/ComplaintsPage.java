@@ -21,6 +21,10 @@ import com.example.b07project.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class ComplaintsPage extends AppCompatActivity {
 
@@ -83,6 +87,11 @@ public class ComplaintsPage extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("complaints");
 
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = dateFormat.format(currentDate);
+
         String complaintID = ref.push().getKey();
         SharedPreferences p = getSharedPreferences("myprefs",
                 Context.MODE_PRIVATE);
@@ -90,7 +99,7 @@ public class ComplaintsPage extends AppCompatActivity {
         String userName = p.getString("userName", "default_value");
         String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
-        Complaint complaint = new Complaint(complaintID, userId, userName, title, description);
+        Complaint complaint = new Complaint(complaintID, userId, userName, title, description, formattedDate);
 
         ref.child(complaintID).setValue(complaint);
 
