@@ -14,7 +14,7 @@
         android:theme="@style/Theme.B07Project"
         tools:targetApi="31">
         <activity
-            android:name=".studentPages.EventCheck.event_display_list"
+            android:name=".studentPages.EventCheck.SingleEventActivity"
             android:exported="false" />
         <activity
             android:name=".studentPages.EventCheck.MainEventsActivity"
