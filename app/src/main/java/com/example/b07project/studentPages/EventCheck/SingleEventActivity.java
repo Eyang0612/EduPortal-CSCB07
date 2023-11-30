@@ -33,16 +33,16 @@ public class SingleEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_single_event);
 
         // Retrieve the event UID from the intent
-        //String eventUid = getIntent().getStringExtra("eventUid");
-        //String studentUid = getIntent().getStringExtra("studentUid");
-        res = getIntent().getSerializableExtra("Reservation", Reservation.class);
+        String eventUid = getIntent().getStringExtra("eventID");
+        String studentUid = getIntent().getStringExtra("studentID");
+        //res = getIntent().getSerializableExtra("Reservation", Reservation.class);
 
 
         // Initialize Firebase Database reference
         eventsRef = FirebaseDatabase.getInstance().getReference().child("events");
 
         // Load and display event details
-        loadEventDetails(res.getEvent().getEventId());
+        loadEventDetails(eventUid);
 
         // Handle Reserve button click
         Button reserveButton = findViewById(R.id.reserveButton);
