@@ -70,8 +70,9 @@ public class adminComplaintPage extends AppCompatActivity implements RecyclerVie
                     String title = userSnapshot.child("title").getValue(String.class);
                     String userId = userSnapshot.child("userId").getValue(String.class);
                     String userName = userSnapshot.child("userName").getValue(String.class);
+                    String submissionTime = userSnapshot.child("submissionTime").getValue(String.class);
                     complaints.add(new Complaint(("Complaint " + complaintNum), userId,
-                            userName, title, description));
+                            userName, title, description, submissionTime));
 
                 }
 

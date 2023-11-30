@@ -1,14 +1,15 @@
 package com.example.b07project.studentPages.Complaint;
 
 public class Complaint {
-    private String complaintID, userId, userName, title, description;
+    private String complaintID, userId, userName, title, description, submissionTime;
 
-    public Complaint(String complaintID, String userId, String userName, String title, String description){
+    public Complaint(String complaintID, String userId, String userName, String title, String description, String submissionTime){
         this.complaintID = complaintID;
         this.userName = userName;
         this.userId = userId;
         this.title = title;
         this.description = description;
+        this.submissionTime = submissionTime;
     }
 
     public String getComplaintID(){
@@ -25,5 +26,8 @@ public class Complaint {
     }
     public String getDescription(){
         return description;
+    }
+    public String getSubmissionTime(){
+        return submissionTime;
     }
 }
