@@ -145,7 +145,7 @@ public class SingleEventActivity extends AppCompatActivity {
 
     private void createReservedNodeInStudent( String eventUid, String studentUid) {
         // Create a new node called "reservedNode" in the student's node and save the event UID in it
-        DatabaseReference studentRef = FirebaseDatabase.getInstance().getReference().child("students").child(studentUid);
+        DatabaseReference studentRef = FirebaseDatabase.getInstance().getReference().child("users").child(studentUid);
         DatabaseReference reservedNodeRef = studentRef.child("reservedEvent");
 
         reservedNodeRef.child(eventUid).setValue(true);

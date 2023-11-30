@@ -200,7 +200,7 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
         Intent intent = new Intent(studentHomePage.this, SingleEventActivity.class);
         SharedPreferences p = getSharedPreferences("myprefs", Context.MODE_PRIVATE);
         intent.putExtra("eventID", e.getEventId());
-        intent.putExtra("studentID", p.getString("userID", "No suitable studentID"));
+        intent.putExtra("studentID", p.getString("userId", "No suitable studentID"));
         //Toast.makeText(this, "Event Name: " + e.getTitle(), Toast.LENGTH_SHORT).show();
         //Toast.makeText(this, "Student Name: " + p.getString("userID", "No suitable studentID"), Toast.LENGTH_SHORT).show();
         startActivity(intent);

@@ -149,7 +149,7 @@ public class LoginPage extends AppCompatActivity {
         editor.putString("email", userEmail);
         editor.putString("userName", userName);
         editor.putString("userRole", userRole);
-        editor.putString("userID", uid);
+        editor.putString("userId", uid);
         editor.apply();
         startActivity(intent);
         finish(); // finish the current activity (login)
