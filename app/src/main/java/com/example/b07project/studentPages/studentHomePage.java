@@ -42,7 +42,7 @@ import java.util.Collections;
 public class studentHomePage extends AppCompatActivity implements com.example.b07project.studentPages.EventCheck.EventAdapter.EventClickListener {
 
     private Button buttonLogout, buttonComplaints, buttonPOST, buttonReview;
-    ToggleButton toggleButton;
+    MaterialButtonToggleGroup toggleGroup;
     ArrayList<Event> events;
     FirebaseDatabase db;
     DatabaseReference ref;
@@ -55,7 +55,8 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
         buttonComplaints = findViewById(R.id.complaintsPageNavButton);
         buttonPOST = findViewById(R.id.POSTNavButton);
         buttonReview = findViewById(R.id.reviewButton);
-        toggleButton = findViewById(R.id.toggleButton);
+        toggleGroup = findViewById(R.id.toggleGroup);
+        toggleGroup.check(R.id.announcementsButton);
         setAnnouncements();
 
         buttonComplaints.setOnClickListener(new View.OnClickListener() {
@@ -100,16 +101,15 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
             }
         });
 
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            // If announcement is chosen, changes recycler view to display announcements. If not,
-            // changes recycler view to display events
+        toggleGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // Update the RecyclerView based on the toggle state
+            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
                 if (isChecked) {
-                    setAnnouncements();
-                } else {
-                    setEvents();
+                    if (checkedId == R.id.announcementsButton) {
+                        setAnnouncements();
+                    } else if (checkedId == R.id.eventsButton) {
+                        setEvents();
+                    }
                 }
             }
         });
