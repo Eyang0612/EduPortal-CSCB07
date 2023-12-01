@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.b07project.R;
+import com.example.b07project.adminPages.EventReviews.AdminEventReviewActivity;
 import com.example.b07project.adminPages.adminHomePage;
 import com.example.b07project.studentPages.EventCheck.EventAdapter;
 import com.example.b07project.studentPages.Review.EventRating;
@@ -92,10 +93,11 @@ public class AdminEventDisplayActivity extends AppCompatActivity implements Even
 
     @Override
     public void onEventClick(Event event) {
-        //put other redirect actions here
-        //Intent SingleEventintent = new Intent(MainEventsActivity.this, SingleEventActivity.class);
-        //SingleEventintent.putExtra(new Reservation())
         Toast.makeText(this, "Event Name: " + event.getTitle(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(AdminEventDisplayActivity.this, AdminEventReviewActivity.class);
+        intent.putExtra("EventID", event.getEventId());
+        intent.putExtra("EventName", event.getTitle());
+        startActivity(intent);
     }
 
     //@Override
