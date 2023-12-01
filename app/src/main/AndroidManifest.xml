@@ -37,6 +37,7 @@
         <activity android:name=".studentPages.ComplaintsPage" />
         <activity android:name=".studentPages.student_page_test" />
         <activity android:name=".adminPages.EventSetUp.EventSetupPageActivity" />
+        <activity android:name=".studentPages.Review.EventRating"/>
         <activity
             android:name=".LoginPage"
             android:exported="true">
