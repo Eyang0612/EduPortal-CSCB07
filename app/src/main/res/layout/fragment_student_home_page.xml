@@ -49,14 +49,28 @@
             android:text="Notifications:\nToggle to display newest Announcements or Events"/>
 
 
-    <ToggleButton
-        android:id="@+id/toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textOn="Announcements"
-        android:textOff="Events"
-        android:checked="true"
-        android:layout_gravity="center_horizontal"/>
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/toggleGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/announcementsButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Announcements" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/eventsButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Events" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

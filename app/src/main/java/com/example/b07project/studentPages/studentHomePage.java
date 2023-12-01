@@ -42,6 +42,7 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
 
     private Button buttonLogout, buttonComplaints, buttonPOST;
     ToggleButton toggleButton;
+    MaterialButtonToggleGroup toggleGroup;
     ArrayList<Event> events;
     FirebaseDatabase db;
     DatabaseReference ref;
@@ -53,7 +54,8 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
         buttonLogout = findViewById(R.id.logoutNavButton);
         buttonComplaints = findViewById(R.id.complaintsPageNavButton);
         buttonPOST = findViewById(R.id.POSTNavButton);
-        toggleButton = findViewById(R.id.toggleButton);
+        toggleGroup = findViewById(R.id.toggleGroup);
+        toggleGroup.check(R.id.announcementsButton);
         setAnnouncements();
 
         buttonComplaints.setOnClickListener(new View.OnClickListener() {
@@ -89,15 +91,11 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
             }
         });
 
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            // If announcement is chosen, changes recycler view to display announcements. If not,
-            // changes recycler view to display events
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // Update the RecyclerView based on the toggle state
-                if (isChecked) {
+        toggleGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+            if (isChecked) {
+                if (checkedId == R.id.announcementsButton) {
                     setAnnouncements();
-                } else {
+                } else if (checkedId == R.id.eventsButton) {
                     setEvents();
                 }
             }
