@@ -39,6 +39,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.MyVi
         holder.complaintId.setText(complaints.get(position).getComplaintID());
         holder.complaintTitle.setText(complaints.get(position).getTitle());
         holder.complaintUserName.setText(complaints.get(position).getUserName());
+        holder.complaintTime.setText(complaints.get(position).getSubmissionTime());
 
 
     }
@@ -51,7 +52,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.MyVi
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView complaintId, complaintTitle, complaintUserName;
+        TextView complaintId, complaintTitle, complaintUserName, complaintTime;
 
         public MyViewHolder(@NonNull View itemView, RecyclerViewInterface Recycler_Interface) {
             super(itemView);
@@ -59,6 +60,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.MyVi
             complaintId = itemView.findViewById(R.id.complaintId);
             complaintTitle = itemView.findViewById(R.id.complaintTitle);
             complaintUserName = itemView.findViewById(R.id.name);
+            complaintTime = itemView.findViewById(R.id.complaintTime);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
