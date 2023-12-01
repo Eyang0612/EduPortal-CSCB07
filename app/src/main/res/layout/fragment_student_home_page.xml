@@ -32,11 +32,18 @@
             android:text="POST" />
 
         <Button
+            android:id="@+id/reviewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Submit Review" />
+
+        <Button
             android:id="@+id/logoutNavButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Logout" />
+            android:text="Log out" />
 
 
     </LinearLayout>
