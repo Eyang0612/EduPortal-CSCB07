@@ -15,17 +15,14 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.b07project.LoginPage;
 import com.example.b07project.R;
 import com.example.b07project.adminPages.adminHomePage;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -35,6 +32,8 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
     EditText txtDate, txtTime, edtTitle, edtLocation, edtLimit, edtDescription;
     private int mYear, mMonth, mDay, mHour, mMinute;
     private DatabaseReference databaseReference;
+
+    boolean isCurrentDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +49,12 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         // Finding texts to add to db
         txtDate = findViewById(R.id.in_date);
         txtTime = findViewById(R.id.in_time);
+        //for date and time, do not allow user to input data directly
+        txtDate.setEnabled(false);
+        txtDate.setFocusable(false);
+        txtTime.setEnabled(false);
+        txtTime.setFocusable(false);
+
         edtTitle = findViewById(R.id.etTitle);
         edtLocation = findViewById(R.id.etLocation);
         edtLimit = findViewById(R.id.etLimit);
@@ -91,16 +96,36 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
 
                         if (year > mYear ||
                                 (year == mYear && monthOfYear > mMonth) ||
-                                (year == mYear && monthOfYear == mMonth && dayOfMonth >= mDay)) {
+                                (year == mYear && monthOfYear == mMonth && dayOfMonth > mDay)) {
 
                             // Update the TextView with the selected date
                             txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
+                            isCurrentDate = false;
                             // If the date is valid, you can also show a TimePickerDialog or perform other actions.
                             // For simplicity, the TimePickerDialog is not included in this example.
-                        } else {
+                            // check if its the event is schedule in the current date
+                        } else if(year == mYear && monthOfYear == mMonth && dayOfMonth == mDay){
+                            //check if time is empty, if yes then make a note
+                            if (txtTime.getText().toString().isEmpty()){
+                                isCurrentDate = true;
+                            }else{
+                                //if time is not empty, check if current time is in the future
+                                int inputHour = Integer.parseInt(txtTime.getText().toString().substring(0, 2));
+                                int inputMinute = Integer.parseInt(txtTime.getText().toString().substring(3));
+                                //if time is in the past for current date, then tell them to reselect time or date
+                                if(inputHour< mHour | (inputHour>= mHour && inputMinute < mMinute)){
+                                    Toast.makeText(EventSetupPageActivity.this, "Please select a future time for today's event or choose another date!", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    //if date is current date and time is in the future, then add date
+                                    txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                                }
+                            }
+
+                        }
+                        else {
                             // Show an error message or handle the invalid date as needed
                             Toast.makeText(EventSetupPageActivity.this, "Please select a future date for the event!.", Toast.LENGTH_SHORT).show();
+                            isCurrentDate = false;
                         }
 
                     }
@@ -121,7 +146,19 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
-                        if(minute <10){
+                        if(isCurrentDate){
+                            //if date is current date and time is in the past, then tell them to reschedule
+                            if(hourOfDay< mHour | (hourOfDay>= mHour && minute < mMinute)){
+                                Toast.makeText(EventSetupPageActivity.this, "Please select a future time for today's event or choose another date!", Toast.LENGTH_SHORT).show();
+                            }else{
+                                if(minute <10){
+                                    txtTime.setText(hourOfDay + ":0" + minute);
+                                }else{
+                                    txtTime.setText(hourOfDay + ":" + minute);
+                                }
+                            }
+                        }
+                        else if(minute <10){
                             txtTime.setText(hourOfDay + ":0" + minute);
                         }else{
                             txtTime.setText(hourOfDay + ":" + minute);
