@@ -14,6 +14,9 @@
         android:theme="@style/Theme.B07Project"
         tools:targetApi="31">
         <activity
+            android:name=".studentPages.Review.ReviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".studentPages.EventCheck.SingleEventActivity"
             android:exported="false" />
         <activity
@@ -33,7 +36,12 @@
         <activity android:name=".studentPages.QualificationPage4" />
         <activity android:name=".studentPages.ComplaintsPage" />
         <activity android:name=".studentPages.student_page_test" />
+
+       
+        <activity android:name=".adminPages.EventSetUp.AdminEventDisplayActivity" />
         <activity android:name=".adminPages.EventSetUp.EventSetupPageActivity" />
+        <activity android:name=".studentPages.Review.EventRating"/>
+        <activity android:name=".adminPages.EventReviews.AdminEventReviewActivity" />
         <activity
             android:name=".LoginPage"
             android:exported="true">

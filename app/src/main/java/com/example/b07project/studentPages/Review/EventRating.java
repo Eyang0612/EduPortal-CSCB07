@@ -95,15 +95,17 @@ public class EventRating extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("events");
 
-        String reviewID = ref.child(event.getEventId()).child("reviews").push().getKey();
+        String eventID = event.getEventId();
+        String reviewID = ref.child(eventID).child("Reviews").push().getKey();
         SharedPreferences p = getSharedPreferences("myprefs",
                 Context.MODE_PRIVATE);
         String userId = p.getString("userId", "default_value");
         String userName = p.getString("userName", "default_value");
         String comments = editTextComments.getText().toString();
+        if (comments.trim().isEmpty() || comments == null){ comments = "";}
         Review review = new Review(reviewID, userName, userId, ratevalue, comments);
 
-        ref.child(reviewID).setValue(review);
+        ref.child(eventID).child("Reviews").child(reviewID).setValue(review);
 
         showSubmittedAlertDialog();
     }

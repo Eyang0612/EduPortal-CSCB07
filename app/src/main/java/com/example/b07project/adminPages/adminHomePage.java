@@ -11,17 +11,18 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.b07project.R;
+import com.example.b07project.adminPages.EventSetUp.AdminEventDisplayActivity;
 import com.example.b07project.adminPages.EventSetUp.EventSetupPageActivity;
 import com.example.b07project.adminPages.adminComplaintPage;
 import com.example.b07project.studentPages.EventCheck.MainEventsActivity;
 import com.example.b07project.studentPages.QualificationPage2;
 import com.example.b07project.studentPages.QualificationPage3;
 import com.example.b07project.LoginPage;
-import com.example.b07project.studentPages.studentHomePage;
+
 
 public class adminHomePage extends AppCompatActivity{
     private TextView Name, Email, Role;
-    private Button ComplaintButton, EventButton, AnnounceButton;
+    private Button ComplaintButton, AnnounceButton, LogoutButton;
     //test button to display events page
 
     private Button testButton;
@@ -35,15 +36,31 @@ public class adminHomePage extends AppCompatActivity{
         Email = findViewById(R.id.userEmailTextView);
         Role = findViewById(R.id.userRoleTextView);
         ComplaintButton = findViewById(R.id.CheckComplaint);
-        EventButton = findViewById(R.id.AddEvent);
         AnnounceButton = findViewById(R.id.AddAnnoucement);
+        LogoutButton = findViewById(R.id.Logout);
+        LogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(adminHomePage.this, LoginPage.class);
+                SharedPreferences p = getSharedPreferences("myprefs",
+                        Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = p.edit();
+
+                // Clear all data
+                editor.clear();
+
+                // Apply changes
+                editor.apply();
+                startActivity(intent);
+            }
+        });
 
         //test code below
         testButton=findViewById(R.id.testButton);
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(adminHomePage.this, MainEventsActivity.class);
+                Intent intent = new Intent(adminHomePage.this, AdminEventDisplayActivity.class);
                 //intent.putExtra("userName", getIntent().getStringExtra("userName"));
                 startActivity(intent);
             }
@@ -58,13 +75,7 @@ public class adminHomePage extends AppCompatActivity{
         Name.setText(p.getString("userName", "default_value"));
         Email.setText(p.getString("email", "default_value"));
         Role.setText(p.getString("userRole", "default_value"));
-        EventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(adminHomePage.this, EventSetupPageActivity.class);
-                startActivity(intent);
-            }
-        });
+
         ComplaintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

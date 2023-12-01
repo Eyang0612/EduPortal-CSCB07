@@ -40,19 +40,20 @@
         android:text="Role"
         android:layout_marginTop="40dp" />
 
+    <Button
+        android:id="@+id/Logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:text="Logout" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <Button
-            android:id="@+id/AddEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_weight="1"
-            android:text="Event" />
 
         <Button
             android:id="@+id/CheckComplaint"
@@ -76,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:layout_weight="1"
-            android:text="test event page" />
+            android:text="Events" />
 
 
 

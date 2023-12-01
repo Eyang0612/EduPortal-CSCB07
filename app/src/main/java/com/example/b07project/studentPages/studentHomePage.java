@@ -27,6 +27,7 @@ import com.example.b07project.studentPages.EventCheck.MainEventsActivity;
 import com.example.b07project.studentPages.EventCheck.Reservation;
 import com.example.b07project.studentPages.EventCheck.SingleEventActivity;
 import com.example.b07project.studentPages.EventRecycler.EventRecyclerInterface;
+import com.example.b07project.studentPages.Review.ReviewActivity;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,8 +41,8 @@ import java.util.Collections;
 
 public class studentHomePage extends AppCompatActivity implements com.example.b07project.studentPages.EventCheck.EventAdapter.EventClickListener {
 
-    private Button buttonLogout, buttonComplaints, buttonPOST;
-    ToggleButton toggleButton;
+    private Button buttonLogout, buttonComplaints, buttonPOST, buttonReview;
+    MaterialButtonToggleGroup toggleGroup;
     ArrayList<Event> events;
     FirebaseDatabase db;
     DatabaseReference ref;
@@ -53,7 +54,9 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
         buttonLogout = findViewById(R.id.logoutNavButton);
         buttonComplaints = findViewById(R.id.complaintsPageNavButton);
         buttonPOST = findViewById(R.id.POSTNavButton);
-        toggleButton = findViewById(R.id.toggleButton);
+        buttonReview = findViewById(R.id.reviewButton);
+        toggleGroup = findViewById(R.id.toggleGroup);
+        toggleGroup.check(R.id.announcementsButton);
         setAnnouncements();
 
         buttonComplaints.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +66,15 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
                 startActivity(intent);
             }
         });
+
+        buttonReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(studentHomePage.this, ReviewActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         buttonPOST.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,16 +101,15 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
             }
         });
 
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            // If announcement is chosen, changes recycler view to display announcements. If not,
-            // changes recycler view to display events
+        toggleGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // Update the RecyclerView based on the toggle state
+            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
                 if (isChecked) {
-                    setAnnouncements();
-                } else {
-                    setEvents();
+                    if (checkedId == R.id.announcementsButton) {
+                        setAnnouncements();
+                    } else if (checkedId == R.id.eventsButton) {
+                        setEvents();
+                    }
                 }
             }
         });
