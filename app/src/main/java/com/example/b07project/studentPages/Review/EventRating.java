@@ -102,6 +102,7 @@ public class EventRating extends AppCompatActivity {
         String userId = p.getString("userId", "default_value");
         String userName = p.getString("userName", "default_value");
         String comments = editTextComments.getText().toString();
+        if (comments.trim().isEmpty() || comments == null){ comments = "";}
         Review review = new Review(reviewID, userName, userId, ratevalue, comments);
 
         ref.child(eventID).child("Reviews").child(reviewID).setValue(review);

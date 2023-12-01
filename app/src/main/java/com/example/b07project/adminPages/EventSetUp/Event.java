@@ -1,6 +1,7 @@
 package com.example.b07project.adminPages.EventSetUp;
 
 import com.example.b07project.studentPages.Notifications;
+import com.example.b07project.studentPages.Review.Review;
 
 import java.io.Serializable;
 
@@ -16,6 +17,7 @@ public class Event extends Notifications implements Serializable {
     private String description;
 
     private String postDate;
+
 
     // Default constructor (needed for Firebase)
     public Event() {

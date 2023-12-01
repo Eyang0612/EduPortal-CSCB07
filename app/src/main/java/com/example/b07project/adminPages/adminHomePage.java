@@ -18,11 +18,11 @@ import com.example.b07project.studentPages.EventCheck.MainEventsActivity;
 import com.example.b07project.studentPages.QualificationPage2;
 import com.example.b07project.studentPages.QualificationPage3;
 import com.example.b07project.LoginPage;
-import com.example.b07project.studentPages.studentHomePage;
+
 
 public class adminHomePage extends AppCompatActivity{
     private TextView Name, Email, Role;
-    private Button ComplaintButton, AnnounceButton;
+    private Button ComplaintButton, AnnounceButton, LogoutButton;
     //test button to display events page
 
     private Button testButton;
@@ -37,6 +37,23 @@ public class adminHomePage extends AppCompatActivity{
         Role = findViewById(R.id.userRoleTextView);
         ComplaintButton = findViewById(R.id.CheckComplaint);
         AnnounceButton = findViewById(R.id.AddAnnoucement);
+        LogoutButton = findViewById(R.id.Logout);
+        LogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(adminHomePage.this, LoginPage.class);
+                SharedPreferences p = getSharedPreferences("myprefs",
+                        Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = p.edit();
+
+                // Clear all data
+                editor.clear();
+
+                // Apply changes
+                editor.apply();
+                startActivity(intent);
+            }
+        });
 
         //test code below
         testButton=findViewById(R.id.testButton);
