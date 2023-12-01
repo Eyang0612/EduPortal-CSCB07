@@ -27,6 +27,7 @@ import com.example.b07project.studentPages.EventCheck.MainEventsActivity;
 import com.example.b07project.studentPages.EventCheck.Reservation;
 import com.example.b07project.studentPages.EventCheck.SingleEventActivity;
 import com.example.b07project.studentPages.EventRecycler.EventRecyclerInterface;
+import com.example.b07project.studentPages.Review.ReviewActivity;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,7 +41,7 @@ import java.util.Collections;
 
 public class studentHomePage extends AppCompatActivity implements com.example.b07project.studentPages.EventCheck.EventAdapter.EventClickListener {
 
-    private Button buttonLogout, buttonComplaints, buttonPOST;
+    private Button buttonLogout, buttonComplaints, buttonPOST, buttonReview;
     ToggleButton toggleButton;
     ArrayList<Event> events;
     FirebaseDatabase db;
@@ -53,6 +54,7 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
         buttonLogout = findViewById(R.id.logoutNavButton);
         buttonComplaints = findViewById(R.id.complaintsPageNavButton);
         buttonPOST = findViewById(R.id.POSTNavButton);
+        buttonReview = findViewById(R.id.reviewButton);
         toggleButton = findViewById(R.id.toggleButton);
         setAnnouncements();
 
@@ -63,6 +65,15 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
                 startActivity(intent);
             }
         });
+
+        buttonReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(studentHomePage.this, ReviewActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         buttonPOST.setOnClickListener(new View.OnClickListener() {
             @Override
