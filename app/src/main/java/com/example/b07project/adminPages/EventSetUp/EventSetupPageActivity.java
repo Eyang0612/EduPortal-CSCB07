@@ -71,7 +71,7 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         } else if (v == btnSubmit) {
             uploadEventData();
         } else if (v== btnBack) {
-            onBacktoHomePage();
+            onBacktoEventPage();
         }
     }
 
@@ -193,9 +193,9 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         return userName;
     }
 
-    private void onBacktoHomePage() {
+    private void onBacktoEventPage() {
         // Handle the click event to navigate to the sign-up page
-        Intent homePage = new Intent(this, adminHomePage.class);
+        Intent homePage = new Intent(this, AdminEventDisplayActivity.class);
         startActivity(homePage);
         finish();//finish current activity; (Sign in).
     }
