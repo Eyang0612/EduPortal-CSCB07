@@ -47,14 +47,6 @@
 
 
         <Button
-            android:id="@+id/AddEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_weight="1"
-            android:text="Event" />
-
-        <Button
             android:id="@+id/CheckComplaint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:layout_weight="1"
-            android:text="test event page" />
+            android:text="Events" />
 
 
 
