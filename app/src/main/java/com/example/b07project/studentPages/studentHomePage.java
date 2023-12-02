@@ -154,7 +154,7 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
     }
 
     private void setEvents(){
-        Toast.makeText(this, "pass", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "pass", Toast.LENGTH_SHORT).show();
         RecyclerView recyclerView;
         DatabaseReference database;
         EventAdapter myAdapter;

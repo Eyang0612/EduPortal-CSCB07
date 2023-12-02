@@ -17,14 +17,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginModel implements Contract.Model{
-    private Contract.Presenter mainPresenter;
+public class LoginModel{
+    //private LoginPresenter mainPresenter;
     FirebaseAuth mAuth;
     //Constructor for model to interact with presenter
-    public LoginModel(Contract.Presenter mainPresenter){
-        this.mainPresenter=mainPresenter;
-    }
-    public void checkLogin(String email, String password) {
+    //public LoginModel(LoginPresenter mainPresenter){
+    //    this.mainPresenter=mainPresenter;
+    //}
+    public void checkLogin(String email, String password, LoginPresenter mainPresenter) {
         mAuth = FirebaseAuth.getInstance();
 
         mAuth.signInWithEmailAndPassword(email, password)
@@ -33,9 +33,10 @@ public class LoginModel implements Contract.Model{
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // If authentication is successful, you can navigate to another activity
-                            mainPresenter.onLoginSuccess();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            fetchAndDisplayUserData(user.getUid());
+                            mainPresenter.onLoginSuccess(user.getUid());
+
+                            //fetchAndDisplayUserData(user.getUid());
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -46,7 +47,7 @@ public class LoginModel implements Contract.Model{
                 });
     }
 
-    public void fetchAndDisplayUserData(String uid) {
+    public void fetchAndDisplayUserData(String uid, LoginPresenter mainPresenter) {
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -57,7 +58,9 @@ public class LoginModel implements Contract.Model{
                     String userEmail = dataSnapshot.child("email").getValue(String.class);
                     String userRole = dataSnapshot.child("role").getValue(String.class);
 
-                    redirectHomePage(userEmail, userName, userRole, uid);
+                    mainPresenter.userFound(userEmail, userName, userRole, uid);
+
+                    //redirectHomePage(userEmail, userName, userRole, uid);
                 }
             }
 
@@ -68,7 +71,7 @@ public class LoginModel implements Contract.Model{
         });
     }
 
-    public void redirectHomePage(String userEmail, String userName, String userRole, String uid){
+    public void redirectHomePage(String userEmail, String userName, String userRole, String uid, LoginPresenter mainPresenter){
         SharedPreferences p = mainPresenter.fetchContext();
         SharedPreferences.Editor editor = p.edit();
         editor.putString("email", userEmail);
