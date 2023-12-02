@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.b07project.LoginPage;
+import com.example.b07project.Login.LoginPage;
 import com.example.b07project.R;
 
 import java.util.ArrayList;
