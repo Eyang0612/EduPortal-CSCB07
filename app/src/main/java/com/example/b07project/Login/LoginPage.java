@@ -62,7 +62,7 @@ public class LoginPage extends AppCompatActivity{
         signUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onSignUpClick();
+                switchToSignup();
             }
         });
     }
@@ -89,8 +89,8 @@ public class LoginPage extends AppCompatActivity{
         finish();
     }
     //@Override
-    public void showErrorText(String err){
-        Toast.makeText(LoginPage.this, err+" Cannot Be Empty!", Toast.LENGTH_SHORT).show();
+    public void displayText(String message){
+        Toast.makeText(LoginPage.this, message, Toast.LENGTH_SHORT).show();
     }
     //@Override
     public String findEmailEditText(){
@@ -105,13 +105,5 @@ public class LoginPage extends AppCompatActivity{
         return getSharedPreferences("myprefs", Context.MODE_PRIVATE);
     }
 
-    //@Override
-    public void printLoginSuccessful(){
-        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-    }
 
-    //@Override
-    public void printLoginFailed(){
-        Toast.makeText(getApplicationContext(), "Incorrect Password Entered or Username Does Not Exist!", Toast.LENGTH_SHORT).show();
-    }
 }
