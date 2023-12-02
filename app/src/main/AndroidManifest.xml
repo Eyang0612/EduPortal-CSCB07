@@ -43,7 +43,7 @@
         <activity android:name=".studentPages.Review.EventRating"/>
         <activity android:name=".adminPages.EventReviews.AdminEventReviewActivity" />
         <activity
-            android:name=".LoginPage"
+            android:name=".Login.LoginPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

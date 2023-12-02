@@ -90,12 +90,11 @@ public class AdminEventReviewActivity extends AppCompatActivity{
 
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         count++;
-                        String reviewID = dataSnapshot.child("reviewID").getValue(String.class);
                         String userName = dataSnapshot.child("userName").getValue(String.class);
                         String userID = dataSnapshot.child("userId").getValue(String.class);
                         double ratingValue = dataSnapshot.child("ratingValue").getValue(double.class);
                         String comments = dataSnapshot.child("comments").getValue(String.class);
-                        Review eList = new Review(reviewID,userName,userID, ratingValue, comments);
+                        Review eList = new Review(userName,userID, ratingValue, comments);
                         list.add(eList);
                         totalRating += eList.getratingValue();
                     }

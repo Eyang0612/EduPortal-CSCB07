@@ -12,12 +12,7 @@ import android.widget.TextView;
 
 import com.example.b07project.R;
 import com.example.b07project.adminPages.EventSetUp.AdminEventDisplayActivity;
-import com.example.b07project.adminPages.EventSetUp.EventSetupPageActivity;
-import com.example.b07project.adminPages.adminComplaintPage;
-import com.example.b07project.studentPages.EventCheck.MainEventsActivity;
-import com.example.b07project.studentPages.QualificationPage2;
-import com.example.b07project.studentPages.QualificationPage3;
-import com.example.b07project.LoginPage;
+import com.example.b07project.Login.LoginPage;
 
 
 public class adminHomePage extends AppCompatActivity{
