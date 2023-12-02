@@ -34,14 +34,14 @@ public class LoginModel{
                         if (task.isSuccessful()) {
                             // If authentication is successful, you can navigate to another activity
                             FirebaseUser user = mAuth.getCurrentUser();
-                            mainPresenter.onLoginSuccess(user.getUid());
+                            mainPresenter.onLogin(user.getUid());
 
                             //fetchAndDisplayUserData(user.getUid());
 
                         } else {
                             // If sign in fails, display a message to the user.
                             //maybe put this to loginpresenter for better MVP logic
-                            mainPresenter.onLoginFailed();
+                            mainPresenter.onLogin("");
                         }
                     }
                 });
@@ -79,10 +79,6 @@ public class LoginModel{
         editor.putString("userRole", userRole);
         editor.putString("userId", uid);
         editor.apply();
-        if(userRole.equals("Student")){
-            mainPresenter.signalSwitchToStudent();
-        }else {
-            mainPresenter.signalSwitchToAdmin();
-        }
+        mainPresenter.checkRole(userRole);
     }
 }

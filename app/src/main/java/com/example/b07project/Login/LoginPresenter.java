@@ -61,32 +61,27 @@ public class LoginPresenter{
         String password = mainView.findPasswordEditText();
         if (TextUtils.isEmpty(email)){
             mainView.showErrorText("Email");
-            return;
-        }
-        if (TextUtils.isEmpty(password)){
+
+        }else if (TextUtils.isEmpty(password)){
             mainView.showErrorText("Password");
-            return;
-        }
-        if (model!=null){
+
+        }else {
             model.checkLogin(email, password, this);
         }
 
     }
 
     //@Override
-    public void onLoginSuccess(String uid){
-        if (mainView!=null){
+    public void onLogin(String uid){
+        if (!(uid.equals(""))){
             mainView.printLoginSuccessful();
-        }
-        model.fetchAndDisplayUserData(uid, this);
-    }
-
-    //@Override
-    public void onLoginFailed(){
-        if (mainView!=null){
+            model.fetchAndDisplayUserData(uid, this);
+        }else{
             mainView.printLoginFailed();
         }
+
     }
+
 
     public void userFound(String userEmail, String userName, String userRole, String uid){
         model.redirectHomePage(userEmail, userName, userRole, uid, this);
@@ -96,17 +91,15 @@ public class LoginPresenter{
         return mainView.getCont();
     }
     //@Override
-    public void signalSwitchToStudent(){
-        if (mainView!=null){
+    public void checkRole(String userRole){
+        if (userRole.equals("Student")){
             mainView.switchToStudentHomePage();
-        }
-    }
-    //@Override
-    public void signalSwitchToAdmin(){
-        if (mainView!=null){
+        }else {
             mainView.switchToAdminHomePage();
         }
     }
-
-
 }
+
+
+
+
