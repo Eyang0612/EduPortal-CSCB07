@@ -33,10 +33,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class LoginPage extends AppCompatActivity implements Contract.View {
+public class LoginPage extends AppCompatActivity{
 
     private EditText editTextEmail, editTextPassword;
-    Contract.Presenter presenter;
+    LoginPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +46,7 @@ public class LoginPage extends AppCompatActivity implements Contract.View {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
 
-        presenter = new LoginPresenter(this);
+        presenter = new LoginPresenter(this, new LoginModel());
 
         // Find the Login button
         Button loginButton = findViewById(R.id.buttonLogin);
@@ -67,50 +67,50 @@ public class LoginPage extends AppCompatActivity implements Contract.View {
         });
     }
 
-    @Override
+    //@Override
     public void switchToSignup(){
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, SignUpPage.class);
         startActivity(signUpIntent);
         finish();
     }
-    @Override
+    //@Override
     public void switchToStudentHomePage(){
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, studentHomePage.class);
         startActivity(signUpIntent);
         finish();
     }
-    @Override
+    //@Override
     public void switchToAdminHomePage(){
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, adminHomePage.class);
         startActivity(signUpIntent);
         finish();
     }
-    @Override
+    //@Override
     public void showErrorText(String err){
         Toast.makeText(LoginPage.this, err+" Cannot Be Empty!", Toast.LENGTH_SHORT).show();
     }
-    @Override
+    //@Override
     public String findEmailEditText(){
         return editTextEmail.getText().toString().trim();
     }
-    @Override
+    //@Override
     public String findPasswordEditText(){
         return editTextPassword.getText().toString().trim();
     }
-    @Override
+    //@Override
     public SharedPreferences getCont(){
         return getSharedPreferences("myprefs", Context.MODE_PRIVATE);
     }
 
-    @Override
+    //@Override
     public void printLoginSuccessful(){
         Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
+    //@Override
     public void printLoginFailed(){
         Toast.makeText(getApplicationContext(), "Incorrect Password Entered or Username Does Not Exist!", Toast.LENGTH_SHORT).show();
     }

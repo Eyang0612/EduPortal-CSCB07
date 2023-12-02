@@ -36,25 +36,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginPresenter implements Contract.Presenter{
+public class LoginPresenter{
     // creating object of View Interface
-    private Contract.View mainView;
+    private LoginPage mainView;
 
     // creating object of Model Interface
-    private Contract.Model model;
+    private LoginModel model;
 
     // instantiating the objects of View and Model Interface
-    public LoginPresenter(Contract.View mainView) {
+    public LoginPresenter(LoginPage mainView, LoginModel model) {
         this.mainView = mainView;
-        this.model = new LoginModel(this);
+        this.model = model;
     }
-    @Override
+    //@Override
     public void onSignUpClick() {
         if (mainView != null){
             mainView.switchToSignup();
         }
     }
-    @Override
+    //@Override
     public void onLoginClick(){
         //mAuth = FirebaseAuth.getInstance();
         String email = mainView.findEmailEditText();
@@ -68,35 +68,40 @@ public class LoginPresenter implements Contract.Presenter{
             return;
         }
         if (model!=null){
-            model.checkLogin(email, password);
+            model.checkLogin(email, password, this);
         }
 
     }
 
-    @Override
-    public void onLoginSuccess(){
+    //@Override
+    public void onLoginSuccess(String uid){
         if (mainView!=null){
             mainView.printLoginSuccessful();
         }
+        model.fetchAndDisplayUserData(uid, this);
     }
 
-    @Override
+    //@Override
     public void onLoginFailed(){
         if (mainView!=null){
             mainView.printLoginFailed();
         }
     }
-    @Override
+
+    public void userFound(String userEmail, String userName, String userRole, String uid){
+        model.redirectHomePage(userEmail, userName, userRole, uid, this);
+    }
+    //@Override
     public SharedPreferences fetchContext(){
         return mainView.getCont();
     }
-    @Override
+    //@Override
     public void signalSwitchToStudent(){
         if (mainView!=null){
             mainView.switchToStudentHomePage();
         }
     }
-    @Override
+    //@Override
     public void signalSwitchToAdmin(){
         if (mainView!=null){
             mainView.switchToAdminHomePage();
