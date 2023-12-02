@@ -46,7 +46,7 @@ public class LoginPresenter implements Contract.Presenter{
     // instantiating the objects of View and Model Interface
     public LoginPresenter(Contract.View mainView) {
         this.mainView = mainView;
-        this.model = new LoginModel(mainView);
+        this.model = new LoginModel(this);
     }
     @Override
     public void onSignUpClick() {
@@ -71,6 +71,36 @@ public class LoginPresenter implements Contract.Presenter{
             model.checkLogin(email, password);
         }
 
+    }
+
+    @Override
+    public void onLoginSuccess(){
+        if (mainView!=null){
+            mainView.printLoginSuccessful();
+        }
+    }
+
+    @Override
+    public void onLoginFailed(){
+        if (mainView!=null){
+            mainView.printLoginFailed();
+        }
+    }
+    @Override
+    public SharedPreferences fetchContext(){
+        return mainView.getCont();
+    }
+    @Override
+    public void signalSwitchToStudent(){
+        if (mainView!=null){
+            mainView.switchToStudentHomePage();
+        }
+    }
+    @Override
+    public void signalSwitchToAdmin(){
+        if (mainView!=null){
+            mainView.switchToAdminHomePage();
+        }
     }
 
 
