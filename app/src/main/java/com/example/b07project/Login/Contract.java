@@ -16,7 +16,7 @@ public interface Contract {
 
         String findEmailEditText();
         String findPasswordEditText();
-        public SharedPreferences getCont();
+        SharedPreferences getCont();
 
     }
     interface Model{
@@ -26,6 +26,13 @@ public interface Contract {
     interface Presenter{
         void onSignUpClick();
         void onLoginClick();
+        void onLoginSuccess();
+        void onLoginFailed();
+
+        SharedPreferences fetchContext();
+
+        void signalSwitchToStudent();
+        void signalSwitchToAdmin();
 
     }
 }

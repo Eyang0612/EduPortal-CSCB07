@@ -18,11 +18,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginModel implements Contract.Model{
-    private Contract.View mainView;
+    private Contract.Presenter mainPresenter;
     FirebaseAuth mAuth;
-
-    public LoginModel(Contract.View mainView){
-        this.mainView=mainView;
+    //Constructor for model to interact with presenter
+    public LoginModel(Contract.Presenter mainPresenter){
+        this.mainPresenter=mainPresenter;
     }
     public void checkLogin(String email, String password) {
         mAuth = FirebaseAuth.getInstance();
@@ -33,14 +33,14 @@ public class LoginModel implements Contract.Model{
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // If authentication is successful, you can navigate to another activity
-                            mainView.printLoginSuccessful();
+                            mainPresenter.onLoginSuccess();
                             FirebaseUser user = mAuth.getCurrentUser();
                             fetchAndDisplayUserData(user.getUid());
 
                         } else {
                             // If sign in fails, display a message to the user.
                             //maybe put this to loginpresenter for better MVP logic
-                            mainView.printLoginFailed();
+                            mainPresenter.onLoginFailed();
                         }
                     }
                 });
@@ -69,7 +69,7 @@ public class LoginModel implements Contract.Model{
     }
 
     public void redirectHomePage(String userEmail, String userName, String userRole, String uid){
-        SharedPreferences p = mainView.getCont();
+        SharedPreferences p = mainPresenter.fetchContext();
         SharedPreferences.Editor editor = p.edit();
         editor.putString("email", userEmail);
         editor.putString("userName", userName);
@@ -77,9 +77,9 @@ public class LoginModel implements Contract.Model{
         editor.putString("userId", uid);
         editor.apply();
         if(userRole.equals("Student")){
-            mainView.switchToStudentHomePage();
+            mainPresenter.signalSwitchToStudent();
         }else {
-            mainView.switchToAdminHomePage();
+            mainPresenter.signalSwitchToAdmin();
         }
     }
 }

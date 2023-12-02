@@ -72,18 +72,21 @@ public class LoginPage extends AppCompatActivity implements Contract.View {
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, SignUpPage.class);
         startActivity(signUpIntent);
+        finish();
     }
     @Override
     public void switchToStudentHomePage(){
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, studentHomePage.class);
         startActivity(signUpIntent);
+        finish();
     }
     @Override
     public void switchToAdminHomePage(){
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, adminHomePage.class);
         startActivity(signUpIntent);
+        finish();
     }
     @Override
     public void showErrorText(String err){
