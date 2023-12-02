@@ -1,4 +1,4 @@
-package com.example.b07project;
+package com.example.b07project.Login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,9 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.annotation.NonNull;
 
-import com.example.b07project.adminPages.EventSetUp.EventSetupPageActivity;
+import com.example.b07project.R;
+import com.example.b07project.SignUpPage;
 import com.example.b07project.adminPages.adminHomePage;
-import com.example.b07project.studentPages.EventCheck.MainEventsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
