@@ -94,32 +94,17 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
 
-                        if (year > mYear ||
-                                (year == mYear && monthOfYear > mMonth) ||
-                                (year == mYear && monthOfYear == mMonth && dayOfMonth > mDay)) {
+                        if (isDateInFuture(year, monthOfYear, dayOfMonth)) {
 
                             // Update the TextView with the selected date
-                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            txtDate.setText(formatDate(dayOfMonth, monthOfYear + 1, year));
                             isCurrentDate = false;
                             // If the date is valid, you can also show a TimePickerDialog or perform other actions.
                             // For simplicity, the TimePickerDialog is not included in this example.
                             // check if its the event is schedule in the current date
                         } else if(year == mYear && monthOfYear == mMonth && dayOfMonth == mDay){
-                            //check if time is empty, if yes then make a note
-                            if (txtTime.getText().toString().isEmpty()){
-                                isCurrentDate = true;
-                            }else{
-                                //if time is not empty, check if current time is in the future
-                                int inputHour = Integer.parseInt(txtTime.getText().toString().substring(0, 2));
-                                int inputMinute = Integer.parseInt(txtTime.getText().toString().substring(3));
-                                //if time is in the past for current date, then tell them to reselect time or date
-                                if(inputHour< mHour | (inputHour>= mHour && inputMinute < mMinute)){
-                                    Toast.makeText(EventSetupPageActivity.this, "Please select a future time for today's event or choose another date!", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    //if date is current date and time is in the future, then add date
-                                    txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-                                }
-                            }
+                            isCurrentDate=true;
+                            handleCurrentDate();
 
                         }
                         else {
@@ -131,6 +116,33 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
                     }
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
+    }
+
+    private boolean isDateInFuture(int year, int month, int day) {
+        return year > mYear || (year == mYear && month > mMonth) || (year == mYear && month == mMonth && day > mDay);
+    }
+
+    private void handleCurrentDate() {
+        // Check if time is empty, if yes do nothing
+        if (!txtTime.getText().toString().isEmpty()) {
+            // If time is not empty, check if the current time is in the future
+            int inputHour = Integer.parseInt(txtTime.getText().toString().substring(0, 2));
+            int inputMinute = Integer.parseInt(txtTime.getText().toString().substring(3));
+
+            // If time is in the past for the current date, show a message
+            if (inputHour < mHour || (inputHour == mHour && inputMinute < mMinute)) {
+                Toast.makeText(EventSetupPageActivity.this, "Please select a future time for today's event or choose another date!", Toast.LENGTH_SHORT).show();
+            } else {
+                // If date is the current date and time is in the future, update the date
+                txtDate.setText(formatDate(mDay, mMonth + 1, mYear));
+            }
+        }else{
+            txtDate.setText(formatDate(mDay, mMonth + 1, mYear));
+        }
+    }
+
+    private String formatDate(int day, int month, int year) {
+        return String.format(Locale.getDefault(), "%02d-%02d-%d", day, month, year);
     }
 
     private void showTimePicker() {
@@ -146,28 +158,28 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
-                        if(isCurrentDate){
-                            //if date is current date and time is in the past, then tell them to reschedule
-                            if(hourOfDay< mHour | (hourOfDay>= mHour && minute < mMinute)){
+                        if (isCurrentDate) {
+                            // Check if date is current date and time is in the past
+                            if (hourOfDay < mHour || (hourOfDay == mHour && minute < mMinute)) {
                                 Toast.makeText(EventSetupPageActivity.this, "Please select a future time for today's event or choose another date!", Toast.LENGTH_SHORT).show();
-                            }else{
-                                if(minute <10){
-                                    txtTime.setText(hourOfDay + ":0" + minute);
-                                }else{
-                                    txtTime.setText(hourOfDay + ":" + minute);
-                                }
+                            } else {
+                                // Set the selected time in the TextView
+                                txtTime.setText(formatTime(hourOfDay, minute));
                             }
-                        }
-                        else if(minute <10){
-                            txtTime.setText(hourOfDay + ":0" + minute);
-                        }else{
-                            txtTime.setText(hourOfDay + ":" + minute);
+                        } else {
+                            // Set the selected time in the TextView
+                            txtTime.setText(formatTime(hourOfDay, minute));
                         }
 
 
                     }
                 }, mHour, mMinute, false);
         timePickerDialog.show();
+    }
+
+    private String formatTime(int hourOfDay, int minute) {
+        // Use String.format for consistent formatting
+        return String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute);
     }
 
     private void uploadEventData() {
