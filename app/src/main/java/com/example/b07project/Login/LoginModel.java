@@ -34,14 +34,14 @@ public class LoginModel{
                         if (task.isSuccessful()) {
                             // If authentication is successful, you can navigate to another activity
                             FirebaseUser user = mAuth.getCurrentUser();
-                            mainPresenter.onLoginSuccess(user.getUid());
+                            mainPresenter.onLogin(user.getUid());
 
                             //fetchAndDisplayUserData(user.getUid());
 
                         } else {
                             // If sign in fails, display a message to the user.
                             //maybe put this to loginpresenter for better MVP logic
-                            mainPresenter.onLoginFailed();
+                            mainPresenter.onLogin("");
                         }
                     }
                 });
@@ -53,15 +53,16 @@ public class LoginModel{
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String userName = dataSnapshot.child("name").getValue(String.class);
-                    String userEmail = dataSnapshot.child("email").getValue(String.class);
-                    String userRole = dataSnapshot.child("role").getValue(String.class);
+                mainPresenter.checkUser(dataSnapshot, uid);
 
-                    mainPresenter.userFound(userEmail, userName, userRole, uid);
+                    //String userName = dataSnapshot.child("name").getValue(String.class);
+                    //String userEmail = dataSnapshot.child("email").getValue(String.class);
+                    //String userRole = dataSnapshot.child("role").getValue(String.class);
+
+                    //mainPresenter.userFound(userEmail, userName, userRole, uid);
 
                     //redirectHomePage(userEmail, userName, userRole, uid);
-                }
+
             }
 
             @Override
@@ -71,7 +72,10 @@ public class LoginModel{
         });
     }
 
-    public void redirectHomePage(String userEmail, String userName, String userRole, String uid, LoginPresenter mainPresenter){
+    public void redirectHomePage(DataSnapshot userData, String uid, LoginPresenter mainPresenter){
+        String userName = userData.child("name").getValue(String.class);
+        String userEmail = userData.child("email").getValue(String.class);
+        String userRole = userData.child("role").getValue(String.class);
         SharedPreferences p = mainPresenter.fetchContext();
         SharedPreferences.Editor editor = p.edit();
         editor.putString("email", userEmail);
@@ -79,10 +83,6 @@ public class LoginModel{
         editor.putString("userRole", userRole);
         editor.putString("userId", uid);
         editor.apply();
-        if(userRole.equals("Student")){
-            mainPresenter.signalSwitchToStudent();
-        }else {
-            mainPresenter.signalSwitchToAdmin();
-        }
+        mainPresenter.checkRole(userRole);
     }
 }
