@@ -13,6 +13,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/POSt_qualification"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_gravity="center"
         android:layout_marginTop="30dp" />
 
@@ -129,7 +130,8 @@
         android:layout_width="match_parent"
         android:layout_height="508dp"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp">
 
         <TextView
             android:id="@+id/course1"
@@ -138,10 +140,9 @@
             android:layout_above="@+id/question"
             android:layout_below="@+id/course2"
             android:layout_gravity="left"
-            android:layout_marginLeft="40dp"
             android:layout_marginTop="210dp"
             android:text="@string/CourseA"
-            android:textSize="20dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/course2"
@@ -150,10 +151,9 @@
             android:layout_above="@+id/course1"
             android:layout_below="@+id/course3"
             android:layout_gravity="left"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="26dp"
             android:text="@string/CourseB"
-            android:textSize="20dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/course3"
@@ -162,10 +162,9 @@
             android:layout_above="@+id/course2"
             android:layout_below="@+id/course4"
             android:layout_gravity="left"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="26dp"
             android:text="@string/CourseC"
-            android:textSize="20dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/course4"
@@ -174,10 +173,9 @@
             android:layout_above="@+id/course3"
             android:layout_below="@+id/course5"
             android:layout_gravity="left"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="26dp"
             android:text="@string/CourseD"
-            android:textSize="20dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/course5"
@@ -185,10 +183,9 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/course4"
             android:layout_gravity="left"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="26dp"
             android:text="@string/CourseE"
-            android:textSize="20dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/course6"
@@ -196,10 +193,9 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/course5"
             android:layout_gravity="left"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="26dp"
             android:text="@string/CourseF"
-            android:textSize="20dp" />
+            android:textSize="16dp" />
 
     </LinearLayout>
 

@@ -2,8 +2,8 @@ package com.example.b07project.studentPages.QuestionAnswer;
 
 public class QA {
     public static String Questions[]= {
-            "Please enter your GPA (grade point average) of the following courses. If you did not take it, enter 0.0. Example: MATA31: 4.0",
-            "Please enter your first passing grade of the following courses. If you did not take it, enter 0.0. Example: MATA31: 4.0"
+            "Please enter your grade of the following courses. If you did not take it, enter 0.0.\nExample: MATA31: 4.0",
+            "Please enter your first passing grade of the following courses. If you did not take it, enter 0.0.\nExample: MATA31: 4.0"
     };
 
     public static String Choices[][] = {

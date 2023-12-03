@@ -2,6 +2,8 @@ package com.example.b07project.studentPages;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -64,6 +66,13 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
         submit.setOnClickListener(this);
         previous.setOnClickListener(this);
 
+        grade1.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
+        grade2.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
+        grade3.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
+        grade4.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
+        grade5.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
+        grade6.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
+
         loadQuestion2();
 
     }
@@ -83,7 +92,7 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
                         Ans.setQuestion3_index(0.0, i);
                     } else {
                         double actualGrade = Double.parseDouble(grade_list[i]);
-                        if (actualGrade < 4.0) {
+                        if (actualGrade > 4.0) {
                             Toast toast = Toast.makeText(QualificationPage3.this, "Course grade must be less than 4.0!", Toast.LENGTH_SHORT);
                             toast.show();
                             return; // Stop further processing if grade is invalid
@@ -159,7 +168,32 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
         startActivity(intent);
     }
 
+    private class DecimalDigitsInputFilter implements InputFilter {
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int d_start, int d_end) {
+            String currentText = dest.toString();
+            String newText = currentText.substring(0, d_start) + source.subSequence(start, end) + currentText.substring(d_end);
 
+            if (newText.equals(".")){
+                return "";
+            }
+            String[] parts = newText.split("\\.");
+            if (parts.length > 2 ||(parts.length == 2 && parts[0].isEmpty())) {
+                return "";
+            }
+
+            if (parts.length == 2) {
+                String beforedot = parts[0];
+                String afterdot = parts[1];
+
+                if (beforedot.length() > 1 || afterdot.length() > 1) {
+                    return "";
+                }
+            }
+
+            return null;
+        }
+    }
 
 
 }

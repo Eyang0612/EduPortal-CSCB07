@@ -99,7 +99,8 @@ public class EvaluateAnswer implements Serializable {
         }
 
         if(result[0].equals("Pass")){
-            result[1] ="Congratulations! You have fulfilled all the requirement!";
+            result[0] = "You are qualified!";
+            result[1] ="Congratulations! You have fulfilled all the requirement! Students will be selected based on their grades in: CSCA48, CSCA67/MATA67, MATA22/A23.";
         }
         return result;
 
@@ -149,7 +150,7 @@ public class EvaluateAnswer implements Serializable {
 
         if(result[0].equals("Pass")){
             result[0] = "You are qualified!";
-            result[1] ="Congratulations! You have fulfilled all the requirement!";
+            result[1] ="Congratulations! You have fulfilled all the requirement! \n\nNotice if you entered CMS prior to 2021, you will be selected based on the grades in CSC/MATA67, CSCA48, MATA22, MATA37. Only first passing grade and all failing grades in the required courses are considered.";
         }
         return result;
 
@@ -168,8 +169,8 @@ public class EvaluateAnswer implements Serializable {
             result[1]+= "Unsatisfied requirement: Complete all A-level courses (CSC/MATA67, CSCA48, MATA22, MATA37, CSCA08)."+ "\n\n";
             return result;
         }
-        result[0] = "You may be qualified...";
-        result[1] = "Math and Statistic students will be selected for admission to these spaces based on their grades in CSC/MATA67, CSCA48, MATA22, MATA37.";
+        result[0] = "You are qualified!";
+        result[1] = "Math and Statistic students will be selected for admission to these spaces based on their grades in CSC/MATA67, CSCA48, MATA22, MATA37. \n\nNotice if you entered CMS prior to 2021, only first passing grade and all failing grades in the required courses are considered.";
         return result;
     }
 
@@ -193,8 +194,8 @@ public class EvaluateAnswer implements Serializable {
         }
 
         if(result[0].equals("Pass")){
-            result[0] = "You are qualified!";
-            result[1] ="Congratulations! You have fulfilled all the requirement!";
+            result[0] = "You may qualify.";
+            result[1] ="There is a very high demand for Computer Science programs. We anticipate that the grades required to be admitted to one of these extra spaces to be much higher than the requirements for students in the CMS admission category.";
         }
         return result;
     }
