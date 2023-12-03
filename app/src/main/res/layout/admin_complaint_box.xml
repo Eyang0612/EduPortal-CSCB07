@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text="complaintID"
             android:textColor="#D8D8D8"
-            android:textSize="14sp"
+            android:textSize="15sp"
             android:layout_marginTop="2dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/complaintTitle" />
@@ -75,9 +75,22 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-
             app:layout_constraintStart_toEndOf="@+id/UserName"
             app:layout_constraintTop_toBottomOf="@+id/complaintId"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#D8D8D8"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:text="Click to view the complaint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
             app:layout_constraintVertical_bias="0.0" />
 
 
