@@ -33,10 +33,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class LoginPage extends AppCompatActivity {
+public class LoginPage extends AppCompatActivity{
 
     private EditText editTextEmail, editTextPassword;
-    private FirebaseAuth mAuth;
+    LoginPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +46,14 @@ public class LoginPage extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
 
+        presenter = new LoginPresenter(this, new LoginModel());
+
         // Find the Login button
         Button loginButton = findViewById(R.id.buttonLogin);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              onLoginClick();
+                presenter.onLoginClick();
             }
         });
 
@@ -60,103 +62,48 @@ public class LoginPage extends AppCompatActivity {
         signUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onSignUpClick();
+                switchToSignup();
             }
         });
     }
 
-
-    private void onSignUpClick() {
+    //@Override
+    public void switchToSignup(){
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, SignUpPage.class);
         startActivity(signUpIntent);
+        finish();
     }
-    private void onLoginClick() {
-        mAuth = FirebaseAuth.getInstance();
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
-        // Add your password validation logic here
-        // check if email and correspond password is in database
-        if (TextUtils.isEmpty(email)){
-            Toast.makeText(LoginPage.this, "Email Cannot Be Empty!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (TextUtils.isEmpty(password)){
-            Toast.makeText(LoginPage.this, "Password Cannot Be Empty!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (TextUtils.isEmpty(email)){
-            Toast.makeText(LoginPage.this, "Enter Email!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (TextUtils.isEmpty(password)){
-            Toast.makeText(LoginPage.this, "Enter Password!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // If authentication is successful, you can navigate to another activity
-                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            fetchAndDisplayUserData(user.getUid());
-                            //Intent homeIntent = new Intent(getApplicationContext(), StudentHomePage.class);
-                            //startActivity(homeIntent);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(getApplicationContext(), "Incorrect Password Entered or Username Does Not Exist!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+    //@Override
+    public void switchToStudentHomePage(){
+        // Handle the click event to navigate to the sign-up page
+        Intent signUpIntent = new Intent(this, studentHomePage.class);
+        startActivity(signUpIntent);
+        finish();
     }
-    private void fetchAndDisplayUserData(String uid) {
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
-
-        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String userName = dataSnapshot.child("name").getValue(String.class);
-                    String userEmail = dataSnapshot.child("email").getValue(String.class);
-                    String userRole = dataSnapshot.child("role").getValue(String.class);
-                    Log.d("LoginPage", "User data retrieved successfully. Name: " + userName + ", Email: " + userEmail);
-                    redirectToHomepage(userEmail, userName, userRole, uid);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle error
-            }
-        });
+    //@Override
+    public void switchToAdminHomePage(){
+        // Handle the click event to navigate to the sign-up page
+        Intent signUpIntent = new Intent(this, adminHomePage.class);
+        startActivity(signUpIntent);
+        finish();
     }
-
-    private void redirectToHomepage(String userEmail, String userName,String userRole, String uid) {
-        // Intent to start the homepage activity
-        Intent intent;
-        if(userRole.equals("Student")){
-            intent = new Intent(this, studentHomePage.class);
-        }else{
-            intent = new Intent(this, adminHomePage.class);
-        }
-        SharedPreferences p = getSharedPreferences("myprefs",
-                Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = p.edit();
-        editor.putString("email", userEmail);
-        editor.putString("userName", userName);
-        editor.putString("userRole", userRole);
-        editor.putString("userId", uid);
-        editor.apply();
-        startActivity(intent);
-        finish(); // finish the current activity (login)
+    //@Override
+    public void displayText(String message){
+        Toast.makeText(LoginPage.this, message, Toast.LENGTH_SHORT).show();
+    }
+    //@Override
+    public String findEmailEditText(){
+        return editTextEmail.getText().toString().trim();
+    }
+    //@Override
+    public String findPasswordEditText(){
+        return editTextPassword.getText().toString().trim();
+    }
+    //@Override
+    public SharedPreferences getCont(){
+        return getSharedPreferences("myprefs", Context.MODE_PRIVATE);
     }
 
 
-    private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }

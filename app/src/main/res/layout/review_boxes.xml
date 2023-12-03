@@ -15,16 +15,6 @@
         android:padding="16dp">
 
         <!-- ReviewID (Top-Right) -->
-        <TextView
-            android:id="@+id/textReviewID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ReviewID"
-            android:textSize="12sp"
-            android:textColor="#D8D8D8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp"/>
 
         <!-- Username -->
         <TextView
@@ -40,18 +30,33 @@
 
         <!-- UserID -->
         <TextView
-            android:id="@+id/textUserID"
+            android:id="@+id/labelUserID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="UserID"
-            android:textSize="12sp"
+            android:text="UserID :"
+            android:textSize="14sp"
             android:textColor="#D8D8D8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textUsername"
-            app:layout_constraintBottom_toTopOf="@+id/textReview"
+
+            app:layout_constraintEnd_toStartOf="@+id/textUserID"
             android:layout_marginTop="2dp"/>
 
         <!-- Review Text -->
+
+        <TextView
+            android:id="@+id/textUserID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:text="UserID"
+            android:textColor="#D8D8D8"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/textReview"
+            app:layout_constraintStart_toEndOf="@+id/labelUserID"
+            app:layout_constraintTop_toBottomOf="@+id/textUsername" />
+
         <TextView
             android:id="@+id/textReview"
             android:layout_width="0dp"

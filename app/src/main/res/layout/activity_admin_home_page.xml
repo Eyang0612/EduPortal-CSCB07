@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminPages.adminHomePage">
+    tools:context=".adminPages.adminHomePage"
+    android:layout_margin="8dp">
 
     <TextView
         android:id="@+id/userNameTextView"
@@ -52,34 +53,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="60dp"
+        android:gravity="center">
 
 
         <Button
             android:id="@+id/CheckComplaint"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:layout_weight="1"
-            android:text="Complaints" />
+            android:text="View Complaints" />
 
         <Button
             android:id="@+id/AddAnnoucement"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:layout_weight="1"
-            android:text="Annoucement" />
+            android:text="Add Announcements" />
 
         <Button
             android:id="@+id/testButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:layout_weight="1"
-            android:text="Events" />
-
-
+            android:text="View or Add Events" />
 
 
     </LinearLayout>

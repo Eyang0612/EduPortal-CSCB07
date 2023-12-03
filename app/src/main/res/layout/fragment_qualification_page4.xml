@@ -3,30 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".studentPages.QualificationPage1">
+    tools:context=".studentPages.QualificationPage1"
+    android:layout_margin="8dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:text="@string/POSt_qualification"
-        android:textSize="20dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp" />
 
     <TextView
         android:id="@+id/result"
         android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:text="@string/Result"
-        android:textSize="80sp"
+        android:textSize="40sp"
         android:textStyle ="bold"
-        android:layout_above = "@+id/title"
+        android:layout_above = "@+id/back"
         android:layout_below = "@+id/Message"/>
 
 
@@ -36,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/result"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="150dp"
         android:textSize="20sp"
         android:text="@string/Message" />
 
@@ -45,11 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/message"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-
-
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="bottom|center"
         android:text="Homepage" />
 
 

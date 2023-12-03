@@ -41,16 +41,11 @@ public class EventReviewAdapter extends RecyclerView.Adapter<EventReviewAdapter.
     public void onBindViewHolder(@NonNull EventReviewAdapter.MyViewHolder holder, int position) {
 
         Review eList = list.get(position);
+        holder.Comments.setText(eList.getcomments());
+        holder.Username.setText(eList.getUserName());
+        holder.UserID.setText(eList.getUserId());
 
-        if (eList.getcomments().equals("")){
-            holder.itemView.setVisibility(View.GONE);
-        }
-        else{
-            holder.Comments.setText(eList.getcomments());
-            holder.Username.setText(eList.getUserName());
-            holder.UserID.setText(eList.getUserId());
-            holder.ReviewID.setText(eList.getReviewID());
-        }
+
 
 
     }
@@ -62,14 +57,13 @@ public class EventReviewAdapter extends RecyclerView.Adapter<EventReviewAdapter.
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView Username, UserID, ReviewID, Comments;
+        TextView Username, UserID, Comments;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             Username = itemView.findViewById(R.id.textUsername);
             UserID = itemView.findViewById(R.id.textUserID);
-            ReviewID = itemView.findViewById(R.id.textReviewID);
             Comments = itemView.findViewById(R.id.textReview);
         }
 

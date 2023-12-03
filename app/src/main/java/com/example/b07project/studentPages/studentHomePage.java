@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,7 +37,7 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
 
     private Button buttonLogout, buttonComplaints, buttonPOST, buttonReview;
     MaterialButtonToggleGroup toggleGroup;
-    ArrayList<Event> events;
+    private TextView Name, Email, Role;
     FirebaseDatabase db;
     DatabaseReference ref;
     @Override
@@ -44,6 +45,9 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_student_home_page);
 
+        Name = findViewById(R.id.userNameTextView);
+        Email = findViewById(R.id.userEmailTextView);
+        Role = findViewById(R.id.userRoleTextView);
         buttonLogout = findViewById(R.id.logoutNavButton);
         buttonComplaints = findViewById(R.id.complaintsPageNavButton);
         buttonPOST = findViewById(R.id.POSTNavButton);
@@ -51,6 +55,12 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
         toggleGroup = findViewById(R.id.toggleGroup);
         toggleGroup.check(R.id.announcementsButton);
         setAnnouncements();
+
+        SharedPreferences p = getSharedPreferences("myprefs",
+                Context.MODE_PRIVATE);
+        Name.setText(p.getString("userName", "default_value"));
+        Email.setText(p.getString("email", "default_value"));
+        Role.setText(p.getString("userRole", "default_value"));
 
         buttonComplaints.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +164,7 @@ public class studentHomePage extends AppCompatActivity implements com.example.b0
     }
 
     private void setEvents(){
-        Toast.makeText(this, "pass", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "pass", Toast.LENGTH_SHORT).show();
         RecyclerView recyclerView;
         DatabaseReference database;
         EventAdapter myAdapter;
