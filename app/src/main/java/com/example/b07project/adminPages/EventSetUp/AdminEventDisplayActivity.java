@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AdminEventDisplayActivity extends AppCompatActivity implements EventRatingAdapter.EventClickListener{
+public class AdminEventDisplayActivity extends AppCompatActivity implements EventRatingAdapter.InfoClickListener {
 
     RecyclerView recyclerView;
     DatabaseReference database;

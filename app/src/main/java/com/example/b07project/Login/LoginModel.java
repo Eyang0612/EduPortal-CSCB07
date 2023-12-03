@@ -18,12 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginModel{
-    //private LoginPresenter mainPresenter;
     FirebaseAuth mAuth;
-    //Constructor for model to interact with presenter
-    //public LoginModel(LoginPresenter mainPresenter){
-    //    this.mainPresenter=mainPresenter;
-    //}
+
     public void checkLogin(String email, String password, LoginPresenter mainPresenter) {
         mAuth = FirebaseAuth.getInstance();
 

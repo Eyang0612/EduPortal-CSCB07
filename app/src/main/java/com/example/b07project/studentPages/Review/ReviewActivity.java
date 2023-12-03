@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ReviewActivity extends AppCompatActivity implements EventAdapter.EventClickListener{
+public class ReviewActivity extends AppCompatActivity implements EventAdapter.RSVPClickListener {
 
     RecyclerView recyclerView;
     FirebaseDatabase db;
