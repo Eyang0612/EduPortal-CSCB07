@@ -111,7 +111,6 @@ public class AdminEventReviewActivity extends AppCompatActivity{
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error
             }
         });
     }
