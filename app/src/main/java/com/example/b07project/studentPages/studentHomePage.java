@@ -169,7 +169,6 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
     }
 
     private void setEvents(){
-        //Toast.makeText(this, "pass", Toast.LENGTH_SHORT).show();
         RecyclerView recyclerView;
         DatabaseReference database;
         EventAdapter myAdapter;
@@ -183,7 +182,6 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
         list = new ArrayList<>();
         myAdapter = new EventAdapter(this,list, this);
         recyclerView.setAdapter(myAdapter);
-        //backButton=findViewById(R.id.backButton);
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
@@ -218,8 +216,6 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
         SharedPreferences p = getSharedPreferences("myprefs", Context.MODE_PRIVATE);
         intent.putExtra("eventID", e.getEventId());
         intent.putExtra("studentID", p.getString("userId", "No suitable studentID"));
-        //Toast.makeText(this, "Event Name: " + e.getTitle(), Toast.LENGTH_SHORT).show();
-        //Toast.makeText(this, "Student Name: " + p.getString("userID", "No suitable studentID"), Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 

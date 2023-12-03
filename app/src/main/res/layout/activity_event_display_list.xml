@@ -15,51 +15,17 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-<!--            <TextView-->
-<!--                android:id="@+id/labelFirstName"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Event Name :"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="18sp"-->
-<!--                android:layout_marginLeft="5dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/labelLastName"/>-->
 
-
-            <TextView
-                android:id="@+id/eventName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Event Name"
-                android:textSize="19sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-<!--            <TextView-->
-<!--                android:id="@+id/labelLastName"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Date and Time:"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="18sp"-->
-<!--                android:textStyle="bold"-->
-<!--                android:layout_marginLeft="5dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/labelFirstName"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/labelAge"/>-->
-
-
-
-
-        <!-- Add a Button below the Age TextView -->
+        <TextView
+            android:id="@+id/eventName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event Name"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/labeleventlocation"
@@ -127,7 +93,6 @@
             app:layout_constraintStart_toEndOf="@+id/labelEventTime"
             app:layout_constraintTop_toBottomOf="@+id/eventLocation"
             app:layout_constraintVertical_bias="0.1" />
-
 
         <Button
             android:id="@+id/rsvpButton"

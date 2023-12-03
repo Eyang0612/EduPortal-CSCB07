@@ -79,7 +79,6 @@ public class EventRatingAdapter extends RecyclerView.Adapter<EventRatingAdapter.
             DateTime = itemView.findViewById(R.id.dateTime);
             Location = itemView.findViewById(R.id.eventLocation);
             ReviewButton = itemView.findViewById(R.id.rsvpButton);
-            //backButton=itemView.findViewById(R.id.backButton);
 
         }
 
