@@ -42,13 +42,11 @@ public class LoginPage extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login_page);
 
-        // Find the EditText view
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
 
         presenter = new LoginPresenter(this, new LoginModel());
 
-        // Find the Login button
         Button loginButton = findViewById(R.id.buttonLogin);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +55,6 @@ public class LoginPage extends AppCompatActivity{
             }
         });
 
-        // Find the "Sign up" TextView
         TextView signUpTextView = findViewById(R.id.textViewSignUp);
         signUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override

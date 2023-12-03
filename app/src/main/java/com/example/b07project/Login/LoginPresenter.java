@@ -37,19 +37,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginPresenter{
-    // creating object of View Interface
+
     private LoginPage mainView;
 
-    // creating object of Model Interface
     private LoginModel model;
 
-    // instantiating the objects of View and Model Interface
     public LoginPresenter(LoginPage mainView, LoginModel model) {
         this.mainView = mainView;
         this.model = model;
     }
 
-    //@Override
     public void onLoginClick(){
         //mAuth = FirebaseAuth.getInstance();
         String email = mainView.findEmailEditText();
@@ -66,7 +63,6 @@ public class LoginPresenter{
 
     }
 
-    //@Override
     public void onLogin(String uid){
         if (!(uid.equals(""))){
             mainView.displayText("Login Successful");
@@ -77,8 +73,6 @@ public class LoginPresenter{
 
     }
 
-
-    //@Override
     public SharedPreferences fetchContext(){
         return mainView.getCont();
     }
