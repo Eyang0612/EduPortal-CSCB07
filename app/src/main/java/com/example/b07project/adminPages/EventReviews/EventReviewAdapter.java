@@ -41,16 +41,11 @@ public class EventReviewAdapter extends RecyclerView.Adapter<EventReviewAdapter.
     public void onBindViewHolder(@NonNull EventReviewAdapter.MyViewHolder holder, int position) {
 
         Review eList = list.get(position);
+        holder.Comments.setText(eList.getcomments());
+        holder.Username.setText(eList.getUserName());
+        holder.UserID.setText(eList.getUserId());
 
-        if (eList.getcomments().equals("")){
-            holder.itemView.setVisibility(View.GONE);
-        }
-        else{
-            holder.Comments.setText(eList.getcomments());
-            holder.Username.setText(eList.getUserName());
-            holder.UserID.setText(eList.getUserId());
 
-        }
 
 
     }
