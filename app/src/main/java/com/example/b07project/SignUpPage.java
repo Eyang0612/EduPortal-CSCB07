@@ -20,7 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.b07project.Login.LoginPage;
+import com.example.b07project.LoginMVP.LoginView;
 import com.example.b07project.User.Admin;
 import com.example.b07project.User.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -460,7 +460,7 @@ public class SignUpPage extends AppCompatActivity {
     }
 
     private void onBacktoLoginClick() {
-        Intent loginIntent = new Intent(this, LoginPage.class);
+        Intent loginIntent = new Intent(this, LoginView.class);
         startActivity(loginIntent);
         finish();
     }

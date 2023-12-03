@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.b07project.Login.LoginPage;
+import com.example.b07project.LoginMVP.LoginView;
 import com.example.b07project.R;
 
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ public class adminComplaintPage extends AppCompatActivity implements RecyclerVie
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle errors
-                Intent intent = new Intent(adminComplaintPage.this, LoginPage.class);
+                Intent intent = new Intent(adminComplaintPage.this, LoginView.class);
                 startActivity(intent);
             }
         });
