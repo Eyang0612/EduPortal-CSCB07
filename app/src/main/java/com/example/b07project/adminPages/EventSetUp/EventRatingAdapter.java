@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.b07project.R;
-import com.example.b07project.studentPages.Review.Review;
 
 import java.util.ArrayList;
 

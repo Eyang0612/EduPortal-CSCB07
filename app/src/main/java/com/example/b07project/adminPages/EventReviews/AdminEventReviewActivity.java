@@ -1,13 +1,11 @@
 package com.example.b07project.adminPages.EventReviews;
 
 import android.content.Intent;
-import android.media.Rating;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,12 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.b07project.R;
 import com.example.b07project.adminPages.EventSetUp.AdminEventDisplayActivity;
-import com.example.b07project.adminPages.EventSetUp.Event;
-import com.example.b07project.adminPages.EventSetUp.EventRatingAdapter;
-import com.example.b07project.adminPages.EventSetUp.EventSetupPageActivity;
 import com.example.b07project.adminPages.adminHomePage;
-import com.example.b07project.studentPages.EventCheck.EventAdapter;
-import com.example.b07project.studentPages.Review.EventRating;
 import com.example.b07project.studentPages.Review.Review;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
