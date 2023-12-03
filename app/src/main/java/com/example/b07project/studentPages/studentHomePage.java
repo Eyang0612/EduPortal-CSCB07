@@ -34,11 +34,16 @@ import java.util.Collections;
 
 public class studentHomePage extends AppCompatActivity implements EventAdapter.RSVPClickListener {
 
-    private Button buttonLogout, buttonComplaints, buttonPOST, buttonReview;
-    MaterialButtonToggleGroup toggleGroup;
-    private TextView Name, Email, Role;
-    FirebaseDatabase db;
-    DatabaseReference ref;
+    private Button buttonLogout;
+    private Button buttonComplaints;
+    private Button buttonPOST;
+    private Button buttonReview;
+    private MaterialButtonToggleGroup toggleGroup;
+    private TextView Name;
+    private TextView Email;
+    private TextView Role;
+    private FirebaseDatabase db;
+    private DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +109,7 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
         });
 
         toggleGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
+            //toggle between displaying events and announcements in recycler view
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
                 if (isChecked) {
@@ -115,11 +121,11 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
                 }
             }
         });
-
     }
 
     private void setAnnouncements(){
         //set Announcements to the recycler view
+
         ArrayList<Announcement> announcements= new ArrayList<>();
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("announcements");
@@ -192,6 +198,9 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
                 }
                 myAdapter.notifyDataSetChanged();
 
+                Collections.sort(list, new DateComparator<>("dd-MM-yyyy"));
+                Collections.reverse(list);
+
             }
 
             @Override
@@ -200,12 +209,7 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
             }
         });
 
-        Collections.sort(list, new DateComparator<>("dd-MM-yyyy"));
-        Collections.reverse(list);
-
-
     }
-
 
 
     @Override
