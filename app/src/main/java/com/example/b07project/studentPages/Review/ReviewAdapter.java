@@ -44,7 +44,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MyViewHold
     @NonNull
     @Override
     public ReviewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.student_review_box,parent,
+        View v = LayoutInflater.from(context).inflate(R.layout.activity_event_display_list,parent,
                 false);
         return  new ReviewAdapter.MyViewHolder(v);
     }
@@ -53,9 +53,9 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MyViewHold
     public void onBindViewHolder(@NonNull ReviewAdapter.MyViewHolder holder, int position) {
 
         Event eList = list.get(position);
-        holder.firstName.setText(eList.getTitle());
-        holder.lastName.setText(eList.getEventDate());
-        holder.age.setText(eList.getLocation());
+        holder.eventName.setText(eList.getTitle());
+        holder.dateTime.setText(eList.getEventDate());
+        holder.eventLocation.setText(eList.getLocation());
 
         //holder.backButton.setOnClickListener(new View.OnClickListener() {
         //    @Override
@@ -83,17 +83,17 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MyViewHold
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView firstName, lastName, age;
-        Button buttonComment, backButton;
+        TextView eventName, dateTime, eventLocation;
+        Button buttonComment;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            firstName = itemView.findViewById(R.id.eventName);
-            lastName = itemView.findViewById(R.id.dateTime);
-            age = itemView.findViewById(R.id.eventLocation);
-            buttonComment = itemView.findViewById(R.id.commentButton);
-            //backButton=itemView.findViewById(R.id.backButton);
+            eventName = itemView.findViewById(R.id.eventName);
+            dateTime = itemView.findViewById(R.id.dateTime);
+            eventLocation = itemView.findViewById(R.id.eventLocation);
+            buttonComment = itemView.findViewById(R.id.rsvpButton);
+            buttonComment.setText("Add comments or reviews");
 
         }
 
