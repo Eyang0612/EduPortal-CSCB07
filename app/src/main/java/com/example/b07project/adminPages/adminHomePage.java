@@ -18,7 +18,6 @@ import com.example.b07project.LoginMVP.LoginView;
 public class adminHomePage extends AppCompatActivity{
     private TextView Name, Email, Role;
     private Button ComplaintButton, AnnounceButton, LogoutButton, EventButton;
-    //test button to display events page
 
 
     @Override
@@ -50,7 +49,6 @@ public class adminHomePage extends AppCompatActivity{
             }
         });
 
-        //test code below
 
         EventButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,11 +58,9 @@ public class adminHomePage extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-        //test code above
 
-        /*ComplaintButton.setOnClickListener(this);
-        EventButton.setOnClickListener(this);
-        AnnounceButton.setOnClickListener(this);*/
+
+
         SharedPreferences p = getSharedPreferences("myprefs",
                 Context.MODE_PRIVATE);
         Name.setText(p.getString("userName", "default_value"));

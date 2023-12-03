@@ -42,7 +42,6 @@ public class postAnnouncementsPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //checks for valid title and description
-
                 if (editTextTitle.getText().toString().trim().isEmpty() || editTextDescription.getText().toString().trim().isEmpty()){
                     Toast toast = Toast.makeText(postAnnouncementsPage.this, "Title or Description cannot be empty!", Toast.LENGTH_SHORT);
                     toast.show();
@@ -63,7 +62,6 @@ public class postAnnouncementsPage extends AppCompatActivity {
 
     private void showPostedAlertDialog() {
         //show posted notification and leads back to home page
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Posted!")
                 .setMessage("Announcement is available to students!")

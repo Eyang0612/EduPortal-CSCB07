@@ -16,7 +16,6 @@ public class DateComparator<T extends Notifications> implements Comparator<T> {
     @Override
     public int compare(T object1, T object2) {
         // Compare the postTimes and handles exceptions
-
         SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern);
         try {
             Date date1 = getDate(object1, dateFormat);

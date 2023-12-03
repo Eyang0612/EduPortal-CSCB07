@@ -34,7 +34,6 @@ public class QualificationPage4 extends AppCompatActivity implements View.OnClic
         Home.setOnClickListener(this);
 
         loadResult();
-
     }
 
     @Override

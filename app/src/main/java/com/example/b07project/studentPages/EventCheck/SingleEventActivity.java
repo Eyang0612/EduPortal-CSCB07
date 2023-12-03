@@ -51,7 +51,6 @@ public class SingleEventActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Implement your logic when the Reserve button is clicked
                 // For example, you can add the user to the event or navigate to another page
-
                 reserveSeatInEvent(eventUid, studentUid);
                 createReservedNodeInStudent(eventUid,studentUid);
                 updateButtonState(true);

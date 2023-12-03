@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
 
-
 import com.example.b07project.R;
 
 
@@ -119,8 +118,6 @@ public class QualificationPage1 extends AppCompatActivity implements View.OnClic
                 Ans.setQuestion3(null);
             }
         }
-
-
     }
 
     void loadQuestion2(){

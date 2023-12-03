@@ -48,7 +48,6 @@ public class ComplaintsPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //checks for valid title and description
-
                 if (editTextTitle.getText().toString().trim().isEmpty() || editTextDescription.getText().toString().trim().isEmpty()){
                     Toast toast = Toast.makeText(ComplaintsPage.this, "Title or Description cannot be empty!", Toast.LENGTH_SHORT);
                     toast.show();
@@ -70,7 +69,6 @@ public class ComplaintsPage extends AppCompatActivity {
 
     private void showSubmittedAlertDialog() {
         //show submitted notification and leads back to home page
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Submitted!")
                 .setMessage("Thank you for your feedback!")
@@ -88,7 +86,6 @@ public class ComplaintsPage extends AppCompatActivity {
 
     private void sendComplaintToDB(){
         //create and send complaint to firebase
-
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("complaints");
 
