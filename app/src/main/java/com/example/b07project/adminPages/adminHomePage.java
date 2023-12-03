@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.b07project.R;
 import com.example.b07project.adminPages.EventSetUp.AdminEventDisplayActivity;
-import com.example.b07project.Login.LoginPage;
+import com.example.b07project.LoginMVP.LoginView;
 
 
 public class adminHomePage extends AppCompatActivity{
@@ -36,7 +36,7 @@ public class adminHomePage extends AppCompatActivity{
         LogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(adminHomePage.this, LoginPage.class);
+                Intent intent = new Intent(adminHomePage.this, LoginView.class);
                 SharedPreferences p = getSharedPreferences("myprefs",
                         Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = p.edit();
@@ -86,24 +86,4 @@ public class adminHomePage extends AppCompatActivity{
             }
         });
     }
-
-
-
-/*    @Override
-    public void onClick(View v) {
-        Button clickedChoice = (Button) (v);
-        if(clickedChoice.getId()==R.id.AddEvent) {
-            Intent intent = new Intent(adminHomePage.this, EventSetupPageActivity.class);
-            intent.putExtra("userName", getIntent().getStringExtra("userName"));
-            startActivity(intent);
-        }
-        else if(clickedChoice.getId()==R.id.CheckComplaint) {
-            Intent intent = new Intent(adminHomePage.this, adminComplaintPage.class);
-            startActivity(intent);
-        }
-        else if(clickedChoice.getId()==R.id.AddAnnoucement) {
-            Intent intent = new Intent(adminHomePage.this, postAnnouncementsPage.class);
-            startActivity(intent);
-        }
-    }*/
 }

@@ -1,6 +1,5 @@
-package com.example.b07project.Login;
+package com.example.b07project.LoginMVP;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;

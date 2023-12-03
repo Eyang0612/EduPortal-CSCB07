@@ -3,7 +3,13 @@ package com.example.b07project.studentPages.Announcement;
 import com.example.b07project.studentPages.Notifications;
 
 public class Announcement extends Notifications {
-    private String announcementId, userId, title, description, userName, postTime;
+    private String announcementId;
+    private String userId;
+    private String title;
+    private String description;
+    private String userName;
+    private String postTime;
+
 
     public Announcement(String announcementId, String userId, String userName, String title, String description, String postTime){
         this.announcementId = announcementId;
@@ -14,7 +20,7 @@ public class Announcement extends Notifications {
         this.postTime = postTime;
     }
 
-    public String getAnnouncementID(){
+    public String getAnnouncementId(){
         return announcementId;
     }
     public String getUserId(){

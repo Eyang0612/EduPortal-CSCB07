@@ -21,8 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class postAnnouncementsPage extends AppCompatActivity {
 
-    private EditText editTextTitle, editTextDescription;
-    private Button buttonPost, buttonBack;
+    private EditText editTextTitle;
+    private EditText editTextDescription;
+    private Button buttonPost;
+    private Button buttonBack;
     private FirebaseDatabase db;
     private DatabaseReference ref;
 
@@ -39,6 +41,8 @@ public class postAnnouncementsPage extends AppCompatActivity {
         buttonPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //checks for valid title and description
+
                 if (editTextTitle.getText().toString().trim().isEmpty() || editTextDescription.getText().toString().trim().isEmpty()){
                     Toast toast = Toast.makeText(postAnnouncementsPage.this, "Title or Description cannot be empty!", Toast.LENGTH_SHORT);
                     toast.show();
@@ -55,11 +59,11 @@ public class postAnnouncementsPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
-    //show posted notification and leads back to home page
     private void showPostedAlertDialog() {
+        //show posted notification and leads back to home page
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Posted!")
                 .setMessage("Announcement is available to students!")
@@ -75,8 +79,10 @@ public class postAnnouncementsPage extends AppCompatActivity {
         alertDialog.show();
     }
 
-    //create and send announcement to firebase
+
     private void sendAnnouncementToDB(){
+        //create and send announcement to firebase
+
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("announcements");
 
