@@ -17,10 +17,9 @@ import com.example.b07project.Login.LoginPage;
 
 public class adminHomePage extends AppCompatActivity{
     private TextView Name, Email, Role;
-    private Button ComplaintButton, AnnounceButton, LogoutButton;
+    private Button ComplaintButton, AnnounceButton, LogoutButton, EventButton;
     //test button to display events page
 
-    private Button testButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +32,7 @@ public class adminHomePage extends AppCompatActivity{
         ComplaintButton = findViewById(R.id.CheckComplaint);
         AnnounceButton = findViewById(R.id.AddAnnoucement);
         LogoutButton = findViewById(R.id.Logout);
+        EventButton=findViewById(R.id.testButton);
         LogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,8 +51,8 @@ public class adminHomePage extends AppCompatActivity{
         });
 
         //test code below
-        testButton=findViewById(R.id.testButton);
-        testButton.setOnClickListener(new View.OnClickListener() {
+
+        EventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(adminHomePage.this, AdminEventDisplayActivity.class);
