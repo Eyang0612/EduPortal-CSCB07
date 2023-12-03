@@ -16,10 +16,6 @@ import android.widget.Toast;
 import com.example.b07project.R;
 import com.example.b07project.adminPages.EventSetUp.Event;
 import com.example.b07project.studentPages.EventCheck.EventAdapter;
-import com.example.b07project.studentPages.EventCheck.MainEventsActivity;
-import com.example.b07project.studentPages.EventCheck.Reservation;
-import com.example.b07project.studentPages.EventCheck.SingleEventActivity;
-import com.example.b07project.studentPages.QualificationPage1;
 import com.example.b07project.studentPages.studentHomePage;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ReviewActivity extends AppCompatActivity implements EventAdapter.EventClickListener{
+public class ReviewActivity extends AppCompatActivity implements EventAdapter.RSVPClickListener {
 
     RecyclerView recyclerView;
     FirebaseDatabase db;

@@ -1,13 +1,11 @@
 package com.example.b07project.studentPages.EventCheck;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,28 +16,25 @@ import java.util.ArrayList;
 
 import com.example.b07project.R;
 import com.example.b07project.adminPages.EventSetUp.Event;
-import com.example.b07project.adminPages.adminHomePage;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {
 
     Context context;
 
     ArrayList<Event> list;
-    EventClickListener eventClickListener;
+    RSVPClickListener rsvpClickListener;
 
-    //BackButtonClick btn;
-
-    public interface EventClickListener {
+    public interface RSVPClickListener {
         void onEventClick(Event event);
     }
 
     //public interface BackButtonClick{
     //    void onBackClick();
     //}
-    public EventAdapter(Context context, ArrayList<Event> list, EventClickListener eventClickListener) {
+    public EventAdapter(Context context, ArrayList<Event> list, RSVPClickListener eventClickListener) {
         this.context = context;
         this.list = list;
-        this.eventClickListener=eventClickListener;
+        this.rsvpClickListener =eventClickListener;
         //this.btn=btn;
     }
 
@@ -68,8 +63,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.rsvpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (eventClickListener != null) {
-                    eventClickListener.onEventClick(eList);
+                if (rsvpClickListener != null) {
+                    rsvpClickListener.onEventClick(eList);
                 }
             }
         });
@@ -90,9 +85,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            firstName = itemView.findViewById(R.id.tvfirstName);
-            lastName = itemView.findViewById(R.id.tvlastName);
-            age = itemView.findViewById(R.id.tvage);
+            firstName = itemView.findViewById(R.id.eventName);
+            lastName = itemView.findViewById(R.id.dateTime);
+            age = itemView.findViewById(R.id.eventLocation);
             rsvpButton = itemView.findViewById(R.id.rsvpButton);
             //backButton=itemView.findViewById(R.id.backButton);
 

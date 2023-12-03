@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.b07project.R;
 import com.example.b07project.adminPages.EventReviews.AdminEventReviewActivity;
 import com.example.b07project.adminPages.adminHomePage;
-import com.example.b07project.studentPages.EventCheck.EventAdapter;
-import com.example.b07project.studentPages.Review.EventRating;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AdminEventDisplayActivity extends AppCompatActivity implements EventRatingAdapter.EventClickListener{
+public class AdminEventDisplayActivity extends AppCompatActivity implements EventRatingAdapter.InfoClickListener {
 
     RecyclerView recyclerView;
     DatabaseReference database;

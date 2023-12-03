@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class studentHomePage extends AppCompatActivity implements com.example.b07project.studentPages.EventCheck.EventAdapter.EventClickListener {
+public class studentHomePage extends AppCompatActivity implements EventAdapter.RSVPClickListener {
 
     private Button buttonLogout, buttonComplaints, buttonPOST, buttonReview;
     MaterialButtonToggleGroup toggleGroup;

@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.b07project.R;
-import com.example.b07project.studentPages.Review.Review;
 
 import java.util.ArrayList;
 
@@ -20,18 +19,17 @@ public class EventRatingAdapter extends RecyclerView.Adapter<EventRatingAdapter.
     Context context;
 
     ArrayList<Event> list;
-    EventClickListener eventClickListener;
+    InfoClickListener rsvpClickListener;
 
 
-    public interface EventClickListener {
+    public interface InfoClickListener {
         void onEventClick(Event event);
     }
 
-    public EventRatingAdapter(Context context, ArrayList<Event> list, EventClickListener eventClickListener) {
+    public EventRatingAdapter(Context context, ArrayList<Event> list, InfoClickListener eventClickListener) {
         this.context = context;
         this.list = list;
-        this.eventClickListener=eventClickListener;
-        //this.btn=btn;
+        this.rsvpClickListener =eventClickListener;
     }
 
     @NonNull
@@ -55,8 +53,8 @@ public class EventRatingAdapter extends RecyclerView.Adapter<EventRatingAdapter.
         holder.ReviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (eventClickListener != null) {
-                    eventClickListener.onEventClick(eList);
+                if (rsvpClickListener != null) {
+                    rsvpClickListener.onEventClick(eList);
                 }
             }
         });
@@ -77,9 +75,9 @@ public class EventRatingAdapter extends RecyclerView.Adapter<EventRatingAdapter.
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            EventName = itemView.findViewById(R.id.tvfirstName);
-            DateTime = itemView.findViewById(R.id.tvlastName);
-            Location = itemView.findViewById(R.id.tvage);
+            EventName = itemView.findViewById(R.id.eventName);
+            DateTime = itemView.findViewById(R.id.dateTime);
+            Location = itemView.findViewById(R.id.eventLocation);
             ReviewButton = itemView.findViewById(R.id.rsvpButton);
             //backButton=itemView.findViewById(R.id.backButton);
 
