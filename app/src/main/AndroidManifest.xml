@@ -20,8 +20,6 @@
             android:name=".studentPages.EventCheck.SingleEventActivity"
             android:exported="false" />
         <activity
-            android:exported="false" />
-        <activity
             android:name=".adminPages.adminHomePage"
             android:exported="false" />
         <activity android:name=".studentPages.studentHomePage" />
