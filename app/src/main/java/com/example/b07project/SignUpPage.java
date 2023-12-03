@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.b07project.Login.LoginPage;
 import com.example.b07project.User.Admin;
+import com.example.b07project.User.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,12 +32,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
 import com.example.b07project.User.Student;
 import com.google.firebase.database.ValueEventListener;
 
-
+/*
 public class SignUpPage extends AppCompatActivity {
 
 
@@ -51,11 +52,6 @@ public class SignUpPage extends AppCompatActivity {
     private DatabaseReference ref;
 
     private FirebaseAuth mAuth;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,36 +69,12 @@ public class SignUpPage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-
-
         // Set onClickListener for the role choose spinner
         spinnerRole = findViewById(R.id.spinnerRole);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.roles_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRole.setAdapter(adapter);
 
-
-       /*
-       spinnerRole.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-           @Override
-           public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-               // posiiton means the choice of spinner, 0 is "choose your role"
-
-
-               if(position != 0){
-                   String selectedRole = parentView.getItemAtPosition(position).toString();
-               }
-           }
-
-
-           @Override
-           public void onNothingSelected(AdapterView<?> parentView) {
-               // Do nothing here
-           }
-       });
-
-
-        */
 
         // Set onClickListener for the SignUp button
         signUpButton = findViewById(R.id.buttonSignUp);
@@ -312,6 +284,187 @@ public class SignUpPage extends AppCompatActivity {
         ref.child(userId).setValue(admin);
         showMessage("Registration successful!");
     }
+    private void showMessage(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+}
+
+ */
+
+public class SignUpPage extends AppCompatActivity {
+
+    private EditText nameEditText, emailEditText, passwordEditText, confirmPasswordEditText;
+    private TextView passwordRequirementsTextView, haveAccountTextView, loginTextView;
+    private Button signUpButton;
+    private Spinner spinnerRole;
+    private boolean isFound;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_sign_up_page);
+
+        initializeUI();
+        setOnClickListeners();
+    }
+
+    private void initializeUI() {
+        nameEditText = findViewById(R.id.editTextName);
+        emailEditText = findViewById(R.id.editTextEmailSignUp);
+        passwordEditText = findViewById(R.id.editTextPasswordSignUp);
+        confirmPasswordEditText = findViewById(R.id.editTextConfirmPasswordSignUp);
+
+        spinnerRole = findViewById(R.id.spinnerRole);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.roles_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRole.setAdapter(adapter);
+
+        signUpButton = findViewById(R.id.buttonSignUp);
+        loginTextView = findViewById(R.id.textViewLoginFromSignUp);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("users");
+    }
+
+    private void setOnClickListeners() {
+        spinnerRole.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = nameEditText.getText().toString();
+                String email = emailEditText.getText().toString();
+                String confirmPass = confirmPasswordEditText.getText().toString();
+                String selectedRole = spinnerRole.getSelectedItem().toString();
+                String password = passwordEditText.getText().toString();
+
+                if (validateInputs(name, email, confirmPass, selectedRole, password)) {
+                    saveToAuth(name, email, password, selectedRole);
+                }
+            }
+        });
+
+        loginTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBacktoLoginClick();
+            }
+        });
+    }
+
+    private boolean validateInputs(String name, String email, String confirmPass, String selectedRole, String password) {
+        if (spinnerRole.getSelectedItemPosition() == 0) {
+            showMessage("Fails: choose a valid role");
+            return false;
+        }
+
+        if (!checkNoneEmptyField(name, email)) {
+            showMessage("Fails: do not leave empty fields");
+            return false;
+        }
+
+        if (!isValidEmail(email)) {
+            showMessage("Fails: please enter a valid email");
+            return false;
+        }
+
+        if (!confirmPass.equals(password)) {
+            showMessage("Fails: password does not match");
+            return false;
+        }
+
+        if (!isValidPassword(password)) {
+            passwordEditText.setError("Invalid password");
+            return false;
+        }
+
+        checkIfEmailExists(email);
+        if (isFound) {
+            showMessage("Invalid: email already exists");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void saveToAuth(String name, String email, String password, String role) {
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            if (user != null) {
+                                String userId = user.getUid();
+                                saveToDatabase(name, email, password, role, userId);
+                                onBacktoLoginClick();
+                            }
+                        } else {
+                            showMessage("This email has been used for another account");
+                        }
+                    }
+                });
+    }
+
+    private boolean isValidPassword(String password) {
+        return password.length() >= 8 && containsNumber(password) && containsUppercase(password);
+    }
+
+    private boolean checkNoneEmptyField(String name, String email) {
+        return !name.isEmpty() && !email.isEmpty();
+    }
+
+    private boolean containsNumber(String str) {
+        return str.matches(".*\\d.*");
+    }
+
+    private boolean containsUppercase(String str) {
+        return !str.equals(str.toLowerCase());
+    }
+
+    private boolean isValidEmail(String email) {
+        return email != null && !email.isEmpty() && email.matches(".+@.+\\..+");
+    }
+
+    private void checkIfEmailExists(String emailToCheck) {
+        databaseReference.orderByChild("email").equalTo(emailToCheck).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                isFound = dataSnapshot.exists();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle errors
+            }
+        });
+    }
+
+    private void saveToDatabase(String name, String email, String password, String role, String userId) {
+        User user = (role.equals("Student")) ? new Student(name, email, password, userId, role) :
+                new Admin(name, email, password, userId, role);
+
+        databaseReference.child(userId).setValue(user);
+        showMessage("Registration successful!");
+    }
+
+    private void onBacktoLoginClick() {
+        Intent loginIntent = new Intent(this, LoginPage.class);
+        startActivity(loginIntent);
+        finish();
+    }
+
     private void showMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
