@@ -83,7 +83,7 @@ public class QualificationPage3 extends AppCompatActivity implements View.OnClic
                         Ans.setQuestion3_index(0.0, i);
                     } else {
                         double actualGrade = Double.parseDouble(grade_list[i]);
-                        if (actualGrade < 4.0) {
+                        if (actualGrade > 4.0) {
                             Toast toast = Toast.makeText(QualificationPage3.this, "Course grade must be less than 4.0!", Toast.LENGTH_SHORT);
                             toast.show();
                             return; // Stop further processing if grade is invalid
