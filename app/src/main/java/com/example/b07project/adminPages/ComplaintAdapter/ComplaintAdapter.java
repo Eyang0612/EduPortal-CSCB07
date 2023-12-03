@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.b07project.R;
 import com.example.b07project.studentPages.Complaint.Complaint;
-import com.example.b07project.studentPages.EventRecycler.EventRecyclerInterface;
 
 import java.util.ArrayList;
 
