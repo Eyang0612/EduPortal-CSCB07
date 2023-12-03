@@ -1,11 +1,14 @@
 package com.example.b07project.studentPages;
 
+import com.example.b07project.studentPages.Announcement.Announcement;
+import com.example.b07project.adminPages.EventSetUp.Event;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
 
-public class DateComparator<T extends Notifications> implements Comparator<T> {
+public class DateComparator<T> implements Comparator<T> {
 
     private final String dateFormatPattern;
 
@@ -32,7 +35,12 @@ public class DateComparator<T extends Notifications> implements Comparator<T> {
     private Date getDate(T object, SimpleDateFormat dateFormat) throws ParseException {
         // Gets PostTime from objects and converts it into a Date object
 
-        String postTimeString = object.getNotificationDate();
+        String postTimeString = null;
+        if (object instanceof Announcement){
+            postTimeString = ((Announcement) object).getPostDate();
+        } else if (object instanceof Event){
+            postTimeString = ((Event) object).getEventDate();
+        }
         return dateFormat.parse(postTimeString);
     }
 }
