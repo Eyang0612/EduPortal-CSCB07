@@ -31,11 +31,8 @@ public class LoginModel{
                             FirebaseUser user = mAuth.getCurrentUser();
                             mainPresenter.onLogin(user.getUid());
 
-                            //fetchAndDisplayUserData(user.getUid());
-
                         } else {
                             // If sign in fails, display a message to the user.
-                            //maybe put this to loginpresenter for better MVP logic
                             mainPresenter.onLogin("");
                         }
                     }
@@ -49,15 +46,6 @@ public class LoginModel{
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mainPresenter.checkUser(dataSnapshot, uid);
-
-                    //String userName = dataSnapshot.child("name").getValue(String.class);
-                    //String userEmail = dataSnapshot.child("email").getValue(String.class);
-                    //String userRole = dataSnapshot.child("role").getValue(String.class);
-
-                    //mainPresenter.userFound(userEmail, userName, userRole, uid);
-
-                    //redirectHomePage(userEmail, userName, userRole, uid);
-
             }
 
             @Override
