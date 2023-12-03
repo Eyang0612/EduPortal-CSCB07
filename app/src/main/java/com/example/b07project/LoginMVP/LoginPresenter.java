@@ -6,19 +6,16 @@ import com.google.firebase.database.DataSnapshot;
 
 
 public class LoginPresenter{
-    // creating object of View Interface
+
     private LoginView mainView;
 
-    // creating object of Model Interface
     private LoginModel model;
 
-    // instantiating the objects of View and Model Interface
     public LoginPresenter(LoginView mainView, LoginModel model) {
         this.mainView = mainView;
         this.model = model;
     }
 
-    //@Override
     public void onLoginClick(){
         //mAuth = FirebaseAuth.getInstance();
         String email = mainView.findEmailEditText();
@@ -35,7 +32,6 @@ public class LoginPresenter{
 
     }
 
-    //@Override
     public void onLogin(String uid){
         if (!(uid.equals(""))){
             mainView.displayText("Login Successful");
@@ -46,12 +42,9 @@ public class LoginPresenter{
 
     }
 
-
-    //@Override
     public SharedPreferences fetchContext(){
         return mainView.getCont();
     }
-    //@Override
     public void checkRole(String userRole){
         if (userRole.equals("Student")){
             mainView.switchToStudentHomePage();
