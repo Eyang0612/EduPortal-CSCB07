@@ -1,4 +1,4 @@
-package com.example.b07project.Login;
+package com.example.b07project.LoginMVP;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
@@ -7,13 +7,13 @@ import com.google.firebase.database.DataSnapshot;
 
 public class LoginPresenter{
     // creating object of View Interface
-    private LoginPage mainView;
+    private LoginView mainView;
 
     // creating object of Model Interface
     private LoginModel model;
 
     // instantiating the objects of View and Model Interface
-    public LoginPresenter(LoginPage mainView, LoginModel model) {
+    public LoginPresenter(LoginView mainView, LoginModel model) {
         this.mainView = mainView;
         this.model = model;
     }

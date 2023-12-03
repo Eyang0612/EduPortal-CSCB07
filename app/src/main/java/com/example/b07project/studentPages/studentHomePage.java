@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.b07project.Login.LoginPage;
+import com.example.b07project.LoginMVP.LoginView;
 import com.example.b07project.R;
 import com.example.b07project.adminPages.EventSetUp.Event;
 import com.example.b07project.studentPages.Announcement.Announcement;
@@ -89,7 +89,7 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(studentHomePage.this, LoginPage.class);
+                Intent intent = new Intent(studentHomePage.this, LoginView.class);
                 SharedPreferences p = getSharedPreferences("myprefs",
                         Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = p.edit();
@@ -154,7 +154,7 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle errors
-                Intent intent = new Intent(studentHomePage.this, LoginPage.class);
+                Intent intent = new Intent(studentHomePage.this, LoginView.class);
                 startActivity(intent);
             }
 

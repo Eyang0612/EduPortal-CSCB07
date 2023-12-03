@@ -1,4 +1,4 @@
-package com.example.b07project.Login;
+package com.example.b07project.LoginMVP;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import com.example.b07project.adminPages.adminHomePage;
 
 import com.example.b07project.studentPages.studentHomePage;
 
-public class LoginPage extends AppCompatActivity{
+public class LoginView extends AppCompatActivity{
 
     private EditText editTextEmail, editTextPassword;
     LoginPresenter presenter;
@@ -74,7 +74,7 @@ public class LoginPage extends AppCompatActivity{
     }
 
     public void displayText(String message){
-        Toast.makeText(LoginPage.this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(LoginView.this, message, Toast.LENGTH_SHORT).show();
     }
 
     public String findEmailEditText(){
