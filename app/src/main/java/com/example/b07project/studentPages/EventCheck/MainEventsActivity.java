@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -18,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MainEventsActivity extends AppCompatActivity implements EventAdapter.RSVPClickListener {
+public class MainEventsActivity extends AppCompatActivity implements EventAdapter.EventClickListener{
 
     RecyclerView recyclerView;
     DatabaseReference database;

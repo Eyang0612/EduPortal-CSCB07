@@ -1,7 +1,6 @@
 package com.example.b07project.adminPages.EventSetUp;
 
 import com.example.b07project.studentPages.Notifications;
-import com.example.b07project.studentPages.Review.Review;
 
 import java.io.Serializable;
 
