@@ -1,7 +1,12 @@
 package com.example.b07project.studentPages.Complaint;
 
 public class Complaint {
-    private String complaintID, userId, userName, title, description, submissionTime;
+    private String complaintID;
+    private String userId;
+    private String userName;
+    private String title;
+    private String description;
+    private String submissionTime;
 
     public Complaint(String complaintID, String userId, String userName, String title, String description, String submissionTime){
         this.complaintID = complaintID;

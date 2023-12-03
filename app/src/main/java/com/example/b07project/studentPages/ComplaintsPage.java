@@ -27,8 +27,10 @@ import java.util.Date;
 
 public class ComplaintsPage extends AppCompatActivity {
 
-    private EditText editTextTitle, editTextDescription;
-    private Button buttonSubmit, buttonBack;
+    private EditText editTextTitle;
+    private EditText editTextDescription;
+    private Button buttonSubmit;
+    private Button buttonBack;
     private FirebaseDatabase db;
     private DatabaseReference ref;
 
@@ -45,6 +47,8 @@ public class ComplaintsPage extends AppCompatActivity {
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //checks for valid title and description
+
                 if (editTextTitle.getText().toString().trim().isEmpty() || editTextDescription.getText().toString().trim().isEmpty()){
                     Toast toast = Toast.makeText(ComplaintsPage.this, "Title or Description cannot be empty!", Toast.LENGTH_SHORT);
                     toast.show();
@@ -64,8 +68,9 @@ public class ComplaintsPage extends AppCompatActivity {
 
     }
 
-    //show submitted notification and leads back to home page
     private void showSubmittedAlertDialog() {
+        //show submitted notification and leads back to home page
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Submitted!")
                 .setMessage("Thank you for your feedback!")
@@ -81,8 +86,9 @@ public class ComplaintsPage extends AppCompatActivity {
         alertDialog.show();
     }
 
-    //create and send complaint to firebase
     private void sendComplaintToDB(){
+        //create and send complaint to firebase
+
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("complaints");
 
@@ -104,6 +110,5 @@ public class ComplaintsPage extends AppCompatActivity {
 
         showSubmittedAlertDialog();
     }
-
 }
 
