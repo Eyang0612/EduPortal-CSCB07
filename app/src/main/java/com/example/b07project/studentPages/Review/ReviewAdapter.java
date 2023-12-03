@@ -21,24 +21,18 @@ import com.example.b07project.adminPages.EventSetUp.Event;
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MyViewHolder> {
 
     Context context;
-
     ArrayList<Event> list;
     EventClickListener eventClickListener;
 
-    //BackButtonClick btn;
 
     public interface EventClickListener {
         void onEventClick(Event event);
     }
 
-    //public interface BackButtonClick{
-    //    void onBackClick();
-    //}
     public ReviewAdapter(Context context, ArrayList<Event> list, EventClickListener eventClickListener) {
         this.context = context;
         this.list = list;
         this.eventClickListener=eventClickListener;
-        //this.btn=btn;
     }
 
     @NonNull
@@ -57,12 +51,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MyViewHold
         holder.dateTime.setText(eList.getEventDate());
         holder.eventLocation.setText(eList.getLocation());
 
-        //holder.backButton.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //        btn.onBackClick();
-        //   }
-        //});
 
         holder.buttonComment.setOnClickListener(new View.OnClickListener() {
             @Override

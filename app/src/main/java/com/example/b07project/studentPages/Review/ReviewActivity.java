@@ -35,7 +35,6 @@ public class ReviewActivity extends AppCompatActivity implements EventAdapter.RS
     ReviewAdapter myAdapter;
     ArrayList<Event> list;
 
-    //Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,6 @@ public class ReviewActivity extends AppCompatActivity implements EventAdapter.RS
         list = new ArrayList<>();
         myAdapter = new ReviewAdapter(this,list, this::onEventClick);
         recyclerView.setAdapter(myAdapter);
-        //backButton=findViewById(R.id.backButton);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,13 +112,6 @@ public class ReviewActivity extends AppCompatActivity implements EventAdapter.RS
                 // Handle errors
             }
         });
-        //Toast.makeText(this, "Event Name: " + event.getTitle(), Toast.LENGTH_SHORT).show();
     }
 
-    //@Override
-    //public void onBackClick(){
-    //    Intent intent = new Intent(MainEventsActivity.this, adminHomePage.class);
-    //    //intent.putExtra("userName", getIntent().getStringExtra("userName"));
-    //    startActivity(intent);
-    //}
 }

@@ -36,7 +36,6 @@ public class SingleEventActivity extends AppCompatActivity {
         // Retrieve the event UID from the intent
         eventUid = getIntent().getStringExtra("eventID");
         studentUid = getIntent().getStringExtra("studentID");
-        //res = getIntent().getSerializableExtra("Reservation", Reservation.class);
 
 
         // Initialize Firebase Database reference

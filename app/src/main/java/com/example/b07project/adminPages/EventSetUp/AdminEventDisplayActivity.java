@@ -98,10 +98,4 @@ public class AdminEventDisplayActivity extends AppCompatActivity implements Even
         startActivity(intent);
     }
 
-    //@Override
-    //public void onBackClick(){
-    //    Intent intent = new Intent(MainEventsActivity.this, adminHomePage.class);
-    //    //intent.putExtra("userName", getIntent().getStringExtra("userName"));
-    //    startActivity(intent);
-    //}
 }
