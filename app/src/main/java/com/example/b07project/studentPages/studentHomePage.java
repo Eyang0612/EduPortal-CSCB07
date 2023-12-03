@@ -125,7 +125,6 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
 
     private void setAnnouncements(){
         //set Announcements to the recycler view
-
         ArrayList<Announcement> announcements= new ArrayList<>();
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("announcements");
@@ -203,10 +202,8 @@ public class studentHomePage extends AppCompatActivity implements EventAdapter.R
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
     }
 
 

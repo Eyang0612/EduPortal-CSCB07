@@ -71,9 +71,6 @@ public class ReviewActivity extends AppCompatActivity implements EventAdapter.RS
                         Event eList = dataSnapshot.getValue(Event.class);
                         list.add(eList);
                     }
-
-
-
                 }
                 myAdapter.notifyDataSetChanged();
 
@@ -90,7 +87,6 @@ public class ReviewActivity extends AppCompatActivity implements EventAdapter.RS
 
     @Override
     public void onEventClick(Event event) {
-        //put other redirect actions here
         SharedPreferences p = getSharedPreferences("myprefs", Context.MODE_PRIVATE);
         String userId = p.getString("userId", "None");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {

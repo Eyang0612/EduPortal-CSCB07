@@ -71,7 +71,6 @@ public class EventRating extends AppCompatActivity {
 
     }
 
-    //show submitted notification and leads back to home page
     private void showSubmittedAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Submitted!")
@@ -89,7 +88,6 @@ public class EventRating extends AppCompatActivity {
         alertDialog.show();
     }
 
-    //create and send complaint to firebase
     private void sendReviewToDB(){
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("events");

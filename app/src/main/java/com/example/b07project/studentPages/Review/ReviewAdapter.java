@@ -82,7 +82,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MyViewHold
             eventLocation = itemView.findViewById(R.id.eventLocation);
             buttonComment = itemView.findViewById(R.id.rsvpButton);
             buttonComment.setText("Add comments or reviews");
-
         }
 
     }
