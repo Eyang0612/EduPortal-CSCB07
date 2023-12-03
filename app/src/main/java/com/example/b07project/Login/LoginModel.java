@@ -1,6 +1,5 @@
 package com.example.b07project.Login;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
@@ -21,9 +20,6 @@ public class LoginModel{
     //private LoginPresenter mainPresenter;
     FirebaseAuth mAuth;
     //Constructor for model to interact with presenter
-    //public LoginModel(LoginPresenter mainPresenter){
-    //    this.mainPresenter=mainPresenter;
-    //}
     public void checkLogin(String email, String password, LoginPresenter mainPresenter) {
         mAuth = FirebaseAuth.getInstance();
 
