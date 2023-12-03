@@ -52,40 +52,39 @@ public class LoginPage extends AppCompatActivity{
         });
     }
 
-    //@Override
     public void switchToSignup(){
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, SignUpPage.class);
         startActivity(signUpIntent);
         finish();
     }
-    //@Override
+
     public void switchToStudentHomePage(){
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, studentHomePage.class);
         startActivity(signUpIntent);
         finish();
     }
-    //@Override
+
     public void switchToAdminHomePage(){
         // Handle the click event to navigate to the sign-up page
         Intent signUpIntent = new Intent(this, adminHomePage.class);
         startActivity(signUpIntent);
         finish();
     }
-    //@Override
+
     public void displayText(String message){
         Toast.makeText(LoginPage.this, message, Toast.LENGTH_SHORT).show();
     }
-    //@Override
+
     public String findEmailEditText(){
         return editTextEmail.getText().toString().trim();
     }
-    //@Override
+
     public String findPasswordEditText(){
         return editTextPassword.getText().toString().trim();
     }
-    //@Override
+
     public SharedPreferences getCont(){
         return getSharedPreferences("myprefs", Context.MODE_PRIVATE);
     }

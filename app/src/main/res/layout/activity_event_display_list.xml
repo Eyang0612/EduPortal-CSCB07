@@ -32,7 +32,7 @@
 
 
             <TextView
-                android:id="@+id/tvfirstName"
+                android:id="@+id/eventName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Event Name"
@@ -73,13 +73,13 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvage"
+            app:layout_constraintEnd_toStartOf="@+id/eventLocation"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvfirstName"
+            app:layout_constraintTop_toBottomOf="@+id/eventName"
             app:layout_constraintVertical_bias="0.08" />
 
         <TextView
-            android:id="@+id/tvage"
+            android:id="@+id/eventLocation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -91,12 +91,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/labeleventlocation"
-            app:layout_constraintTop_toBottomOf="@+id/tvfirstName"
+            app:layout_constraintTop_toBottomOf="@+id/eventName"
             app:layout_constraintVertical_bias="0.1" />
 
 
         <TextView
-            android:id="@+id/labeleventtime"
+            android:id="@+id/labelEventTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -107,13 +107,13 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvlastName"
+            app:layout_constraintEnd_toStartOf="@+id/dateTime"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/labeleventlocation"
             app:layout_constraintVertical_bias="0.1" />
 
         <TextView
-            android:id="@+id/tvlastName"
+            android:id="@+id/dateTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -124,8 +124,8 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/labeleventtime"
-            app:layout_constraintTop_toBottomOf="@+id/tvage"
+            app:layout_constraintStart_toEndOf="@+id/labelEventTime"
+            app:layout_constraintTop_toBottomOf="@+id/eventLocation"
             app:layout_constraintVertical_bias="0.1" />
 
 
@@ -138,7 +138,7 @@
             app:backgroundTint="#8E7DB3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvlastName"
+            app:layout_constraintTop_toBottomOf="@+id/dateTime"
             android:text="More Info or RSVP Event"/>
 
 

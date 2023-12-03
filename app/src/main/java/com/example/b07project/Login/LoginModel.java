@@ -1,5 +1,6 @@
 package com.example.b07project.Login;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
@@ -17,9 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginModel{
-    //private LoginPresenter mainPresenter;
     FirebaseAuth mAuth;
-    //Constructor for model to interact with presenter
+
     public void checkLogin(String email, String password, LoginPresenter mainPresenter) {
         mAuth = FirebaseAuth.getInstance();
 

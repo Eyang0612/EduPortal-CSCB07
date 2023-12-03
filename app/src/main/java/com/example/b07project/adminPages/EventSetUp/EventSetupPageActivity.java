@@ -29,10 +29,10 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
 
     Button btnDatePicker, btnTimePicker, btnSubmit, btnBack;
     EditText txtDate, txtTime, edtTitle, edtLocation, edtLimit, edtDescription;
-    private int mYear, mMonth, mDay, mHour, mMinute;
+    private int currentYear, currentMonth, currentDay, currentHour, currentMinute;
     private DatabaseReference databaseReference;
 
-    boolean isCurrentDate;
+    boolean isCurrentDate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +81,10 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
 
     private void showDatePicker() {
         // Get Current Date
-        final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        final Calendar calendar = Calendar.getInstance();
+        currentYear = calendar.get(Calendar.YEAR);
+        currentMonth = calendar.get(Calendar.MONTH);
+        currentDay = calendar.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 new DatePickerDialog.OnDateSetListener() {
@@ -101,7 +101,7 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
                             // If the date is valid, you can also show a TimePickerDialog or perform other actions.
                             // For simplicity, the TimePickerDialog is not included in this example.
                             // check if its the event is schedule in the current date
-                        } else if(year == mYear && monthOfYear == mMonth && dayOfMonth == mDay){
+                        } else if(year == currentYear && monthOfYear == currentMonth && dayOfMonth == currentDay){
                             isCurrentDate=true;
                             handleCurrentDate();
 
@@ -113,12 +113,12 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
                         }
 
                     }
-                }, mYear, mMonth, mDay);
+                }, currentYear, currentMonth, currentDay);
         datePickerDialog.show();
     }
 
     private boolean isDateInFuture(int year, int month, int day) {
-        return year > mYear || (year == mYear && month > mMonth) || (year == mYear && month == mMonth && day > mDay);
+        return year > currentYear || (year == currentYear && month > currentMonth) || (year == currentYear && month == currentMonth && day > currentDay);
     }
 
     private void handleCurrentDate() {
@@ -129,14 +129,14 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
             int inputMinute = Integer.parseInt(txtTime.getText().toString().substring(3));
 
             // If time is in the past for the current date, show a message
-            if (inputHour < mHour || (inputHour == mHour && inputMinute < mMinute)) {
+            if (inputHour < currentHour || (inputHour == currentHour && inputMinute < currentMinute)) {
                 Toast.makeText(EventSetupPageActivity.this, "Please select a future time for today's event or choose another date!", Toast.LENGTH_SHORT).show();
             } else {
                 // If date is the current date and time is in the future, update the date
-                txtDate.setText(formatDate(mDay, mMonth + 1, mYear));
+                txtDate.setText(formatDate(currentDay, currentMonth + 1, currentYear));
             }
         }else{
-            txtDate.setText(formatDate(mDay, mMonth + 1, mYear));
+            txtDate.setText(formatDate(currentDay, currentMonth + 1, currentYear));
         }
     }
 
@@ -146,9 +146,9 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
 
     private void showTimePicker() {
         // Get Current Time
-        final Calendar c = Calendar.getInstance();
-        mHour = c.get(Calendar.HOUR_OF_DAY);
-        mMinute = c.get(Calendar.MINUTE);
+        final Calendar calendar = Calendar.getInstance();
+        currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+        currentMinute = calendar.get(Calendar.MINUTE);
 
         // Launch Time Picker Dialog
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
@@ -159,7 +159,7 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
                                           int minute) {
                         if (isCurrentDate) {
                             // Check if date is current date and time is in the past
-                            if (hourOfDay < mHour || (hourOfDay == mHour && minute < mMinute)) {
+                            if (hourOfDay < currentHour || (hourOfDay == currentHour && minute < currentMinute)) {
                                 Toast.makeText(EventSetupPageActivity.this, "Please select a future time for today's event or choose another date!", Toast.LENGTH_SHORT).show();
                             } else {
                                 // Set the selected time in the TextView
@@ -172,12 +172,11 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
 
 
                     }
-                }, mHour, mMinute, false);
+                }, currentHour, currentMinute, false);
         timePickerDialog.show();
     }
 
     private String formatTime(int hourOfDay, int minute) {
-        // Use String.format for consistent formatting
         return String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute);
     }
 

@@ -89,9 +89,9 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MyViewHold
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            firstName = itemView.findViewById(R.id.tvfirstName);
-            lastName = itemView.findViewById(R.id.tvlastName);
-            age = itemView.findViewById(R.id.tvage);
+            firstName = itemView.findViewById(R.id.eventName);
+            lastName = itemView.findViewById(R.id.dateTime);
+            age = itemView.findViewById(R.id.eventLocation);
             buttonComment = itemView.findViewById(R.id.commentButton);
             //backButton=itemView.findViewById(R.id.backButton);
 
