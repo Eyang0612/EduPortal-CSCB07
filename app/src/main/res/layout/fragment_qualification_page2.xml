@@ -42,171 +42,296 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:layout_centerInParent ="true">
-
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/course_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="35dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
 
                 <TextView
                     android:id="@+id/course1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/question"
-                    android:layout_below="@+id/course2"
-                    android:layout_gravity="left"
                     android:text="@string/CourseA"
                     android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/course2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/course1"
-                    android:layout_below="@+id/course3"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="26dp"
-                    android:text="@string/CourseB"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/course3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/course2"
-                    android:layout_below="@+id/course4"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="26dp"
-                    android:text="@string/CourseC"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/course4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/course3"
-                    android:layout_below="@+id/course5"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="26dp"
-                    android:text="@string/CourseD"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/course5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/course4"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="26dp"
-                    android:text="@string/CourseE"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/course6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/course5"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="26dp"
-                    android:text="@string/CourseF"
-                    android:textSize="16dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/gpa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/text_1"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/question"
-                    android:layout_below="@+id/text2"
-                    android:layout_gravity="right"
                     android:ems="10"
                     android:hint="@string/CourseHint"
                     android:inputType="numberDecimal"
-                    android:minHeight="48dp"
+                    android:layout_marginLeft="10dp"
                     android:text="" />
 
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/course2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/CourseB"
+                    android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/text_2"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/submit"
-                    android:layout_gravity="right"
                     android:ems="10"
                     android:hint="@string/CourseHint"
                     android:inputType="numberDecimal"
-                    android:minHeight="48dp"
+                    android:layout_marginLeft="10dp"
                     android:text="" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/course3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/CourseC"
+                    android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/text_3"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/submit"
-                    android:layout_gravity="right"
                     android:ems="10"
                     android:hint="@string/CourseHint"
                     android:inputType="numberDecimal"
-                    android:minHeight="48dp"
+                    android:layout_marginLeft="10dp"
                     android:text="" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/course4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/CourseD"
+                    android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/text_4"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/submit"
-                    android:layout_gravity="right"
                     android:ems="10"
                     android:hint="@string/CourseHint"
                     android:inputType="numberDecimal"
-                    android:minHeight="48dp"
+                    android:layout_marginLeft="10dp"
                     android:text="" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/course5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/CourseE"
+                    android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/text_5"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/submit"
-                    android:layout_gravity="right"
                     android:ems="10"
                     android:hint="@string/CourseHint"
                     android:inputType="numberDecimal"
-                    android:minHeight="48dp"
+                    android:layout_marginLeft="10dp"
                     android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/course6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/CourseE"
+                    android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/text_6"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/submit"
-                    android:layout_gravity="right"
                     android:ems="10"
                     android:hint="@string/CourseHint"
                     android:inputType="numberDecimal"
-                    android:minHeight="48dp"
+                    android:layout_marginLeft="10dp"
                     android:text="" />
-            </LinearLayout>
 
+            </LinearLayout>
         </LinearLayout>
+
+
+
+
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/course_name"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:orientation="vertical">-->
+<!--                -->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/course2"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_above="@+id/course1"-->
+<!--                    android:layout_below="@+id/course3"-->
+<!--                    android:layout_marginTop="26dp"-->
+<!--                    android:text="@string/CourseB"-->
+<!--                    android:textSize="16dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/course3"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_above="@+id/course2"-->
+<!--                    android:layout_below="@+id/course4"-->
+<!--                    android:layout_marginTop="26dp"-->
+<!--                    android:text="@string/CourseC"-->
+<!--                    android:textSize="16dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/course4"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_above="@+id/course3"-->
+<!--                    android:layout_below="@+id/course5"-->
+<!--                    android:layout_marginTop="26dp"-->
+<!--                    android:text="@string/CourseD"-->
+<!--                    android:textSize="16dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/course5"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_above="@+id/course4"-->
+<!--                    android:layout_marginTop="26dp"-->
+<!--                    android:text="@string/CourseE"-->
+<!--                    android:textSize="16dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/course6"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_above="@+id/course5"-->
+<!--                    android:layout_marginTop="26dp"-->
+<!--                    android:text="@string/CourseF"-->
+<!--                    android:textSize="16dp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/gpa"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="30dp"-->
+<!--                android:orientation="vertical">-->
+
+<!--                -->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/text_2"-->
+<!--                    android:layout_width="180dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_above="@+id/submit"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="@string/CourseHint"-->
+<!--                    android:inputType="numberDecimal"-->
+<!--                    android:minHeight="48dp"-->
+<!--                    android:text="" />-->
+
+
+<!--                <EditText-->
+<!--                    android:id="@+id/text_3"-->
+<!--                    android:layout_width="180dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_above="@+id/submit"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="@string/CourseHint"-->
+<!--                    android:inputType="numberDecimal"-->
+<!--                    android:minHeight="48dp"-->
+<!--                    android:text="" />-->
+
+
+<!--                <EditText-->
+<!--                    android:id="@+id/text_4"-->
+<!--                    android:layout_width="180dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_above="@+id/submit"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="@string/CourseHint"-->
+<!--                    android:inputType="numberDecimal"-->
+<!--                    android:minHeight="48dp"-->
+<!--                    android:text="" />-->
+
+
+<!--                <EditText-->
+<!--                    android:id="@+id/text_5"-->
+<!--                    android:layout_width="180dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_above="@+id/submit"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="@string/CourseHint"-->
+<!--                    android:inputType="numberDecimal"-->
+<!--                    android:minHeight="48dp"-->
+<!--                    android:text="" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/text_6"-->
+<!--                    android:layout_width="180dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_above="@+id/submit"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="@string/CourseHint"-->
+<!--                    android:inputType="numberDecimal"-->
+<!--                    android:minHeight="48dp"-->
+<!--                    android:text="" />-->
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
 
         <Button
             android:id="@+id/submit"

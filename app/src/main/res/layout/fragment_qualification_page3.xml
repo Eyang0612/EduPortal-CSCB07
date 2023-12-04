@@ -39,11 +39,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/choices"
             android:orientation="vertical"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="20dp">
 
             <Button
             android:id="@+id/ans_A"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/question"
             android:layout_below="@+id/ans_B"
@@ -52,7 +53,7 @@
 
         <Button
             android:id="@+id/ans_B"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/ans_A"
             android:layout_below="@+id/ans_C"
@@ -62,7 +63,7 @@
 
         <Button
             android:id="@+id/ans_C"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/ans_B"
             android:layout_below="@+id/ans_D"
@@ -73,7 +74,7 @@
 
         <Button
             android:id="@+id/ans_D"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/ans_C"
             android:layout_below="@+id/ans_E"
@@ -82,18 +83,19 @@
 
             android:text="@string/AnswerD" />
 
-        </LinearLayout>
-
             <Button
                 android:id="@+id/submit"
-                android:layout_width="370dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/ans_D"
                 android:layout_gravity="bottom"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="100dp"
                 android:text="@string/Submit" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
