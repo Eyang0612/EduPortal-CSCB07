@@ -20,12 +20,12 @@ public class LoginPresenter{
         //mAuth = FirebaseAuth.getInstance();
         String email = mainView.findEmailEditText();
         String password = mainView.findPasswordEditText();
-        if (TextUtils.isEmpty(email)){
+        if (email.isEmpty()){
             mainView.displayText("Email cannot Be Empty!");
-        }else if (TextUtils.isEmpty(password)){
+        }else if (password.isEmpty()){
             mainView.displayText("Password cannot Be Empty!");
         }else {
-            model.checkLogin(email, password, this);
+            model.checkLogin(email, password, LoginPresenter.this);
         }
 
     }

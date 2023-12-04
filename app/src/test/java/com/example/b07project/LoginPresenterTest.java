@@ -42,7 +42,6 @@ import static org.mockito.Mockito.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 
-/*
 @RunWith(MockitoJUnitRunner.class)
 public class LoginPresenterTest {
 
@@ -66,10 +65,14 @@ public class LoginPresenterTest {
 
     private LoginPresenter presenter;
 
+    @Before
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        presenter = new LoginPresenter(mockView, mockModel);
+    }
     @Test
     public void testOnLoginClick_EmptyEmail_DisplayErrorMessage() {
         // Arrange
-        presenter = new LoginPresenter(mockView, mockModel);
 
         when(mockView.findEmailEditText()).thenReturn("");
         when(mockView.findPasswordEditText()).thenReturn("password");
@@ -109,9 +112,6 @@ public class LoginPresenterTest {
 
     @Test
     public void testOnLogin_NonEmptyUid_DisplayLoginSuccessfulMessage() {
-        // Arrange
-        when(mockFirebaseUser.getUid()).thenReturn("uid");
-        when(mockAuth.getCurrentUser()).thenReturn(mockFirebaseUser);
 
         // Act
         presenter.onLogin("uid");
@@ -122,8 +122,6 @@ public class LoginPresenterTest {
 
     @Test
     public void testOnLogin_EmptyUid_DisplayErrorMessage() {
-        // Arrange
-        when(mockAuth.getCurrentUser()).thenReturn(null);
 
         // Act
         presenter.onLogin("");
@@ -149,8 +147,6 @@ public class LoginPresenterTest {
         // Arrange
         when(mockView.findEmailEditText()).thenReturn("email@example.com");
         when(mockView.findPasswordEditText()).thenReturn("password");
-        when(mockAuth.getCurrentUser()).thenReturn(mockFirebaseUser);
-        when(mockFirebaseUser.getUid()).thenReturn("uid");
 
         // Act
         presenter.onLoginClick();
@@ -166,8 +162,6 @@ public class LoginPresenterTest {
         // Arrange
         when(mockView.findEmailEditText()).thenReturn("email@example.com");
         when(mockView.findPasswordEditText()).thenReturn("password");
-        when(mockAuth.getCurrentUser()).thenReturn(mockFirebaseUser);
-        when(mockFirebaseUser.getUid()).thenReturn("uid");
 
         // Act
         presenter.onLoginClick();
@@ -203,9 +197,8 @@ public class LoginPresenterTest {
     }
 }
 
- */
 
-
+    /*
 public class LoginPresenterTest {
 
     @Mock
@@ -234,7 +227,6 @@ public class LoginPresenterTest {
 
         // Assert
         verify(mockView).displayText("Email cannot Be Empty!");
-        verifyNoMoreInteractions(mockView, mockModel);
     }
 
     @Test
@@ -248,7 +240,6 @@ public class LoginPresenterTest {
 
         // Assert
         verify(mockView).displayText("Password cannot Be Empty!");
-        verifyNoMoreInteractions(mockView, mockModel);
     }
 
     @Test
@@ -262,7 +253,6 @@ public class LoginPresenterTest {
 
         // Assert
         verify(mockModel).checkLogin("email", "password", presenter);
-        verifyNoMoreInteractions(mockView, mockModel);
     }
 
     @Test
@@ -276,9 +266,9 @@ public class LoginPresenterTest {
         // Assert
         verify(mockView).displayText("Login Successful");
         verify(mockModel).fetchAndDisplayUserData(uid, presenter);
-        verifyNoMoreInteractions(mockView, mockModel);
     }
 
     // Add more test cases as needed for other scenarios.
 
 }
+*/
