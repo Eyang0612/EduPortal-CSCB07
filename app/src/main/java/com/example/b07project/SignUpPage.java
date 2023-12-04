@@ -34,9 +34,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import com.example.b07project.User.Student;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-/*
+
+
 public class SignUpPage extends AppCompatActivity {
 
 
@@ -70,8 +72,9 @@ public class SignUpPage extends AppCompatActivity {
 
 
         // Set onClickListener for the role choose spinner
+
         spinnerRole = findViewById(R.id.spinnerRole);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.roles_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(SignUpPage.this, R.array.roles_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRole.setAdapter(adapter);
 
@@ -265,7 +268,7 @@ public class SignUpPage extends AppCompatActivity {
 
     private void onBacktoLoginClick() {
         // Handle the click event to navigate to the sign-up page
-        Intent LoginIntent = new Intent(this, LoginPage.class);
+        Intent LoginIntent = new Intent(this, LoginView.class);
         startActivity(LoginIntent);
         finish();//finish current activity; (Sign in).
     }
@@ -289,8 +292,7 @@ public class SignUpPage extends AppCompatActivity {
     }
 }
 
- */
-
+/*
 public class SignUpPage extends AppCompatActivity {
 
     private EditText nameEditText, emailEditText, passwordEditText, confirmPasswordEditText;
@@ -331,14 +333,18 @@ public class SignUpPage extends AppCompatActivity {
     }
 
     private void setOnClickListeners() {
+
         spinnerRole.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -469,3 +475,4 @@ public class SignUpPage extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
+ */
