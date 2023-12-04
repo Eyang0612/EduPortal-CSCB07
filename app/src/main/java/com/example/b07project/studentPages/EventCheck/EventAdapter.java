@@ -48,7 +48,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.eventNameDisplay.setText(eList.getTitle());
         holder.eventTimeDisplay.setText(eList.getEventDate());
         holder.eventLocationDisplay.setText(eList.getLocation());
-        holder.eventLocationDisplay.setText(eList.getPostDate());
+        holder.eventPostTimeDisplay.setText(eList.getPostDate());
 
         holder.rsvpButton.setOnClickListener(new View.OnClickListener() {
             @Override
