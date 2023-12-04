@@ -9,93 +9,94 @@
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/POSt_qualification"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_gravity="center"
+        android:layout_gravity="top|center"
         android:layout_marginTop="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent ="true"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/question"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="150dp"
         android:text="@string/Question1"
         android:textSize="20sp"
-        android:textStyle ="bold"
-        android:layout_above = "@+id/title"
-        android:layout_below = "@+id/ans_A"
-    />
+        android:textStyle ="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/choices"
-        android:layout_centerInParent ="true"
-        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/choices"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp">
 
+            <Button
+            android:id="@+id/ans_A"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/question"
+            android:layout_below="@+id/ans_B"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/AnswerA" />
 
+        <Button
+            android:id="@+id/ans_B"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ans_A"
+            android:layout_below="@+id/ans_C"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/AnswerB"/>
 
-    <Button
-        android:id="@+id/ans_A"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/question"
-        android:layout_below="@+id/ans_B"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="200dp"
-        android:text="@string/AnswerA" />
+        <Button
+            android:id="@+id/ans_C"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ans_B"
+            android:layout_below="@+id/ans_D"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
 
-    <Button
-        android:id="@+id/ans_B"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ans_A"
-        android:layout_below="@+id/ans_C"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/AnswerB"/>
+            android:text="@string/AnswerC"/>
 
-    <Button
-        android:id="@+id/ans_C"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ans_B"
-        android:layout_below="@+id/ans_D"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center_horizontal"
+        <Button
+            android:id="@+id/ans_D"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ans_C"
+            android:layout_below="@+id/ans_E"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
 
-        android:text="@string/AnswerC"/>
+            android:text="@string/AnswerD" />
 
-    <Button
-        android:id="@+id/ans_D"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ans_C"
-        android:layout_below="@+id/ans_E"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center_horizontal"
+        </LinearLayout>
 
-        android:text="@string/AnswerD" />
-
-
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ans_D"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="100dp"
+                android:text="@string/Submit" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ans_D"
-        android:layout_gravity="bottom"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/Submit" />
 
     <Button
         android:id="@+id/back"
