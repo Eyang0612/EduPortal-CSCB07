@@ -47,6 +47,7 @@ public class EventRatingAdapter extends RecyclerView.Adapter<EventRatingAdapter.
         holder.DateTime.setText(eList.getEventDate());
         holder.Location.setText(eList.getLocation());
         holder.ReviewButton.setText("More Reviews");
+        holder.PostTime.setText(eList.getPostDate());
 
 
 
@@ -69,7 +70,7 @@ public class EventRatingAdapter extends RecyclerView.Adapter<EventRatingAdapter.
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView EventName, DateTime, Location;
+        TextView EventName, DateTime, Location, PostTime;
         Button ReviewButton;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -79,6 +80,7 @@ public class EventRatingAdapter extends RecyclerView.Adapter<EventRatingAdapter.
             DateTime = itemView.findViewById(R.id.dateTime);
             Location = itemView.findViewById(R.id.eventLocation);
             ReviewButton = itemView.findViewById(R.id.rsvpButton);
+            PostTime = itemView.findViewById(R.id.eventPostTime);
 
         }
 
