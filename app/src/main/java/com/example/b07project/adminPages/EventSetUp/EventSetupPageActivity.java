@@ -32,7 +32,7 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
     private int currentYear, currentMonth, currentDay, currentHour, currentMinute;
     private DatabaseReference databaseReference;
 
-    boolean isCurrentDate = false;
+    private boolean isCurrentDate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

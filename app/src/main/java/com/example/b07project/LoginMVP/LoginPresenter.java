@@ -22,10 +22,8 @@ public class LoginPresenter{
         String password = mainView.findPasswordEditText();
         if (TextUtils.isEmpty(email)){
             mainView.displayText("Email cannot Be Empty!");
-
         }else if (TextUtils.isEmpty(password)){
             mainView.displayText("Password cannot Be Empty!");
-
         }else {
             model.checkLogin(email, password, this);
         }
