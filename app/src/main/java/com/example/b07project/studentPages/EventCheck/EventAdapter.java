@@ -45,9 +45,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Event eList = list.get(position);
-        holder.firstName.setText(eList.getTitle());
-        holder.lastName.setText(eList.getEventDate());
-        holder.age.setText(eList.getLocation());
+        holder.eventNameDisplay.setText(eList.getTitle());
+        holder.eventTimeDisplay.setText(eList.getEventDate());
+        holder.eventLocationDisplay.setText(eList.getLocation());
+        holder.eventLocationDisplay.setText(eList.getPostDate());
 
         holder.rsvpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,15 +69,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView firstName, lastName, age;
-        Button rsvpButton, backButton;
+        TextView eventNameDisplay, eventTimeDisplay, eventLocationDisplay, eventPostTimeDisplay;
+        Button rsvpButton;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            firstName = itemView.findViewById(R.id.eventName);
-            lastName = itemView.findViewById(R.id.dateTime);
-            age = itemView.findViewById(R.id.eventLocation);
+            eventNameDisplay = itemView.findViewById(R.id.eventName);
+            eventTimeDisplay = itemView.findViewById(R.id.dateTime);
+            eventLocationDisplay = itemView.findViewById(R.id.eventLocation);
+            eventPostTimeDisplay = itemView.findViewById(R.id.eventPostTime);
             rsvpButton = itemView.findViewById(R.id.rsvpButton);
 
         }
