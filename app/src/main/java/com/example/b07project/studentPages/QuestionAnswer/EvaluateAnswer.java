@@ -165,7 +165,7 @@ public class EvaluateAnswer implements Serializable {
             result[1]+= "Unsatisfied requirement: Have at least 4.0 credits." + "\n\n";
         }
         if(!(CountNonZero()==6)){
-            result[0] ="Sorry, you do nott qualify.";
+            result[0] ="Sorry, you do not qualify.";
             result[1]+= "Unsatisfied requirement: Complete all A-level courses (CSC/MATA67, CSCA48, MATA22, MATA37, CSCA08)."+ "\n\n";
             return result;
         }

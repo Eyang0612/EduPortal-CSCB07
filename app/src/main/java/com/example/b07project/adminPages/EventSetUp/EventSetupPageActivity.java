@@ -2,9 +2,11 @@ package com.example.b07project.adminPages.EventSetUp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,6 +18,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.b07project.R;
+import com.example.b07project.adminPages.adminHomePage;
+import com.example.b07project.studentPages.ComplaintsPage;
+import com.example.b07project.studentPages.studentHomePage;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -198,7 +203,7 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
             return;
         }
         // Check if limit is valid integer using regex method
-        if (!limit.matches("\\d+")) {
+        if ((!limit.matches("\\d+")) || limit.equals("0")) {
             Toast.makeText(EventSetupPageActivity.this, "Number of participants must be a positive integer!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -221,7 +226,20 @@ public class EventSetupPageActivity extends AppCompatActivity implements View.On
         databaseReference.child(eventId).child("Participants").setValue("Null");
 
         // Show a success message
-        Toast.makeText(EventSetupPageActivity.this, "Event added successfully", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Submitted!")
+                    .setMessage("Thank you for adding your event!")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(EventSetupPageActivity.this, adminHomePage.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
 
         // Clear the input fields
         edtTitle.setText("");

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.b07project.studentPages.QuestionAnswer.EvaluateAnswer;
 
@@ -77,6 +78,8 @@ public class QualificationPage1 extends AppCompatActivity implements View.OnClic
 
         if(clickedChoice.getId()==R.id.submit) {
             if (Ans.getQuestion1() == 0) {
+                Toast toast = Toast.makeText(QualificationPage1.this, "Please choose an answer!", Toast.LENGTH_SHORT);
+                toast.show();
                 return;
             }
             loadQuestion2();
