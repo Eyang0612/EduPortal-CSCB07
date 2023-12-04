@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".SignUpPage">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -82,7 +82,7 @@
             android:maxLines="1"
             android:imeOptions="actionNone"
             android:scrollHorizontally="true"
-            android:inputType="text|textNoSuggestions"
+            android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@+id/editTextEmailSignUp"
             app:layout_constraintBottom_toTopOf="@+id/passwordRequirements"
             app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +113,7 @@
             android:maxLines="1"
             android:imeOptions="actionNone"
             android:scrollHorizontally="true"
-            android:inputType="text|textNoSuggestions"
+            android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@+id/passwordRequirements"
             app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
             app:layout_constraintStart_toStartOf="parent"
